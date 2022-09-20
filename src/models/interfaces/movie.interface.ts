@@ -1,3 +1,4 @@
+import { IGetAll, IGetOne } from "./crud.interface";
 
 export interface IMovieModel {
     id:number,
@@ -14,9 +15,9 @@ export interface IMovieModel {
     videoKey:string,
 }
 
-export interface IMovieController {
-    getMovies(): Promise<IMovieModel> |IMovieModel[],
-    getById(id:number): Promise<IMovieModel> |IMovieModel,
-}
+export interface IMovieRepository<TModel> extends IGetAll<TModel>, IGetOne<TModel, number> {}
+
+export interface IMovieController<TModel> extends IGetAll<TModel>, IGetOne<TModel, number> {}
+
 
 
