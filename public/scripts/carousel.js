@@ -45,8 +45,3 @@ window.onload = () => {
     new Carrousel().render(document.querySelector(".carousel__lista"))
     
 };
-
-// window.addEventListener('load', function(){
-//     // glider.refresh(true);
-
-// });
