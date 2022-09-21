@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/styles/carousel.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.6.6/glider.css" integrity="sha512-rEnjEH5u8xKS8NLcXC4nuZwT89x+tMB19ddbolNGE7DTl6o3JEo11kHAwryLlALFnxdONjO4xVpjunLWdiZR1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+
+    <div class="contenedor">
+        <div class="carousel">
+            <div class="carousel__contenedor">
+                
+    
+                <div class="carousel__lista">
+                    <% for(let i = 0; i < people.length; i++) {%>
+                    <div class="carousel__elemento">
+                        <img src="<%= people[i].img %>" alt="<%= people[i].name %>">
+                        <p class="carousel__titulo"> <%= people[i].name %></p>
+                    </div>
+                   <% } %>
+                </div>
+    
+               
+            </div>
+    
+            <div role="tablist" class="carousel__indicadores"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.6.6/glider.min.js" integrity="sha512-RidPlemZ+Xtdq62dXb81kYFycgFQJ71CKg+YbKw+deBWB0TLIqCraOn6k0CWDH2rGvE1a8ruqMB+4E4OLVJ7Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/public/scripts/carousel.js" type="module">
+
+// const glider = new Glider(document.querySelector('.carousel__lista'), {
+// 		slidesToShow: 1,
+// 		slidesToScroll: 1,
+//     rewind: true,
+//     draggable: true,
+// 		dots: '.carousel__indicadores',
+//     duration:5.0,
+//     responsive: [
+// 			{
+//         rewind: true,
+// 			  breakpoint: 300,
+// 			  settings: {
+// 				slidesToShow: 2,
+// 				slidesToScroll: 4
+// 			  }
+// 			},
+//       {
+//         rewind: true,
+// 			  breakpoint: 500,
+// 			  settings: {
+// 				slidesToShow: 2,
+// 				slidesToScroll: 2
+// 			  }
+// 			},
+//       {
+//         rewind: true,
+// 			  breakpoint: 700,
+// 			  settings: {
+// 				slidesToShow: 4,
+// 				slidesToScroll: 4
+// 			  }
+// 			}
+// 		]
+
+
+// 	});
+
+//         window.addEventListener('load', function(){
+//             // glider.refresh(true);
+//             glider()
+            
+//         });
+    </script>
+  </body>
+</html>
