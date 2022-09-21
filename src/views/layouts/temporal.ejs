@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <%- include('../components/shoppingCart.ejs') %>
+    <div>
+        <button class ="carrito" onclick="addToCart(1)" id="carrito">Add to cart</button>
+    </div>
+
 </body>
 </html>
