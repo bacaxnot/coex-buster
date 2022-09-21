@@ -2,10 +2,8 @@ import { Router } from "express";
 
 const router:Router = Router();
 
-router.get('/')
-
 // Test index
-router.get('/index', (req, res) => {
+router.get('/', (req, res) => {
     res.render('index', {message: 'hello world'})
 });
 
