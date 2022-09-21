@@ -2,7 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,windows,macos,node
 
 #route test 
-./src/routes/test.routes.ts 
+src/routes/test.routes.ts 
 
 ### Linux ###
 *~
