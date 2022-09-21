@@ -2,6 +2,7 @@ import { Router } from "express";
 
 const router:Router = Router();
 
+
 const data = [
     {id: "1", name: "Patrick1 Patrick1 Patrick1", img:"https://cdn.pixabay.com/photo/2016/04/01/11/25/avatar-1300331_960_720.png"},
     {id: "2", name: "Patrick2", img:"https://cdn.pixabay.com/photo/2014/03/24/17/19/teacher-295387_960_720.png"},
@@ -20,11 +21,16 @@ const data = [
 
 const getInfo = "Después de los eventos devastadores de 'Vengadores: Infinity War', el universo está en ruinas debido a las acciones de Thanos. Con la ayuda de los aliados que quedaron, los Vengadores deberán reunirse una vez más para intentar deshacer sus acciones y restaurar el orden en el universo de una vez por todas, sin importar cuáles sean las consecuencias... Cuarta y última entrega de la saga 'Vengadores'."
 
+// Test index
+router.get('/', (req, res) => {
+    res.render('index', {message: 'hello world'})
+});
+
 router
   
     .get('/', (req, res)=>{
         return res.render('layouts/temporal.ejs', { info: getInfo , people: data});
 
     })
-    
+
 export default router
