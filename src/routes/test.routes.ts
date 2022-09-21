@@ -7,7 +7,7 @@ router.get('/shop', (req, res)=>{
 })
 
 router.get('/history/order', (req, res)=>{  //colocarle al order:id
-    res.render('layouts/history.ejs');
+    res.render('layouts/history_order.ejs');
 })
 
 export default router
