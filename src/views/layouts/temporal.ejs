@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/public/styles/login.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="login">
+        <form id="form_login">
+            <label class="text_title">Register</label><br><br>
+          <div class="login-info">
+            <label class="text_login">Name</label><br>
+            <input class="input_login" type="text" id="name" placeholder="Full name"><br>
+            <label class="text_login">Email Adress</label><br>
+            <input class="input_login" type="email" id="email" placeholder="correo@correo.com"><br>
+            <label class="text_login">Password</label><br>
+            <input class="input_login" type="password" id="password" placeholder="***********" autocomplete="off"><br>
+            <button class="btn-login" type="submit">Register</button>
+          </div>
+        </form>
+      </div>
+      <div class="extra_register">
+        <button class="btn-singup" type="submit" href="#">Alredy have acount... Log in</button>
+      </div>
 </body>
 </html>
