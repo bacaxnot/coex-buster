@@ -1,0 +1,17 @@
+.container-trailer {
+    position:relative;
+    width: 100%;
+    height: 300px;
+    background-color: blue;
+    
+}
+.video-trailer{
+    padding: 20px;
+    position: relative;
+    height:100%;
+}
+
+.container-trailer iframe{
+    width: 100%;
+    height: 90%;
+}
