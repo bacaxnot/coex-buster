@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/linux,windows,macos,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,windows,macos,node
 
+#route test 
+./src/routes/test.routes.ts 
+
 ### Linux ###
 *~
 
@@ -216,6 +219,3 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,windows,macos,node
-
-#route test 
-src/routes/test.routes.ts
