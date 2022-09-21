@@ -1,0 +1,73 @@
+nav-bar {
+    width: 100%;
+}
+
+.s-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* FLEX */
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------------------------------HEADER */
+
+.s-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 54px;
+    width: 100%;
+    z-index: 6;
+    color: var(--white);
+    background-color: #02021C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* ---------------------------------MAIN */
+
+.s-content{
+    padding: 30px 100px;
+    margin-top: 84px;
+    /* FLEX */
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.s-filter{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.s-grid{
+    width: 100%;
+    /* GRID */
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 40px;
+}
+
+/* ---------------------------------FOOTER */
+
+.s-footer{
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    /* FLEX */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.genre-movies-shop{
+    display: flex;
+    width: 100%;
+}
+
