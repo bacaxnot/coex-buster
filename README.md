@@ -8,22 +8,22 @@ npm run dev
 
 ## ROUTES
 
-GET: / -> (redirect) -> /shop?page=1
+GET: / -> (redirect) -> /movies?page=1
 
-GET: /shop -> (redirect) -> /shop?page=1
+GET: /movies -> (redirect) -> /movies?page=1
 
-GET: /shop?page=number -> listado de películas
+GET: /movies?page=number -> list of movies by pagination
 
-GET: /shop?page=number&category=string -> listado de películas por categoría y paginación
+GET: /movies?page=number&category=string -> list of films by category and pagination
 
-GET: /shop?page=number&name=string -> listado de películas con b
+GET: /movies?page=number&name=string -> list of movies by search and pagination
 
-GET: /shop/movie/:id -> detalle de una película
+GET: /movies/:id -> detail of a movie by id
 
-GET: /history -> historial de las órdenes
+GET: /history -> order history
 
-GET: /history/order/:id -> detalle de una orden
+GET: /history/order/:id -> detail of an order
 
-GET: /login -> autenticación de usuarios
+GET: /login -> user authentication
 
-GET: /register -> crear nueva cuenta
+GET: /register -> create new account
