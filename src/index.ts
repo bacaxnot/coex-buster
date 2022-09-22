@@ -1,4 +1,5 @@
 import ConfigServer from "./app";
+import './helpers/connectionDB'
 
 class Server extends ConfigServer {
 
