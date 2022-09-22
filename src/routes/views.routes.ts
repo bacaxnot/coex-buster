@@ -1,11 +1,9 @@
 import { Router } from "express";
 
-const route:Router = Router();
+const router:Router = Router();
 
-route
-    .get('/', (req, res) => {
-        res.render('components/shoppingCart.ejs')
-    })
+router
+    .get('/')
     .get('/shop')
     .get('/shop/movie/:id')
     .get('/history')
@@ -13,4 +11,4 @@ route
     .get('/login')
     .get('/register')
 
-export default route;
+export default router;
