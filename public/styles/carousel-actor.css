@@ -1,5 +1,5 @@
 
-.contenedor-carousel {
+.contenedor-carousel2 {
 	max-width: 800px;
 	width: 90%;
 	padding: 10px;
@@ -21,26 +21,26 @@
 
 
 /* --- --- CAROUSEL --- --- */
-.carousel__contenedor {
+.carousel__contenedor2 {
 	position: relative;
 	/* background: linear-gradient(black,rgb(4, 6, 146), black); */
 }
 
 
 
-.carousel__lista {
+.carousel__lista2 {
 	overflow: hidden;
 	
 }
 
-.carousel__elemento {
+.carousel__elemento2 {
 	text-align: center;
 	padding: 10px;
 	left: 0;
 	bottom: 0;
 	border-radius: 0 0 20px 20px;	
 }
-.carousel__titulo{
+.carousel__titulo2{
 	display: block;
 	/* position: absolute; */
 	color:#000;
@@ -51,7 +51,7 @@
 	/* overflow: hidden; */
 }
 
-.carousel__indicadores .glider-dot {
+.carousel__indicadores2 .glider-dot {
 	display: block;
 	width: 30px;
 	height: 4px;
@@ -63,17 +63,17 @@
 
 
 @media only screen and (max-width: 800px) {
-	.contenedor{
+	.contenedor2{
 		max-width: 600px;
 	}
 	
-	.contenido-principal {
+	.contenido-principal2 {
 		flex-direction: column;
 		padding: 0;
 		margin: 0;
 	}
 
-	.contenido-principal > * {
+	.contenido-principal2 > * {
 		width: 70%;
 	}
 	.glider-slide img {
@@ -82,7 +82,7 @@
     	height: 180px;
     	object-fit: cover;
 	}
-	.carousel__elemento {
+	.carousel__elemento2 {
 		padding: 2px;
 		margin: 2px;
 	}
