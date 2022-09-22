@@ -2,7 +2,7 @@ class Carrousel {
   constructor() {}
 
   render(div, container, dots) {
-    setTimeout(() =>{
+   
       container.style.display = 'block';
       return new Glider(div, {
         slidesToShow: 1,
@@ -18,14 +18,16 @@ class Carrousel {
             settings: {
               slidesToShow: 2,
               slidesToScroll: 4,
+              draggable: true,
             },
           },
           {
             rewind: true,
-            breakpoint: 500,
+            breakpoint: 414,
             settings: {
               slidesToShow: 2,
               slidesToScroll: 2,
+              draggable: true,
             },
           },
           {
@@ -34,14 +36,12 @@ class Carrousel {
             settings: {
               slidesToShow: 4,
               slidesToScroll: 4,
+              draggable: true,
             },
           },
         ],
       });
 
-    }, 2)
-     
-    
   }
 
 }

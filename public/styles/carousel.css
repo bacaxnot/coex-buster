@@ -1,9 +1,12 @@
 
 .contenedor-carousel {
+	position: relative;
 	max-width: 800px;
 	width: 90%;
 	padding: 10px;
 	display: none;
+	animation-name: example;
+    animation-duration: 4s;
 }
 
 /* --- --- CONTENEDOR PRINCIPAL --- --- */
