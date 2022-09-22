@@ -26,4 +26,7 @@ class dbConnection {
     }
 }
 
+export const sequelizeObject = new dbConnection().dbOptions;
+
 new dbConnection().validate();
+
