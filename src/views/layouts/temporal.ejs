@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/public/styles/login.css" rel="stylesheet">
     <title>Document</title>
+    <link href="/public/styles/shoppingCart.css" rel="stylesheet">
 </head>
 <body>
-    <%- include('../components/shoppingCart.js') %>
+    <%- include('../components/shoppingCart.ejs') %>
 
+    <div>
+        <button class ="carrito" onclick="addToCart(601796)" >Add to cart</button>
+    </div>
+    <div>
+        <button class ="carrito" onclick="openCart()">Abrir carrito</button>
+    </div>
+    <div>
+        <button class ="carrito" onclick="closeCart()" >cerrar carrito</button>
+    </div>
+    <script src="/public/scripts/shoppingCart.js" ></script>
 </body>
 </html>

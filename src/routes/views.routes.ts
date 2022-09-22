@@ -4,7 +4,7 @@ const route:Router = Router();
 
 route
     .get('/', (req, res) => {
-        res.render('components/shoppingCart.ejs')
+        res.render('layouts/temporal.ejs')
     })
     .get('/shop')
     .get('/shop/movie/:id')
