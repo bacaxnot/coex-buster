@@ -1,13 +1,9 @@
 import { Router } from "express";
 
-<<<<<<< HEAD
-import { Router } from 'express';
-
 const router:Router = Router();
 
-export default router;
-=======
-const route: Router = Router()
+router
+    .route('/user')
+    .post()
 
-export default route
->>>>>>> shoppingCart
+export default router;
