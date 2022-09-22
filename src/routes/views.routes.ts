@@ -3,6 +3,7 @@ import { Router } from "express";
 const router:Router = Router();
 
 
+
 router
     .get('/')
     .get('/shop')
@@ -11,5 +12,6 @@ router
     .get('/history/order/:id')
     .get('/login')
     .get('/register')
+
 
 export default router;
