@@ -1,205 +1,136 @@
-// variables
 
-const parentNode = document.querySelector('#app')
-const node = document.createElement('div')
-const classes = ['shopping-cart']
-const myOrdersPath = '/cart/index.html'
-// DOM elements
-let cartContainer
-let cartItems
-let checkoutBtn
-let closeBtn
-let errBar
-let errMssg
-// state modification functions
-export function render(){
-    /**
-     * Renders the element inside #app node.
-     */
-    if (parentNode === undefined | null){
-        return console.error('Unable to render shoppingCart. Must have an #app element in DOM.')
-    }
-    // dom manipulation
-    node.classList = classes
-    node.innerHTML = template
-    parentNode.append(node)
-    // dom elements queries
-    cartItems = node.querySelector('.cart-list')
-    cartContainer = node.querySelector('.cart-container')
-    closeBtn = node.querySelector('.closeBtn')
-    checkoutBtn = node.querySelector('.checkout-button-container')
-    errBar = node.querySelector('.error-bar-container')
-    errMssg = node.querySelector('#errorMessage')
-    // rendering stored values
-    for(let movie of moviesInCart()){
-        renderMovie(movie)
-    }
-    // success mssg
-    console.log('Shopping cart rendered')
+const cartContainer = document.querySelector('.cart-container');
+const checkoutButton = document.querySelector('.checkout-button-container');
+
+const openCart = () => {
+	cartContainer.style.right = `0`;
+};
+
+const closeCart = () => {
+	cartContainer.style.right = `-30%`;
+};
+
+const showCheckoutButton = (arrLength) => {
+	if (arrLength > 0) {
+		checkoutButton.style.display = 'block';
+	} else {
+		checkoutButton.style.display = 'none';
+	}
+};
+
+//URL LISTADO DE PELIS
+//https://api.themoviedb.org/4/list/${list_id}?page=1&api_key=dde722cb807472090076a60be85c0010
+//https://api.themoviedb.org/3/discover/movie?with_genres=878&api_key=d2b1df9d64af7fb2a0342bd9d23e1449&language=es-MX&page=2
+
+//URL PELIS POR ID
+//https://api.themoviedb.org/3/movie/${movie_id}?api_key=dde722cb807472090076a60be85c0010&language=en-US
+
+const imageUrl = `https://image.tmdb.org/t/p/w500/`;
+const moviesInCart = [];
+
+//cargar los datos del localStorage a moviesInCart para luego renderizar las movies del shoppingCart
+window.onload = () => {
+	// const moviesLocalStorage = localStorage.getItem('shoppingCart') || [];
+	// const moviesArr = JSON.parse(moviesLocalStorage);
+	// moviesArr.forEach((movie) => {
+	// 	moviesInCart.push(movie);
+	// });
+	renderMovieInCart(moviesInCart);
+};
+
+//redirige a LOGIN / MYHISTORY dependiendo de la sesion
+const renderCart = () => {
+	window.location = '/cart/index.html';
 }
-export function initialize(){
-    /**
-     * Initializes shoppingCart to listen for 'add2cart' events and other events.
-     */
-    node.addEventListener('add2cart', eventHandler)
-    closeBtn.addEventListener('click', close)
-    checkoutBtn.addEventListener('click', goToCheckout)
-    console.log('Shopping cart initialized')
-}
-export function turnOff(){
-    /**
-     * Turns off add2cart eventListener for shoppingCart.
-     */
-    node.removeEventListener('add2cart', eventHandler)
-    checkoutBtn.removeEventListener('click', goToCheckout)
-    console.log('Shopping cart turned off')
-}
-export function add(movie){
-    let event =  new CustomEvent('add2cart', {
-        bubbles: false,
-        detail: { movie }
-    })
-    node.dispatchEvent(event)
-}
-export function open(){
-    console.log('se ejecuto open')
-    cartContainer.style.right = `0`
-}
-export function close(){
-    cartContainer.style.right = `-30%`
-}
-export function clear(){
-    localStorage.removeItem('moviesInCart')
-    cartItems.innerHTML = ''
-}
-// private functions
-function eventHandler(event){
-    /**
-     * Sets the actions to do when 'add2cart' event is detected
-     */
-    console.log(event)
-    let movie = event.detail.movie
-    if(storeMovie(movie)){
-        renderMovie(movie)
-    }else{
-        throwError('Movie already added')
-    }
-}
-function moviesInCart(){
-    /**
-     * Retrieves movies added to cart in localStorage
-     */
-    let movies = JSON.parse(localStorage.getItem('moviesInCart'))
-    return movies || []
-}
-function ordersHistory(){
-    /**
-     * Retrieves the orders history stored in localStorage
-     */
-     let orders = JSON.parse(localStorage.getItem('orders'))
-     return orders || []
-}
-function storeMovie(movie){
-    /**
-     * Stores a movie in localStorage. Returns false if the movie was already in cart, and true if the movie wasnt and had been succesfully added.
-     */
-    let storedMovies = moviesInCart()
-    if (isInCart(movie.id)){
-        return false
-    }else{
-        storedMovies.push(movie)
-        localStorage.setItem("moviesInCart", JSON.stringify(storedMovies))
-        return true
-    }
-}
-function renderMovie(movie){
-    /**
-     * Renders a given movie inside carItems element
-     */
-    // creating html structure of the item
-    const itemContainer = document.createElement('div')
-    const item = `
-        <div class="cart-item">
-            <div class="cart-item-img">
-                <img 
-                src="${movie.img}" alt="movie-img">
-            <div class="cart-info-container">
-                <h2>${movie.name}</h2>
-                <span>${movie.genre}</span>
-                <star-rating rating="${movie.rating}"></star-rating>
-        </div>
-        </div>
-            <div class="flush-item-btn">
-                X
-            </div>
-        </div>
-    `
-    itemContainer.setAttribute('id', `movie-${movie.id}`)
-    itemContainer.innerHTML = item
-    // modifying DOM
-    cartItems.append(itemContainer)
-    // adding delete functionality
-    node.querySelector(`#movie-${movie.id} .flush-item-btn`)
-        .addEventListener('click', function()
-        {
-            deleteMovie(movie.id)
-        })
-}
-function deleteMovie(id){
-    /**
-     * Deletes a movie from the DOM and the localStorage based on a given id
-     */
-    // deleting from localStorage
-    let movies = moviesInCart().filter((movie) => !(movie.id == id))
-    localStorage.setItem('moviesInCart', JSON.stringify(movies))
-    // deleting from DOM
-    node.querySelector(`#movie-${id}`)
-        .remove()
-}
-function saveOrder(){
-    // getting current values
-    let movies = moviesInCart()
-    const orders = ordersHistory()
-    console.log(orders)
-    const order = {
-        date: Date.now(),
-        products: movies
-    }
-    // updating values
-    orders.push(order)
-    console.log(orders)
-    // storing values
-    localStorage.setItem('orders', JSON.stringify(orders))
-    localStorage.setItem('moviesInCart', '[]')
-    // updating and redirecting
-    clear()
-    close()
-    window.location.href = myOrdersPath
-}
-function goToCheckout(){
-    const movies = moviesInCart()
-    if(movies.length >= 1){
-        saveOrder()
-    }else{
-        throwError('There are no products...')
-    }
-}
-function isInCart(id){
-    /**
-     * Checks if a movie is already stored inside localStorage based on a given id
-     */
-    let addedIds = moviesInCart().map( movie => movie.id )
-    return addedIds.includes(id)
-}
-function throwError(mssg){
-    /**
-     * Throws an informative error to the user with a custom message.
-     */
-    errMssg.innerText = mssg
-	errBar.style.display = 'block'
-	errBar.style.opacity = '1'
+
+//Barra de error visible para el usuario
+const errorBar = document.querySelector('.error-bar-container')
+const messageContainer = document.getElementById('errorMessage')
+
+const throwError = (message) => {
+	messageContainer.innerText = message
+	errorBar.style.display = 'block'
+	errorBar.style.opacity = '1'
 	setTimeout(() => {
-        errBar.style.display = 'none'
-        errBar.style.opacity = '0'
-	}, 2000)
+	errorBar.style.display = 'none'
+	errorBar.style.opacity = '0'
+		
+	}, 2000);
 }
+
+//Obtengo las pelis de la lista numero 1
+
+//funcion para añadir una peli al shopping cart
+const addToCart = async (id) => {
+	try {
+		const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`)
+		const response = await movie.json();
+        console.log(response)
+		const indexMovies = moviesInCart.map((movie) => movie.id);
+		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
+		if (!indexMovies.includes(response.id)) {
+			moviesInCart.push(response);
+			renderMovieInCart(moviesInCart);
+			showCheckoutButton(moviesInCart.length);
+			openCart();
+			localStorage.setItem(
+				'shoppingCart',
+				JSON.stringify(moviesInCart)
+			);
+		} else {
+			throwError('Peli repetida')
+			return;
+		}
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+
+
+const cartList = document.querySelector('.cart-list');
+
+//renderizar moviesInCart
+const renderMovieInCart = async (moviesArray) => {
+	try {
+		const genres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=dde722cb807472090076a60be85c0010&language=en-US`)
+		const response = await genres.json()
+		let template = ``;
+		moviesArray.map((movie) => {
+			let genreMovie = '';
+			response.genres.forEach((genero) => {
+				if (genero.id === movie.genres[0].id) {
+					genreMovie = genero.name;
+				}
+			});
+			let url = imageUrl + movie.poster_path;
+			const cart = `
+				<div class="cart-item">
+					<div class="cart-item-img">
+						<img 
+						src="${url}" alt="movie-img">
+					<div class="cart-info-container">
+						<h2>${movie.title}</h2>
+						<span>${genreMovie}</span>
+						<star-rating rating="${movie.vote_average}"></star-rating>
+					</div>
+				</div>
+				<div class="delete-button" onclick="deleteMovieInCart(${movie.id})">X</div>
+			</div>
+			`;
+			template += cart;
+		});
+		cartList.innerHTML = template;
+	} catch (error) {
+			console.log(error)
+	}
+};
+
+//funcion de eliminar elemento de shopping cart
+const deleteMovieInCart = (id) => {
+	let indexMovie = moviesInCart.findIndex((movie) => movie.id === id);
+	moviesInCart.splice(indexMovie, 1);
+	showCheckoutButton(moviesInCart.length);
+	localStorage.setItem('shoppingCart', JSON.stringify(moviesInCart));
+	renderMovieInCart(moviesInCart);
+};
