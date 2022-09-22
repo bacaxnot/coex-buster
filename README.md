@@ -27,3 +27,8 @@ GET: /history/order/:id -> detail of an order
 GET: /login -> user authentication
 
 GET: /register -> create new account
+
+## API
+
+* Search. GET: https://api.themoviedb.org/3/search/movie?api_key=dde722cb807472090076a60be85c0010&language=en-US&query=avengers&page=1&include_adult=false
+* Genres. GET: https://api.themoviedb.org/3/genre/movie/list?api_key=dde722cb807472090076a60be85c0010
