@@ -1,13 +1,15 @@
 class Carrousel {
   constructor() {}
 
-  render(div) {
-    return new Glider(div, {
+  render(div, container, dots) {
+   
+      container.style.display = 'block';
+      return new Glider(div, {
         slidesToShow: 1,
         slidesToScroll: 1,
         rewind: true,
         draggable: true,
-        dots: ".carousel__indicadores",
+        dots: dots,
         duration: 5.0,
         responsive: [
           {
@@ -16,14 +18,16 @@ class Carrousel {
             settings: {
               slidesToShow: 2,
               slidesToScroll: 4,
+              draggable: true,
             },
           },
           {
             rewind: true,
-            breakpoint: 500,
+            breakpoint: 414,
             settings: {
               slidesToShow: 2,
               slidesToScroll: 2,
+              draggable: true,
             },
           },
           {
@@ -32,21 +36,19 @@ class Carrousel {
             settings: {
               slidesToShow: 4,
               slidesToScroll: 4,
+              draggable: true,
             },
           },
         ],
       });
+
   }
+
 }
 
 
 window.onload = () => {
-
-    new Carrousel().render(document.querySelector(".carousel__lista"))
-    
+    new Carrousel().render(document.getElementById('glider1'), document.querySelector(".contenedor-carousel"), document.getElementById('dots1') )
+    new Carrousel().render(document.getElementById('glider2'), document.querySelector(".contenedor-carousel2"),document.getElementById('dots2') )
 };
 
-// window.addEventListener('load', function(){
-//     // glider.refresh(true);
-
-// });
