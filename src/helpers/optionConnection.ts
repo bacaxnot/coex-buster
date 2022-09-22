@@ -1,4 +1,4 @@
-import {Op, Sequelize, Options} from "sequelize";
+import {Sequelize, Options} from "sequelize";
 
 
 

@@ -1,5 +1,10 @@
 import ConfigServer from "./app";
 import './helpers/connectionDB'
+import TransactionModel from "./models/transaction.model";
+
+
+const transactionInstance = new TransactionModel().Transaction
+console.log(transactionInstance)
 
 class Server extends ConfigServer {
 

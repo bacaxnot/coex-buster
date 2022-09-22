@@ -1,5 +1,5 @@
 export interface ICreate<TReturn> {
-    create(name: string, email:string): TReturn
+    create<TData>(data: TData): TReturn
 }
 
 export interface IGetOne<TReturn, TypeId> {
