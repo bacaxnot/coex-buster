@@ -1,6 +1,7 @@
 
 .contenedor-carousel {
 	position: relative;
+	margin: auto;
 	max-width: 800px;
 	width: 90%;
 	padding: 10px;
@@ -37,21 +38,32 @@
 }
 
 .carousel__elemento {
-	text-align: center;
-	padding: 10px;
+	display: flex;
+	padding: 5px;
 	left: 0;
 	bottom: 0;
 	border-radius: 0 0 20px 20px;	
+	
 }
-.carousel__titulo{
-	display: block;
-	/* position: absolute; */
-	color:#000;
-	font-size: 16pt;
-	/* top:70%; */
-	/* padding-left:30px; */
+
+.carousel__elemento .titulo1{
+	position: absolute;
+    bottom: 5%;
 	text-align: center;
-	/* overflow: hidden; */
+	overflow: hidden;
+	margin: auto;
+	box-sizing: content-box;
+	padding: 20px;
+
+}
+.carousel__elemento .titulo1 p{
+	margin: auto;
+	text-align: center;
+	max-width: 100%;
+	color:#fff;
+	font-size: 14pt;
+	width: 100%;
+	
 }
 
 .carousel__indicadores .glider-dot {

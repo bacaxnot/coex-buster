@@ -51,3 +51,4 @@ window.onload = () => {
     new Carrousel().render(document.getElementById('glider1'), document.querySelector(".contenedor-carousel"), document.getElementById('dots1') )
     new Carrousel().render(document.getElementById('glider2'), document.querySelector(".contenedor-carousel2"),document.getElementById('dots2') )
 };
+
