@@ -1,5 +1,10 @@
 import { Router } from "express";
 
-const route: Router = Router()
+const router:Router = Router();
 
-export default route
+router
+    .route('/user')
+    .post()
+
+export default router;
+
