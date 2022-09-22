@@ -1,15 +1,10 @@
 .container-trailer {
     position:relative;
     width: 100%;
-<<<<<<< HEAD
     height: 400px;
-    
-=======
-    height: 300px;
     display:none;
     animation-name: example;
     animation-duration: 4s;
->>>>>>> c7edef4c84612ca99f1eb24d0ae47c7e48b24ab0
     
 }
 .video-trailer{

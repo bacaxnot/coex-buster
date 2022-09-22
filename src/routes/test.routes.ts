@@ -4,11 +4,6 @@ const router:Router = Router();
 
 
 const data = [
-    {id: "1", name: "Patrick1 Patrick1 Patrick1", img:"https://cdn.pixabay.com/photo/2016/04/01/11/25/avatar-1300331_960_720.png"},
-    {id: "2", name: "Patrick2", img:"https://cdn.pixabay.com/photo/2014/03/24/17/19/teacher-295387_960_720.png"},
-    {id: "3", name: "Patrick3", img:"https://cdn.pixabay.com/photo/2016/04/01/11/25/avatar-1300331_960_720.png"},
-    {id: "4", name: "Patrick4", img:"https://cdn.pixabay.com/photo/2014/03/24/17/19/teacher-295387_960_720.png"},
-
     {id: "1", name: "Patrick1 Patrick1 Patrick1", img:"https://es.web.img3.acsta.net/pictures/22/03/21/14/03/3443055.jpg"},
     {id: "2", name: "Patrick2", img:"https://m.media-amazon.com/images/M/MV5BMjEzMjA0ODk1OF5BMl5BanBnXkFtZTcwMTA4ODM3OQ@@._V1_.jpg"},
     {id: "3", name: "Patrick3", img:"https://media.glamour.es/photos/616f7c7860f20fed760a302a/master/w_1600%2Cc_limit/633514.jpeg"},
