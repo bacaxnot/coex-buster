@@ -1,0 +1,19 @@
+  
+  <div class="contenedor-carousel">
+        <div class="carousel">
+            <div class="carousel__contenedor">
+                <div class="carousel__lista" id="glider1">
+                    <% for(let i = 0; i < people.length; i++) {%>
+                    <div class="carousel__elemento" >
+                        <img src="<%= people[i].img %>" alt="<%= people[i].name %>">
+                        <div class="titulo1">
+                            <p class="carousel__titulo"> <%= people[i].name %></p>
+                        </div>
+                        
+                    </div>
+                   <% } %>
+                </div>            
+            </div>
+            <div role="tablist" id="dots1" class="carousel__indicadores"></div>
+        </div>
+    </div>
