@@ -10,7 +10,7 @@ export interface IController<TRequest, TResponse> {
     delete?(req: TRequest, res: TResponse): Promise<void>
 }
 export interface ICreate<TReturn> {
-    create(data: TReturn): TReturn
+    create(data: TReturn): Promise<TReturn>
 }
 
 export interface IGetOne<TReturn, TypeId> {
@@ -18,7 +18,7 @@ export interface IGetOne<TReturn, TypeId> {
 }
 
 export interface IGetAll<TReturn>{
-    getAll(): Promise<TReturn>
+    getAll(): Promise<TReturn[]>
 }
 
 export interface IUpdateOne<TReturn, TypeId> {
