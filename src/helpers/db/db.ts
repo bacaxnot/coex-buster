@@ -1,4 +1,4 @@
-import { SequelizeConnection } from "./DbConnection";
+import { SequelizeConnection } from "./DBConnection";
 import { Sequelize, Options } from "sequelize";
 
 const mysqlOptions: Options = {
@@ -11,7 +11,7 @@ const mysqlOptions: Options = {
 
 }
 
-const sequelize = new Sequelize(mysqlOptions)
+export const sequelize = new Sequelize(mysqlOptions)
 
 export const db = new SequelizeConnection(sequelize)
 export const orm = db.orm

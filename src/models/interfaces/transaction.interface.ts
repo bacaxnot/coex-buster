@@ -4,7 +4,6 @@ export interface ITransactionModel{
     id: number,
     user_id: number,
     create_date: Date,
-    expiration_date: Date,
     status: boolean,
 }
 
