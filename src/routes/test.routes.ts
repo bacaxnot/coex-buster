@@ -25,8 +25,6 @@ const getInfo = "Después de los eventos devastadores de 'Vengadores: Infinity W
 router.get('/', (req, res) => {
     res.render('layouts/movie-detail')
 })
-router.get('/index', (req, res) => {
-    res.render('index', {message: 'hello world'})
-});
+
 
 export default router
