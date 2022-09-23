@@ -1,9 +1,9 @@
 import UserRepository from "../repository/users.repository";
-import { IUserController } from "../helpers/interfaces/user.interface";
 import { Request, Response } from "express";
+import { IController } from "../helpers/interfaces/crud.interface";
 
 
-class UsersController implements IUserController{
+class UsersController implements IController<Request, Response>{
 
     async getOne(req: Request, res: Response): Promise<void> {
         const id = parseInt(req.params.id);
@@ -15,10 +15,12 @@ class UsersController implements IUserController{
     }
 
     async create(req: Request, res: Response): Promise<void> {
-        
+        const {id, email, password} = req.body;
+
+        const data = await UserRepository.create({id, email, password});
+
+        res.json(data)
     }
-
-
 }
 
 export default new UsersController();

@@ -12,10 +12,13 @@ class UsersRepository implements IUserRepository<users> {
 
         return data
     }
-
-    create(data: users): users {
-        throw new Error("Method not implemented.");
+    async create(data: users): Promise<users> {
+        let users = await prisma.users.create({
+            data
+        });
+        return users
     }
+
 }
 
 export default new UsersRepository();
