@@ -6,7 +6,6 @@ export interface IController<TRequest, TResponse> {
     getOne?(req: TRequest, res: TResponse): Promise<void>
 
     update?(req: TRequest, res: TResponse): Promise<void>
-    //andres lo mama xd
     
     delete?(req: TRequest, res: TResponse): Promise<void>
 }
