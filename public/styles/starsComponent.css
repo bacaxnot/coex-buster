@@ -1,5 +1,5 @@
 .sc-item__stars {
-    width: fit-content;
+    min-width: 5.1rem;
     cursor: help;
     gap: 6px;
 }
