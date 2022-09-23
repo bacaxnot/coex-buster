@@ -6,16 +6,11 @@ export interface IController<TRequest, TResponse> {
     getOne?(req: TRequest, res: TResponse): Promise<void>
 
     update?(req: TRequest, res: TResponse): Promise<void>
-    //andres lo mama xd
     
     delete?(req: TRequest, res: TResponse): Promise<void>
 }
 export interface ICreate<TReturn> {
-<<<<<<< HEAD
-    create<TData>(data: TData): TReturn
-=======
     create(data: TReturn): TReturn
->>>>>>> 6340f72aa616742662f382fbf1654d1fc7226ee7
 }
 
 export interface IGetOne<TReturn, TypeId> {
