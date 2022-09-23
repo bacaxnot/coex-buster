@@ -1,5 +1,5 @@
-import { IORM } from '../../interfaces/db.interface';
-import { PrismaClient } from '@prisma/client'
+import { IORM } from '../interfaces/db.interface';
+import { PrismaClient  } from '@prisma/client'
 
 class DBPrisma implements IORM<PrismaClient> {
     private _orm:PrismaClient = new PrismaClient();
@@ -9,5 +9,6 @@ class DBPrisma implements IORM<PrismaClient> {
     }
 }
 
+const prisma = new DBPrisma().orm
 
-export default DBPrisma;
+export default prisma
