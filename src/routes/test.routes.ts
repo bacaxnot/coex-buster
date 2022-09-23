@@ -23,7 +23,18 @@ const getInfo = "Después de los eventos devastadores de 'Vengadores: Infinity W
 
 // Test index
 router.get('/', (req, res) => {
-    res.render('layouts/movie-detail')
+    res.render('layouts/temporal', {
+        id: 176,
+        path: '/ok4ot3YbfDYZcINXf91JUfq3maB.jpg',
+        title: 'Saw',
+        overview: '',
+        genres: [
+            'Horror',
+            'Thriller',
+            'Crime'
+        ],
+        vote_average: 7.4
+    })
 })
 
 
