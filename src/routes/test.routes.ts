@@ -24,11 +24,13 @@ const getInfo = "Después de los eventos devastadores de 'Vengadores: Infinity W
 
 // Test index
 
+
 router
   
     .get('/', (req, res)=>{
         return res.render('layouts/temporal.ejs', { info: getInfo , people: data});
 
     })
+
 
 export default router
