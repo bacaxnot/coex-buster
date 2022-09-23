@@ -1,4 +1,5 @@
-import { IGetAll, IGetOne } from "./crud.interface";
+import { IGetAll, IGetOne, ICreate, IController, IDeleteOne, IUpdateOne } from './crud.interface';
+
 
 export interface IMovieModel {
     id:number,
@@ -15,9 +16,11 @@ export interface IMovieModel {
     videoKey:string,
 }
 
-export interface IMovieRepository<TModel> extends IGetAll<TModel>, IGetOne<TModel, number> {}
+export interface IMovieRepository<TModel> extends IGetAll<TModel>, IGetOne<TModel | null,  number>, ICreate<TModel>, IDeleteOne<TModel, number>, IUpdateOne<TModel, number>{}
 
-export interface IMovieController<TModel> extends IGetAll<TModel>, IGetOne<TModel, number> {}
+export interface IMovieController extends IController<Request, Response>{}
+
+
 
 
 
