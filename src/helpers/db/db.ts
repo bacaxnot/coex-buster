@@ -1,19 +1,13 @@
-import { SequelizeConnection } from "./DbConnection";
-import { Sequelize, Options } from "sequelize";
+import { IORM } from '../../interfaces/db.interface';
+import { PrismaClient } from '@prisma/client'
 
-const mysqlOptions: Options = {
-    database: "coexdb",
-    username: "root",
-    password: "",
-    host: "localhost",
-    port: 3306,
-    dialect: "mysql"
+class DBPrisma implements IORM<PrismaClient> {
+    private _orm:PrismaClient = new PrismaClient();
 
+    get orm():PrismaClient {
+        return this._orm;
+    }
 }
 
-const sequelize = new Sequelize(mysqlOptions)
 
-export const db = new SequelizeConnection(sequelize)
-export const orm = db.orm
-
-db.connect()
+export default DBPrisma;
