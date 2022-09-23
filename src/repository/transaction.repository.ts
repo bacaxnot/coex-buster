@@ -29,7 +29,7 @@ class TransactionRepository implements ITransactionRepository<transactions>{
         });
         return transaction;
     }
-    async deleted(id:number,date:Date): Promise<transactions>{
+    async deleted(id:number): Promise<transactions>{
         const data:any = await prisma.transactions.delete({
             where:{
                 id:id,

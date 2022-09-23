@@ -3,6 +3,8 @@ import TransactionRepository  from "../repository/transaction.repository";
 import { ITransactionController } from "../helpers/interfaces/transaction.interface";
 import { Request, Response } from "express";
 import transactionRepository from "../repository/transaction.repository";
+import { ParamsDictionary } from "express-serve-static-core";
+import { ParsedQs } from "qs";
 
 class TransactionController implements ITransactionController{
     async getOne(req:Request, res:Response):Promise<void>{
@@ -18,6 +20,18 @@ class TransactionController implements ITransactionController{
         const data = req.body;
         const query = await transactionRepository.create(data);
         res.json(true)
+    }
+
+    async update(req: Request, res:Response): Promise<void> {
+        const data = req.body;
+        const id = req.body.id;
+        const query = await transactionRepository.update(id,data);
+        res.json(query);
+    }
+    async delete(req: Request, res:Response): Promise<void> {
+        const id = req.body.id;
+        const query = await transactionRepository.deleted(id);
+        res.json(query);
     }
 }
 
