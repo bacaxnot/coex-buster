@@ -9,7 +9,7 @@ const adminRoutes = (app:Express)=>{
     app.use(viewRouter);
     app.use('/api/v1', userRouter);
     app.use('/api/v1', moviesRouter);
-    app.use('/ap1/v1', transactionRouter);
+    app.use('/api/v1', transactionRouter);
     app.use('/test', testRouter);
 }
 
