@@ -1,12 +1,21 @@
 import prisma from "../helpers/db/db";
 import { IUserRepository } from "../helpers/interfaces/user.interface";
-import { users } from "@prisma/client"
+import { users } from "@Prisma/client"
 
-class UserRepository implements IUserRepository<users> {
+class UsersRepository implements IUserRepository<users> {
     async get(id: number): Promise<users | null> {
-        throw new Error("Method not implemented.");
+        let data = await prisma.users.findUnique({
+            where: {
+                id:id
+            }
+        })
+
+        return data
     }
-    async create(name: string, email: string): Promise<users> {
+
+    create(data: users): users {
         throw new Error("Method not implemented.");
     }
 }
+
+export default new UsersRepository();
