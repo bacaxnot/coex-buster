@@ -13,7 +13,7 @@ class UsersRepository implements IUserRepository<users> {
         return data
     }
 
-    create(data: users): users {
+    create(data: users): Promise<users> {
         throw new Error("Method not implemented.");
     }
 }
