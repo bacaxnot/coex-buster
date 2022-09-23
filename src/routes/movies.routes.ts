@@ -9,7 +9,7 @@ router
 
 router
     .route('/movies/search')
-    .get(MoviesController.getAll)
+    .get(MoviesController.getAllBySearch)
 
     
     router
