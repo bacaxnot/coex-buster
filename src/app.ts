@@ -11,6 +11,7 @@ class ConfigServer {
         this._app.set('view engine', 'ejs');
         this._app.set('views', path.join(__dirname, './views'));
         this._app.use('/public', express.static(path.join(__dirname, '../public')));
+        this._app.use(express.json());
         adminRoutes(this._app);
     }
 
