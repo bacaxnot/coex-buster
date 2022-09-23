@@ -16,7 +16,7 @@ GET: /movies?page=number -> list of movies by pagination
 
 GET: /movies?page=number&category=string -> list of films by category and pagination
 
-GET: /movies?page=number&name=string -> list of movies by search and pagination
+GET: /movies?page=number&search=string -> list of movies by search and pagination
 
 GET: /movies/:id -> detail of a movie by id
 
