@@ -1,3 +1,5 @@
-    <script src=""></script>
+<% if ( locals.script) { %>
+    <%- `<script src="/public/scripts/${script}"></script>` %>
+    <% } %>
 </body>
 </html>

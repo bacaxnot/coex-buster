@@ -1,30 +1,24 @@
-import { Router, Request, Response } from "express";
+import { Router} from "express";
+import MoviesController from "../controllers/movie.controller";
 
 const router : Router = Router();
 
-const movies = [
-    {
-        "id": "1",
-        "title": "Scary Movie"
-    },
-    {
-        "id": "2",
-        "title": "Saw"
-    }
-]
+router
+    .route('/movies')
+    .get(MoviesController.getAll)
 
-router.get('/', (req, res) => {
-    res.redirect('movies')
-});
+router
+    .route('/movies/search')
+    .get(MoviesController.getAllBySearch)
 
-router.get('/movies', (req, res) => {
-    res.send(movies)
-});
+    
+    router
+    .route('/movies/category')
+    .get(MoviesController.getAllByCategory)
+    
+router
+    .route('/movies/:id')
+    .get(MoviesController.get)
 
-router.get('/movies/:id', (req, res) => {
-    const {id} = req.params;
-    const result = movies.find(movie => movie.id == id);
-    res.send(result) 
-});
 
 export default router
