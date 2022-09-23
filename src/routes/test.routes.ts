@@ -1,10 +1,10 @@
-import { Router } from "express";
+import { Router } from 'express'
 
-const router:Router = Router();
+const router: Router = Router()
 
 // Test index
 router.get('/', (req, res) => {
-    res.render('index', {message: 'hello world'})
-});
+    res.render('layouts/movie-detail')
+})
 
 export default router
