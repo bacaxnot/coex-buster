@@ -6,6 +6,10 @@ npm install
 
 npm run dev 
 
+## COMMANDS
+
+`npm run test` : execute the file without checking for errors
+
 ## ROUTES
 
 GET: / -> (redirect) -> /movies?page=1
