@@ -11,7 +11,9 @@
 
 <body>
     <div id="app">
+
         <div class="header">
+            <!-- AGREGAR COMPONENTE DE HEADER EN ESTE BLOQUE-->
             <div class="header-container">
                 <div class="header-logo">
                     <a href="">
@@ -26,88 +28,21 @@
         </div>
 
         <div class="contenedor__history">
-            <!-- <nav class="history__nav">
-            <img src="/assets/icons/logo_coexbuster.svg" alt="logo" class="history__nav--logo">
-            <h2 class="history__nav--email">CamilaYakoo@gmail.com<img src="/assets/icons/arrow_down.svg" alt="flecha_menu" class="history__nav--flecha"></h2>
-        </nav> -->
 
             <section class="history__section">
-                <a href="/test/shop"><img class="history__flecha--retroceso">
-                    <img src="/public/assets/icons/back-arrow-comb2.svg">
+                <a href="/test/shop">
+                    <img class="history__flecha--retroceso" src="/public/assets/icons/back-arrow-comb2.svg">
                 </a>
                 <div class="history__section--orders">
                     <span class="history__section--orders--word">My orders</span>
                     <div class="history__section--orders--shopping" id="historyShopping">
                         <!-- ${movie} -->
+                        <div><%- include('../components/orderComponent.ejs'); %></div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <script>
-            function call_date(movies, keys) {
-                let array_date = [];
-                const date = new Date();
-
-                let output =
-                    String(date.getDate()).padStart(2, '0') +
-                    '.' +
-                    String(date.getMonth() + 1).padStart(2, '0') +
-                    '.' +
-                    date.getFullYear();
-
-                array_date.push(output);
-
-                let capa_contenedor = document.getElementById('historyShopping');
-
-                for (let i = 0; i < movies.length && i < keys.length; i++) {
-                    let longitud_movies = movies[i].length;
-                    const templateCart = `
-            <div class="history_section-orders">
-            <div class="history__section--orders--items">
-                <h1 style="color: white;">${output}</h1>
-                <h2 style="color: white;">${longitud_movies} movies</h2>
-            </div>
-            <img src="/assets/icons/angle-small-right-free-icon-font.svg" style="width: 20px;" id="${keys[i]}" class="myorderDirection">
-            </div>         
-        `
-                    capa_contenedor.innerHTML += templateCart;
-                }
-                localStorage.setItem('fecha', output);
-                const ORDER_LIST = document.querySelectorAll('.myorderDirection');
-                for (let element of ORDER_LIST) {
-                    element.addEventListener('click', readMovie);
-                }
-            }
-
-            const readMovieList = () => {
-                dbConection.addEventListener('success', () => {
-                    let db = dbConection.result;
-                    let IDBtransaction = db.transaction('movies', 'readonly');
-                    let objectStore = IDBtransaction.objectStore('movies');
-                    let cursor = objectStore.openCursor();
-                    let keyList = objectStore.getAllKeys();
-                    let data = [];
-                    let key;
-                    cursor.addEventListener('success', () => {
-                        if (cursor.result) {
-                            data.push(cursor.result.value);
-                            cursor.result.continue()
-                        } else {
-                            console.log("Todos los datos fueron leidos");
-                        }
-                    });
-                    keyList.addEventListener('success', () => {
-                        key = keyList.result;
-                        console.log(data);
-                        console.log(key);
-                    });
-                    IDBtransaction.oncomplete = () => {
-                        return call_date(data, key);
-                    }
-                })
-            }
-        </script>
 </body>
 
 </html>

@@ -4,14 +4,14 @@ const router: Router = Router();
 
 router.get('/shop', (req, res) => {
     var movies = [
-        { name: 'Sammy', description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "comedy" },
-        { name: 'Tommy', description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "comedy" },
-        { name: 'Yammy', description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "comedy" },
-        { name: 'Ammy', description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "comedy" },
-        { name: 'Commy', description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "comedy" },
-        { name: 'Rommy', description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "comedy" },
-        { name: 'Zaommy', description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "comedy" },
-        { name: 'Nommy', description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "comedy" }
+        { name: 'Sammy',img:"https://picsum.photos/200/253?random=1", description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et doloribus laudantium culpa voluptatibus laborum enim autem tempora facilis aliquid ullam dolor perferendis dicta, ad reiciendis impedit. Aspernatur porro similique minus.", genero: "Comedy" },
+        { name: 'Tommy',img:"https://picsum.photos/200/253?random=2", description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "Terror" },
+        { name: 'Yammy',img:"https://picsum.photos/200/253?random=3", description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et doloribus laudantium culpa voluptatibus laborum enim autem tempora facilis aliquid ullam dolor perferendis dicta, ad reiciendis impedit. Aspernatur porro similique minus.", genero: "Romance" },
+        { name: 'Ammy',img:"https://picsum.photos/200/253?random=4", description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "Thriller" },
+        { name: 'Commy',img:"https://picsum.photos/200/253?random=5",description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "Comedy" },
+        { name: 'Rommy',img:"https://picsum.photos/200/253?random=6", description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "Comedy" },
+        { name: 'Zaommy',img:"https://picsum.photos/200/253?random=7", description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "Comedy" },
+        { name: 'Nommy',img:"https://picsum.photos/200/253?random=8", description: "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote...", genero: "Comedy" }
     ];
 
     res.render('layouts/main_shop.ejs', {
