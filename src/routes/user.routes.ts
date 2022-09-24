@@ -5,7 +5,7 @@ const router:Router = Router();
 
 router
     .route('/user')
-    .post()
+    .post(usersController.create);
 
 router
     .route('/user/:id')

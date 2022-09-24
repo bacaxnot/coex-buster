@@ -14,6 +14,8 @@
   
     <title>Document</title>
     <link href="/public/styles/shoppingCart.css" rel="stylesheet">
+    <link href="/public/styles/starsComponent.css" rel="stylesheet">
+    <link href="/public/styles/movieCardComponent.css" rel="stylesheet">
 </head>
 <body>
     
@@ -22,9 +24,14 @@
     <script src="/public/scripts/carousel.js" type="module"></script>
    
 
-
-
-    <%- include('../components/infoSwitcher.ejs') %>
+    <%- include('../components/movieCardComponent.ejs', {
+        id: id,
+        title: title,
+        overview: overview,
+        genres: genres,
+        path: path,
+        vote_average: vote_average
+    }) %>
 
 </body>
 </html>
