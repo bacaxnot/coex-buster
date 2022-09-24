@@ -1,5 +1,18 @@
 <%- include('../partials/head', {title : 'Movie Detail', style:
 'movieDetail.css'}) %> <%- include('../partials/body') %>
 <nav>navbar</nav>
-<main><%- include('../partials/movie-detail') %></main>
+<main>
+    <%- include('../partials/movie-detail') %>
+    <%- include('../components/shoppingCartComponent.ejs') %>
+    <div class="open">
+        <button onclick="openCart()">open</button>
+    </div>
+    <div class="close">
+        <button onclick="closeCart()">close</button>
+    </div>
+    <div class="add">
+        <button onclick="addToCart(299536)">add</button>
+    </div>
+
+</main>
 <%- include('../partials/foot') %>

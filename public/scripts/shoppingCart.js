@@ -2,6 +2,8 @@
 const cartContainer = document.querySelector('.cart-container');
 const checkoutButton = document.querySelector('.checkout-button-container');
 
+console.log('hola mundo')
+
 const openCart = () => {
 	cartContainer.style.right = `0`;
 };
