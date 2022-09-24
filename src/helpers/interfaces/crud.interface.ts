@@ -26,6 +26,6 @@ export interface IUpdateOne<TReturn, TypeId> {
 }
 
 export interface IDeleteOne<TReturn, TypeId> {
-    delete(id: TypeId): Promise<TReturn>
+    deleted(id: TypeId): Promise<TReturn>
 }
 

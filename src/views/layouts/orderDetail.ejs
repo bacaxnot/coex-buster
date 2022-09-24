@@ -1,0 +1,55 @@
+<%- include('../partials/head', {title : 'Order'}) %>
+
+<link rel="stylesheet" href="/public/styles/orderDetail.css">
+<link rel="stylesheet" href="/public/styles/starsComponent.css">
+
+<%- include('../partials/body') %>
+
+<main class="od-view">
+    <div class="od-container">
+        <button id="od-back-arrow" class="od-icon-arrow" type="button">
+            <img src="/public/assets/icons/back-arrow-comb-white.svg" alt="back-arrow" class="od-icon">
+        </button>
+        <section class="od-order">
+            <h1 class="od-order__title">My order</h1>
+            <div class="od-order__info">
+                <h2 class="od-info__date"><%= typeof date != 'undefined' ? date : 'date not found' %></h2>
+                <h3 class="od-info__articles"><%= products.length %> articles</h3>
+            </div>
+            <div class="od-order__list">
+                <% products.forEach(product => { %>
+                    <a 
+                        href="<%= product.id %>" 
+                        class="od-list__link" 
+                        title="Go to <%= typeof product.title != 'undefined' ? product.title : 'untitled' %>"
+                    >
+                        <div class="od-list__item">
+                            <figure class="od-item__cover">
+                                <img 
+                                    src="<%= typeof product.path != 'undefined' ? 'https://image.tmdb.org/t/p/w500/' + product.path : '' %>"
+                                    alt="<%= typeof product.title != 'undefined' ? product.title : 'untitled' %>"
+                                    class="od-item__img"
+                                >
+                            </figure>
+                            <div class="od-item__info">
+                                <h4 class="od-item__title">
+                                    <%= typeof product.title != 'undefined' ? product.title : 'untitled' %>
+                                </h4>
+                                <div class="od-item__genres">
+                                    <p class="od-item__genre">
+                                        <%= typeof product.genres != 'undefined' ? product.genres : 'genres not found' %>
+                                    </p>
+                                </div>
+                                <%- include('../components/starsComponent.ejs', {vote_average: product.vote_average}) %>
+                            </div>
+                        </div>
+                    </a>
+                <% }) %>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script src="/public/scripts/orderDetail.js"></script>
+
+<%- include('../partials/foot') %>

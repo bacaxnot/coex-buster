@@ -1,6 +1,6 @@
 import prisma from "../helpers/db/db";
 import { IUserRepository } from "../helpers/interfaces/user.interface";
-import { users } from "@Prisma/client";
+import { users } from "@prisma/client";
 import "../helpers/middlewares/encryptPassword";
 
 class UsersRepository implements IUserRepository<users> {
