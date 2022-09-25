@@ -7,19 +7,17 @@
     <div class="categories">
         <nav class="nav">
             <ul class="list-categories">
-                <% data.ForEach(data => {
-                    <li><% data.name %></li>
-                <% }); %>
+
+                <li>%- data.name %></li>
+
                 <label for="otherMenu" class="list-item down-list" id="otherItems">
                     Others
                     <img src="${this.arrowDown}" alt="arrow_down" class="list-icon">
                 </label>
                 <input type="checkbox" name="otherMenu" id="otherMenu">
-                <ul class="other-categories">
-                    <% dataOthers.ForEach(data => { %>
-                        <li>data.name</li>
-                    <% }); %>
-                </ul>
+                <select name="" id="">
+                    <option value=""><li>%- dataOther.name %></li></option>
+                </select>
             </ul>
         </nav>
     </div>
