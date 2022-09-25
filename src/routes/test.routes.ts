@@ -2,7 +2,6 @@ import { Router } from 'express'
 
 const router: Router = Router()
 
-
 const data = [
     {id: "1", name: "Patrick1 Patrick1 Patrick1", img:"https://es.web.img3.acsta.net/pictures/22/03/21/14/03/3443055.jpg"},
     {id: "2", name: "Patrick2", img:"https://m.media-amazon.com/images/M/MV5BMjEzMjA0ODk1OF5BMl5BanBnXkFtZTcwMTA4ODM3OQ@@._V1_.jpg"},
