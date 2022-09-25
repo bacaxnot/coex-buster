@@ -8,7 +8,7 @@
     let totalPages = 10;
 
     prev.classList.add('disabled');
-
+    
     prev.addEventListener('click', () => {
         next.classList.remove('disabled');
 
