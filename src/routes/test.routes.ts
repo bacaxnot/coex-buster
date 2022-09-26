@@ -1,6 +1,6 @@
-import { Router } from "express";
+import { Router } from 'express'
 
-const router:Router = Router();
+const router: Router = Router()
 
 
 const data = [
@@ -19,16 +19,22 @@ const data = [
     {id: "6", name: "Patrick13", img:"https://images.unsplash.com/photo-1580518337843-f959e992563b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YWN0b3Jlc3xlbnwwfHwwfHw%3D&w=1000&q=80"},
 ]
 
-
 const getInfo = "Después de los eventos devastadores de 'Vengadores: Infinity War', el universo está en ruinas debido a las acciones de Thanos. Con la ayuda de los aliados que quedaron, los Vengadores deberán reunirse una vez más para intentar deshacer sus acciones y restaurar el orden en el universo de una vez por todas, sin importar cuáles sean las consecuencias... Cuarta y última entrega de la saga 'Vengadores'."
 
 // Test index
-
-router
-  
-    .get('/', (req, res)=>{
-        return res.render('layouts/temporal.ejs', { info: getInfo , people: data});
-
+router.get('/', (req, res) => {
+    res.render('layouts/temporal', {
+        id: 176,
+        path: '/ok4ot3YbfDYZcINXf91JUfq3maB.jpg',
+        title: 'Saw',
+        overview: '',
+        genres: [
+            'Horror',
+            'Thriller',
+            'Crime'
+        ],
+        vote_average: 7.4
     })
+})
 
 export default router
