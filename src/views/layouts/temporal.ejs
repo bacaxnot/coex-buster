@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,6 +46,41 @@
         vote_average: vote_average
     }) %>
 >>>>>>> f275b530cc85c45edaa75e6b1583c779e339a820
+=======
+<%- include('../partials/head', {title : 'Movies'}) %>
 
-</body>
-</html>
+<link href="/public/styles/paginationComponent.css" rel="stylesheet">
+<link href="/public/styles/search.css" rel="stylesheet">
+<link href="/public/styles/shop.css" rel="stylesheet">
+<link href="/public/styles/navbar.css" rel="stylesheet">
+<link href="/public/styles/starsComponent.css" rel="stylesheet">
+<link href="/public/styles/movieCardComponent.css" rel="stylesheet">
+>>>>>>> 7d32b48aaa22d4acc506ce78d784ae70a0615596
+
+<div class="s-container">
+    <header class="s-header">
+        <nav-bar><%- include('../components/navbar.ejs') %></nav-bar>
+    </header>
+    <main class="s-content">
+        <div class="s-filter">
+            <filter-bar> <% include('../components/search.ejs') %> </filter-bar>
+        </div>
+        <div id="genre-movies-shop-container"></div>
+        <section class="s-grid" id="MovieGalery">
+            <%- include('../components/movieCardComponent.ejs', {
+                id: id,
+                title: title,
+                overview: overview,
+                genres: genres,
+                path: path,
+                vote_average: vote_average
+            }) %>
+        </section>
+    </main>
+    <footer class="s-footer">
+        <pagination-bar><%- include('../components/paginationComponent.ejs') %></pagination-bar>
+    </footer>
+</div>
+
+
+<%- include('../partials/foot') %>
