@@ -1,11 +1,7 @@
-<%- include('./partials/head', {title : 'Login'}) %>
+<%- include('../partials/head.ejs', {title : 'Login', style: 'login.css'}) %>
 
-<link rel="stylesheet" href="/public/styles/login.css">
+<%- include('../partials/body') %>
 
-<%- include('./partials/body') %>
+<%- include('../components/Login.ejs') %>
 
-
-
-<%- include('./components/Login.ejs') %>
-
-<%- include('./partials/foot') %>
+<%- include('../partials/foot') %>

@@ -1,4 +1,7 @@
-<div id="synopsis" class="container-switcher">
+<%- include('../partials/head.ejs') %>
+<div id="container-info">
+  <button class="btn btn-danger" id="boton">siguiente</button>
+  <div id="synopsis" class="container-switcher ">
   
     <h1>Synopsis</h1>
     <%- include('./synopsis.ejs') %>
@@ -22,8 +25,7 @@
   
     <h1>Recommended</h1>
     <%- include('./carousel.ejs') %>
-    <a href="#casting"
-      >Casting
+    <a href="#casting">Casting
       <div class="arrow"></div>
     </a>
   </div>
@@ -37,4 +39,24 @@
     </a>
 
 
+  </div>
+
+ 
 </div>
+
+<script>
+  const app = document.getElementById('container-info');
+  console.log(app)
+  const btn = document.getElementById('boton')
+  for (let i = 0; i < app.length; i++){
+
+    btn.addEventListener('click', ()=>{
+      app[i].setAttribute('class', 'active')
+    })
+  }
+  
+ 
+</script>
+
+
+<%- include('../partials/foot.ejs') %>

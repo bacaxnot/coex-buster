@@ -5,7 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title><%= typeof title != 'undefined' ? title : 'Not title' %></title>
-        <link rel="stylesheet" href="/public/styles/main.css" />
+        <link rel="stylesheet" href="/public/styles/styleGlobal.css" />
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.6.6/glider.css" integrity="sha512-rEnjEH5u8xKS8NLcXC4nuZwT89x+tMB19ddbolNGE7DTl6o3JEo11kHAwryLlALFnxdONjO4xVpjunLWdiZR1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- <link rel="stylesheet" href="/public/styles/shoppingCart.css"> -->
         <% if (locals.style) { %> <link rel="stylesheet" href=<%=
         `/public/styles/${style}` %> /> <% } %>
     </head>

@@ -30,11 +30,11 @@ const moviesInCart = [];
 
 //cargar los datos del localStorage a moviesInCart para luego renderizar las movies del shoppingCart
 window.onload = () => {
-	// const moviesLocalStorage = localStorage.getItem('shoppingCart') || [];
-	// const moviesArr = JSON.parse(moviesLocalStorage);
-	// moviesArr.forEach((movie) => {
-	// 	moviesInCart.push(movie);
-	// });
+	const moviesLocalStorage = localStorage.getItem('shoppingCart') || [];
+	const moviesArr = JSON.parse(moviesLocalStorage);
+	moviesArr.forEach((movie) => {
+		moviesInCart.push(movie);
+	});
 	renderMovieInCart(moviesInCart);
 };
 
@@ -61,28 +61,26 @@ const throwError = (message) => {
 //Obtengo las pelis de la lista numero 1
 
 //funcion para añadir una peli al shopping cart
-const addToCart = async (id) => {
+const addToCart = async (movieObj) => {
 	try {
-		const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`)
-		const response = await movie.json();
-        console.log(response)
-		const indexMovies = moviesInCart.map((movie) => movie.id);
+		const movie = movieObj
+		const indexMovies = moviesInCart.map((movie) => movie.id)
 		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
-		if (!indexMovies.includes(response.id)) {
-			moviesInCart.push(response);
-			renderMovieInCart(moviesInCart);
-			showCheckoutButton(moviesInCart.length);
-			openCart();
+		if (!indexMovies.includes(movie.id)) {
+			moviesInCart.push(movie)
+			renderMovieInCart(moviesInCart)
+			showCheckoutButton(moviesInCart.length)
+			openCart()
 			localStorage.setItem(
 				'shoppingCart',
 				JSON.stringify(moviesInCart)
-			);
+			)
 		} else {
 			throwError('Peli repetida')
-			return;
+			return
 		}
 	} catch (error) {
-		console.error(error);
+		console.error(error)
 	}
 };
 
@@ -93,15 +91,18 @@ const cartList = document.querySelector('.cart-list');
 //renderizar moviesInCart
 const renderMovieInCart = async (moviesArray) => {
 	try {
-		const genres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=dde722cb807472090076a60be85c0010&language=en-US`)
-		const response = await genres.json()
+		//cambiar 'genres' por los generos que vienen en los objeto de moviesArray
+		// const genres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=dde722cb807472090076a60be85c0010&language=en-US`)
+		// const response = await genres.json()
 		let template = ``;
 		moviesArray.map((movie) => {
 			let genreMovie = '';
-			response.genres.forEach((genero) => {
-				if (genero.id === movie.genres[0].id) {
-					genreMovie = genero.name;
-				}
+			movie.genres.forEach((genre) => {
+				genreMovie = genre.name
+			// response.genres.forEach((genero) => {
+			// 	if (genero.id === movie.genres[0].id) {
+			// 		genreMovie = genero.name;
+			// 	}
 			});
 			let url = imageUrl + movie.poster_path;
 			const cart = `

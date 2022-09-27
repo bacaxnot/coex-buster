@@ -11,9 +11,9 @@
     --purple-gray-fil: invert(17%) sepia(51%) saturate(842%) hue-rotate(207deg) brightness(94%) contrast(88%);
 
     }
-    h1 {
+    /* h1 {
         color:red;
-    }
+    } */
     body{
         background-color: #030328;
         margin-top: 90px;
