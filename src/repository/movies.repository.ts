@@ -1,11 +1,10 @@
 import prisma from "../helpers/db/db";
 import { IMovieRepository } from "../helpers/interfaces/movie.interface";
-import { movies } from "@Prisma/client"
+import { movies } from "@prisma/client"
 
 class MoviesRepository implements IMovieRepository<movies> {
 
-    async getAll(): Promise<movies> {
-        // const data:any = await prisma.movies.findMany()
+    async getAll(): Promise<movies[]> {
         const data:any = await prisma.movies.findMany({
             include: {
                 movies_categories: {
@@ -56,7 +55,7 @@ class MoviesRepository implements IMovieRepository<movies> {
         return data
     }
 
-    async delete(id: number): Promise<movies> {
+    async deleted(id: number): Promise<movies> {
         const data:any = await prisma.movies.delete({
             where: {
                 id: id

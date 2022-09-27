@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="/public/styles/mainShop.css" type="text/css">
+</head>
+
+<body>
+    <div>
+        <!-- AQUI VA EL COMPONENTE HEADER -->
+    </div>
+
+    <div>
+        <!-- AQUI VA EL COMPONENTE BUSCADOR -->
+    </div>
+
+    <!-- CARDS DE MOVIES -->
+    <div class="contenedor--movies">
+        <% movies.forEach(function(movie) { %>
+            <div class="contenedor--movies--card">
+                <div class="movie--section">
+                    <img class="movie--portada" src="<%= movie.img %>" width="99%">
+                    <div class="movie--description">
+                        <h1>
+                            <%= movie.name %>
+                        </h1><br>
+                        <h2>
+                            <%= movie.description %>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="contenedor--movies--starts">
+                    <strong class="movie--genero">
+                        <%= movie.genero %>
+                    </strong>
+                    <!-- representing <%= movie.description %>, born <%= movie.genero %> -->
+                    <div class="movie--starts">
+                        <img src="/public/assets/icons/icon_star.svg" alt="star" class="item__star item__star--purple">
+                        <img src="/public/assets/icons/icon_star.svg" alt="star" class="item__star item__star--purple">
+                        <img src="/public/assets/icons/icon_star.svg" alt="star" class="item__star item__star--purple">
+                        <br>
+
+                        <img src="/public/assets/icons/icon_star.svg" alt="star" class="item__star item__star--gray">
+                        <img src="/public/assets/icons/icon_star.svg" alt="star" class="item__star item__star--gray">
+                    </div>
+                </div>
+
+                <button class="movie--button">Add To Cart</button>
+            </div>
+            <% }); %>
+    </div>
+
+    <script src="/public/scripts/mainShop.js"></script>
+</body>
+
+</html>

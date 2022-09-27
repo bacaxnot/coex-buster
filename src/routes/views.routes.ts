@@ -10,7 +10,9 @@ router
     .get('/shop/movie/:id')
     .get('/history')
     .get('/history/order/:id')
-    .get('/login')
+    .get('/login', (req, res)=> {
+        res.render('layouts/login')
+    })
     .get('/register')
 
 
