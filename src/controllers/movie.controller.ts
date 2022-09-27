@@ -6,7 +6,6 @@ class MoviesController implements IController<Request, Response>{
 
     async getAll(req: Request, res: Response): Promise<void> {
         const movies = await MoviesRepository.getAll();
-
         res.json(movies);
     }
 
