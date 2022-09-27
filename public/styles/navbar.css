@@ -1,0 +1,75 @@
+button{
+    background-color: transparent;
+    color: white;
+    border-color: transparent;
+}
+
+header{
+    width: 100%;
+    color: white;
+    background-color: #02021C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 54px
+}
+.email__sigin{
+    color: var(--purple);
+    font-size: 1rem;
+}
+.email__sigin:hover{
+    color: var(--purple-input);
+}
+.email__sigin:hover .sigin__arrow{
+    filter: var(--purple-gray-fil);
+}
+.logo{
+    cursor: pointer;
+    width: 168px;
+    height: 30px;
+}
+
+.logo img{
+    height: 100%;
+    width: 100%;
+}
+
+.derHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width:20%;
+}
+
+.sesion{
+    color:#7B2ABF;
+}
+
+.sigin__arrow{
+    filter: var(--purple-fil);
+    block-size: auto;
+    inline-size: 12px;
+}
+
+.btn-singup-nav{
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.btn-login-nav{
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.displayNone{
+    display: none;
+}
+
+.displayBlock{
+    display:block !important;
+}
