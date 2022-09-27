@@ -10,7 +10,6 @@ class UsersRepository implements IUserRepository<users> {
                 id:id
             }
         })
-
         return data
     }
     async create(data: users): Promise<users> {
