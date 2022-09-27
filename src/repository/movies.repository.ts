@@ -4,8 +4,15 @@ import { movies } from "@prisma/client"
 
 class MoviesRepository implements IMovieRepository<movies> {
 
-    async getAll(): Promise<movies> {
-        const data:any = await prisma.movies.findMany()
+    async getAll(): Promise<movies[]> {
+        const data:any = await prisma.movies.findMany({
+            include: {
+                movies_categories: {
+                    select: {
+                        categories: true,
+                    }
+            }}
+        })
         return data
     }
 

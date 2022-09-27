@@ -8,6 +8,10 @@ export interface IController<TRequest, TResponse> {
     update?(req: TRequest, res: TResponse): Promise<void>
     
     delete?(req: TRequest, res: TResponse): Promise<void>
+
+    signIn?(req: TRequest, res: TResponse): Promise<void>
+
+    signUp?(req: TRequest, res: TResponse): Promise<void>
 }
 export interface ICreate<TReturn> {
     create(data: TReturn): Promise<TReturn>

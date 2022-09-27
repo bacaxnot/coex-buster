@@ -7,7 +7,7 @@ import prisma from "../helpers/db/db";
 
 
 class TransactionDetailRespository implements ITransactionDetailRepository<transaction_detail>{
-    async getAll(): Promise<transaction_detail> {
+    async getAll(): Promise<transaction_detail[]> {
         const data:any = await prisma.transaction_detail.findMany({        
             include:{
                 movies:true,

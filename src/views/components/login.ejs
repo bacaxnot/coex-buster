@@ -1,11 +1,11 @@
 <div class="login">
-    <form id="form_login">
+    <form id="form_login" action="api/v1/login" method="POST">
         <label class="text_title">Log in</label><br><br>
       <div class="login-info">
         <label class="text_login">Email Adress</label><br>
-        <input class="input_login" type="email" id="email" placeholder="correo@correo.com"><br>
+        <input class="input_login" name="email" type="email" id="email" placeholder="correo@correo.com"><br>
         <label class="text_login">Password</label><br>
-        <input class="input_login" type="password" id="password" placeholder="***********" autocomplete="off"><br>
+        <input class="input_login" name="password" type="password" id="password" placeholder="***********" autocomplete="off"><br>
         <button class="btn-login" type="submit">Log in</button>
       </div>
     </form>

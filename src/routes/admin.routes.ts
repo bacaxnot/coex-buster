@@ -3,10 +3,12 @@ import viewRouter from "./views.routes";
 import testRouter from "./test.routes";
 import userRouter from "./user.routes";
 import moviesRouter from "./movies.routes";
+import loginRouter from "./login.routes";
 import transactionRouter from './transaction.routes';
 
 const adminRoutes = (app:Express)=>{
     app.use(viewRouter);
+    app.use('/api/v1', loginRouter)
     app.use('/api/v1', userRouter);
     app.use('/api/v1', moviesRouter);
     app.use('/api/v1', transactionRouter);
