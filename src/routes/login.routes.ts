@@ -7,5 +7,4 @@ router
     .route('/login')
     .post(LoginController.signIn)
 
-
 export default router;

@@ -23,20 +23,21 @@
         <% movies.forEach(function(movie) { %>
             <div class="contenedor--movies--card">
                 <div class="movie--section">
-                    <img class="movie--portada" src="<%= movie.img %>" width="99%">
+                    <img class="movie--portada" src="<%= movie.poster_path %>" width="99%">
                     <div class="movie--description">
                         <h1>
-                            <%= movie.name %>
+                            <%= movie.title %> 
+                            <%- console.log(movie) %> 
                         </h1><br>
                         <h2>
-                            <%= movie.description %>
+                            <%= movie.overview %>
                         </h2>
                     </div>
                 </div>
 
                 <div class="contenedor--movies--starts">
                     <strong class="movie--genero">
-                        <%= movie.genero %>
+                        'hola'
                     </strong>
                     <!-- representing <%= movie.description %>, born <%= movie.genero %> -->
                     <div class="movie--starts">
