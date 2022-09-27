@@ -13,7 +13,9 @@ router
     .get('/login', (req, res)=> {
         res.render('layouts/login')
     })
-    .get('/register')
+    .get('/register', (req, res)=> {
+        res.render('layouts/register')
+    })
 
 
 export default router;
