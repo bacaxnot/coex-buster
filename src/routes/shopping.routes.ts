@@ -13,4 +13,7 @@ router
     .get(shoppingController.getAll);
 
 
+router
+.route('/del/shop/:id')
+.delete(shoppingController.deleted);
 export default router;
