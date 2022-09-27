@@ -3,7 +3,7 @@ import { ITransactionRepository } from "../models/interfaces/transaction.interfa
 import { transactions } from "@prisma/client";
 
 class TransactionRepository implements ITransactionRepository<transactions>{
-    async getAll(): Promise<transactions> {
+    async getAll(): Promise<transactions[]> {
         let data:any = await prisma.transactions.findMany({
             include:{
                 users:true
