@@ -5,7 +5,20 @@ import { movies } from "@Prisma/client"
 class MoviesRepository implements IMovieRepository<movies> {
 
     async getAll(): Promise<movies> {
-        const data:any = await prisma.movies.findMany()
+        // const data:any = await prisma.movies.findMany()
+        const data:any = await prisma.movies.findMany({
+            include: {
+                movies_categories: {
+                    select: {
+                        categories: {
+                            select: {
+                                name: true
+                            }
+                        }
+                    }
+                }
+            }
+        })
         return data
     }
 
@@ -14,6 +27,17 @@ class MoviesRepository implements IMovieRepository<movies> {
         const data = await prisma.movies.findUnique({
             where: {
                 id: id
+            },
+            include: {
+                movies_categories: {
+                    select: {
+                        categories: {
+                            select: {
+                                name: true
+                            }
+                        }
+                    }
+                }
             }
         })
 
@@ -60,6 +84,8 @@ class MoviesRepository implements IMovieRepository<movies> {
             }
         });
 
+
+
         return movie;
     }
 
@@ -69,6 +95,7 @@ class MoviesRepository implements IMovieRepository<movies> {
                 category_id: id
             },
             include:{
+                categories: true,
                 movies: true
             }
         });
