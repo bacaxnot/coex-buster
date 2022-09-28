@@ -15,7 +15,6 @@ const tokenAuthentication = async (req:Request, res:Response, next:NextFunction)
     if (!token) {
         return res.status(401).send('No estas autorizado');
     }
-
     const tokenValidated = await jwt.verify(token, config.SECRET as Secret) as JwtPayload;
     req.userId = tokenValidated.id
     next();

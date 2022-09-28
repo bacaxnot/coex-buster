@@ -1,5 +1,6 @@
 import { Router } from "express";
 import viewController from "../controllers/ViewController";
+import tokenAuthentication from "../helpers/middlewares/tokenAuthentication";
 
 const router: Router = Router();
 
@@ -10,8 +11,8 @@ router
 
     .get('/movies', viewController.getAll)
     .get('/movie/:id')
-    .get('/history')
-    .get('/history/order/:id')
+    .get('/history', tokenAuthentication)
+    .get('/history/order/:id', tokenAuthentication)
     .get('/login', (req, res) => {
         res.render('layouts/login')
     })
