@@ -1,11 +1,10 @@
-<%- include('./partials/head', {title : 'Register'}) %>
+<%- include('../partials/head', {title : 'Register', style: 'login.css'}) %>
+<link href="/public/styles/navbar.css" rel="stylesheet">
 
-<link rel="stylesheet" href="/public/styles/login.css">
+<%- include('../partials/body') %>
+<%- include('../components/navbarUser.ejs') %>
 
-<%- include('./partials/body') %>
+<%- include('../components/register.ejs') %>
 
-
-
-<%- include('./components/register.ejs') %>
-
-<%- include('./partials/foot') %>
+<script src="/public/scripts/redirectLogin.js"></script>
+<%- include('../partials/foot') %>

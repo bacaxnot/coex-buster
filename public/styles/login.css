@@ -16,7 +16,7 @@
     } */
     body{
         background-color: #030328;
-        margin-top: 90px;
+    
     }
 
     #title{
@@ -139,6 +139,7 @@
             max-width: 350px;
             min-width: 349px;
             margin: auto;
+            margin-top: 50px;
         }
         .btn-singup{
             min-width: 349px;

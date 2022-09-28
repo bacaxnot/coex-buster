@@ -1,7 +1,7 @@
 import prisma from "../db/db";
 import bcrypt from "bcrypt";
 
-prisma.$use(async (params, next)=>{
+prisma.$use(async (params: any, next: any)=>{
     if(params.model === 'users' && params.action === 'create'){
         const password = params.args.data.password;
         const passwordEncrypt = bcrypt.hashSync(password, 10);

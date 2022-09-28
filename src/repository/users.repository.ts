@@ -13,10 +13,27 @@ class UsersRepository implements IUserRepository<users> {
         return data
     }
     async create(data: users): Promise<users> {
+        const{name, email, password} = data
         let users = await prisma.users.create({
-            data
+            data:{
+                name,
+                email,
+                password
+            }
         });
         return users
+    }
+
+    async getEmail(email: string): Promise<users> {
+        const user = await prisma.users.findUnique({
+            where: {
+                email:email
+            }
+        })
+        if(!user){
+            throw new Error('usuario no encontrado')
+        }
+        return user
     }
 
 }
