@@ -18,9 +18,9 @@ class TransactionDetailRespository implements ITransactionDetailRepository<trans
     }
 
     async get(id: number): Promise<transaction_detail> {
-        const order:any = await prisma.transaction_detail.findUnique({
+        const order:any = await prisma.transaction_detail.findMany({
             where:{
-                id:id
+                transaction_id:id
             },
             include:{
                 movies:true,

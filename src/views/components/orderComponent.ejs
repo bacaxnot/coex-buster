@@ -1,28 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order component</title>
-    <link rel="stylesheet" href="/public/styles/orderComponent.css">
-</head>
-
-<body>
-    <div class="component--order">
-        <% info.forEach((product)=>{ %>
-            <div class="component--order__size">
-                <div>
-                    <%= product.date %>
-                </div>
-                <div>
-                    <%= product.products.length %> movies
-                </div>
-                
-            </div><img src="/public/assets/icons/angle-small-right-free-icon-font.svg" width="30px">
-            <% }); %>
-    </div>
-</body>
-
-</html>
+<% result.forEach((row)=>{ %>
+    <% if (row.transaction_detail.length > 0) { %>
+    <div class="component--order" id="<%= row.transaction_detail[0].transaction_id %>">
+        <div class="component--order__size">
+            <div>
+                <%= row.create_date %>
+            </div>
+            <div>
+                <%= row.transaction_detail.length %> movies
+            </div>
+            
+        </div><img src="/public/assets/icons/angle-small-right-free-icon-font.svg" width="30px">
+    </div> <br>
+    <% } %>
+<% }); %>
