@@ -13,9 +13,10 @@ class LoginController implements IController<Request, Response> {
         const result = await bcrypt.compare(password, user.password, function(err, result) {
             if (err) { throw (err); }
             console.log(result);
-            console.log("constraseña incorrecta")
+
+            res.redirect('movies')
         });
-        res.redirect('movies')
+        
         
     }
 
