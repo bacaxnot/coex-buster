@@ -70,6 +70,7 @@ const addToCart = async (movieObj) => {
 	try {
 		const movie = movieObj
 		console.log(movieObj)
+
 		// console.log(movieObj.split(","))
 		const indexMovies = moviesInCart.map((movie) => movie.id)
 		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
