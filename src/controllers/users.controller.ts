@@ -6,7 +6,7 @@ import { IController } from "../helpers/interfaces/crud.interface";
 class UsersController implements IController<Request, Response>{
 
     async getOne(req: Request, res: Response): Promise<void> {
-        const id = parseInt(req.params.id);
+        const id = parseInt(req.userId);
 
         const user = await UserRepository.get(id);
 
