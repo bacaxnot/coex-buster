@@ -6,7 +6,7 @@ class TransactionRepository implements ITransactionRepository<transactions>{
     async getAll(): Promise<transactions[]> {
         let data:any = await prisma.transactions.findMany({
             include:{
-                users:true
+                transaction_detail:true
             }
         });
         return data;

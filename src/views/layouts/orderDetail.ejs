@@ -5,6 +5,8 @@
 
 <%- include('../partials/body') %>
 
+<% const imageUrl = 'https://image.tmdb.org/t/p/w500/' %>
+
 <main class="od-view">
     <div class="od-container">
         <button id="od-back-arrow" class="od-icon-arrow" type="button">
@@ -13,34 +15,34 @@
         <section class="od-order">
             <h1 class="od-order__title">My order</h1>
             <div class="od-order__info">
-                <h2 class="od-info__date"><%= typeof date != 'undefined' ? date : 'date not found' %></h2>
+                <h2 class="od-info__date"><%= typeof products[0].transactions.create_date != 'undefined' ? products[0].transactions.create_date : 'date not found' %></h2>
                 <h3 class="od-info__articles"><%= products.length %> articles</h3>
             </div>
             <div class="od-order__list">
                 <% products.forEach(product => { %>
                     <a 
-                        href="<%= product.id %>" 
+                        href="<%= product.movies.id %>" 
                         class="od-list__link" 
-                        title="Go to <%= typeof product.title != 'undefined' ? product.title : 'untitled' %>"
+                        title="Go to <%= typeof product.movies.title != 'undefined' ? product.movies.title : 'untitled' %>"
                     >
                         <div class="od-list__item">
                             <figure class="od-item__cover">
                                 <img 
-                                    src="<%= typeof product.path != 'undefined' ? 'https://image.tmdb.org/t/p/w500/' + product.path : '' %>"
-                                    alt="<%= typeof product.title != 'undefined' ? product.title : 'untitled' %>"
+                                    src="<%= typeof product.movies.poster_path != 'undefined' ? product.movies.poster_path : '' %>"
+                                    alt="<%= typeof product.movies.title != 'undefined' ? product.movies.title : 'untitled' %>"
                                     class="od-item__img"
                                 >
                             </figure>
                             <div class="od-item__info">
                                 <h4 class="od-item__title">
-                                    <%= typeof product.title != 'undefined' ? product.title : 'untitled' %>
+                                    <%= typeof product.movies.title != 'undefined' ? product.movies.title : 'untitled' %>
                                 </h4>
                                 <div class="od-item__genres">
                                     <p class="od-item__genre">
-                                        <%= typeof product.genres != 'undefined' ? product.genres : 'genres not found' %>
+                                        <%= typeof product.movies.genres != 'undefined' ? product.movies.genres : 'genres not found' %>
                                     </p>
                                 </div>
-                                <%- include('../components/starsComponent.ejs', {vote_average: product.vote_average}) %>
+                                <%- include('../components/starsComponent.ejs', {vote_average: product.movies.vote_average}) %>
                             </div>
                         </div>
                     </a>
