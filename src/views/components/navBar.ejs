@@ -8,17 +8,19 @@
         <nav class="nav">
             <ul class="list-categories">
 
-                <% movies.forEach(function(movie) { %>
-                    <li><% movie.name %></li>
+                <% categories.forEach(function(cat) { %>
+                    <a href=""><li><%- cat.name %></li></a>
                 <% }); %>
                     
                 <label for="otherMenu" class="list-item down-list" id="otherItems">
                     Others
                     <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
-                </label>
                 <select class="other-categories" name="" id="">
-                    <option value=""><li>%- dataOther.name %></li></option>
+                    <% categories.forEach(function(cat) { %>
+                        <option value=""><li><%- cat.name %></li></option>
+                    <% }); %>
                 </select>
+                </label>
             </ul>
         </nav>
     </div>
