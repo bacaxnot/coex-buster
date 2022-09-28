@@ -9,7 +9,11 @@ class MoviesRepository implements IMovieRepository<movies> {
             include: {
                 movies_categories: {
                     select: {
-                        categories: true,
+                        categories: {
+                            select: {
+                                name: true
+                            }
+                        }
                     }
                 }
             }
@@ -21,6 +25,17 @@ class MoviesRepository implements IMovieRepository<movies> {
         const data = await prisma.movies.findUnique({
             where: {
                 id: id
+            },
+            include: {
+                movies_categories: {
+                    select: {
+                        categories: {
+                            select: {
+                                name: true
+                            }
+                        }
+                    }
+                }
             }
         })
 
@@ -67,6 +82,8 @@ class MoviesRepository implements IMovieRepository<movies> {
             }
         });
 
+
+
         return movie;
     }
 
@@ -75,7 +92,8 @@ class MoviesRepository implements IMovieRepository<movies> {
             where: {
                 category_id: id
             },
-            include: {
+            include:{
+                categories: true,
                 movies: true
             }
         });
