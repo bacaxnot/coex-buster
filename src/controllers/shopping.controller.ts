@@ -3,14 +3,14 @@ import { Request, Response } from "express";
 
 class ShoppingController
 {
-
-    validate(id:number, user_id:number, data:Object)
-    {   
-
-    }
     getAll(req:Request, res:Response)
     {
-        res.send(req.cookies);
+        const usrid = req.params.id;
+        const cookies = Object.keys(req.cookies);
+        if(!cookies.includes('shop')) res.json({code:400, msg:'Empty'}); // Valida si la cookie existe
+        const data = req.cookies.shop;
+        const usrInfo = data.filter((element:any) => element['id_user'] == usrid);
+        usrInfo.length == 0 ? res.json({code:400, msg:'No orders yet'}) : res.json(usrInfo[0].movies);
     }
 
     create(req:Request, res:Response)
@@ -40,14 +40,12 @@ class ShoppingController
         const idMovie = req.body.id_movie;
         const data:any = req.cookies.shop;
         const idUser = req.body.id_user;
-        const newCookie = data.filter((element:any) => element['id_user'] == idUser);
-        // res.cookie('shop', newCookie);
-        // const mvs = newCookie.movies.filter((e:any) => e.id_movie != idMovie);
-        const mvs = newCookie[0].movies;
+        const usrInfo = data.filter((element:any) => element['id_user'] == idUser);
+        const mvs = usrInfo[0].movies;
         const filtered = mvs.filter((e:any) => e.id != idMovie);
-        newCookie[0].movies = filtered;
+        usrInfo[0].movies = filtered;
         res.cookie('shop', data);
-        res.send({code:200, msg:'Deleted'});
+        res.json({code:200, msg:'Deleted'});
     }
 }
 

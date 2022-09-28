@@ -4,16 +4,16 @@ const router :Router = Router();
 
 
 router
-    .route('/add')
+    .route('/shop/add')
     .post(shoppingController.create);
 
 
 router
-    .route('/getshop')
+    .route('/shop/get/:id')
     .get(shoppingController.getAll);
 
 
 router
-.route('/del/shop')
-.delete(shoppingController.deleted);
+    .route('/shop/del')
+    .delete(shoppingController.deleted);
 export default router;
