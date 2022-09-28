@@ -14,7 +14,6 @@ class LoginController implements IController<Request, Response> {
             if (err) { throw (err); }
             console.log(result);
             console.log("constraseña incorrecta");
-
         });
         res.redirect('movies')
     }
