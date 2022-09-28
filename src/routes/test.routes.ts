@@ -41,6 +41,34 @@ router.get('/history/order', (req, res) => {  //colocarle al order:id
     res.render('layouts/history_order.ejs', {
         info: [
             {
+            id: 100,
+            date: '25.09.2022',
+            products: [
+                {
+                    id: 176,
+                    path: '/ok4ot3YbfDYZcINXf91JUfq3maB.jpg',
+                    title: 'Saw',
+                    genres: [
+                        'Horror',
+                        'Thriller',
+                        'Crime'
+                    ],
+                    vote_average: 7.4
+                }, {
+                    id: 299534,
+                    path: '/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
+                    title: 'Avengers: Endgame',
+                    genres: [
+                        'Adventure',
+                        'Science Fiction',
+                        'Action'
+                    ],
+                    vote_average: 8.3
+                }
+            ]
+        },
+        {
+            id: 200,
             date: '24.09.2022',
             products: [
                 {
