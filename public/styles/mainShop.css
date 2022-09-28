@@ -28,7 +28,7 @@ body {
     width: 300px;
     text-align: center;
     margin: auto;
-    background: linear-gradient(to top, #02021C, #02021C60 100%, #110E3500);
+/*     background: linear-gradient(to top, #02021C, #02021C60 100%, #110E3500); */
     border-radius: 15px;
     margin: 20px;
     overflow: auto;
@@ -38,7 +38,7 @@ body {
     position: absolute;
     color: white;
     background-color: rgba(0, 0, 0, 0.95);
-    height: 380px;
+    height: 305px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     width: 300px;
@@ -46,7 +46,7 @@ body {
     text-align: justify;
     font-size: 12px;
     opacity: 0;
-    margin-top: -380px;
+    margin-top: -308px;
 
 }
 
