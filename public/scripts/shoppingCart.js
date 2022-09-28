@@ -1,6 +1,7 @@
-
 const cartContainer = document.querySelector('.cart-container');
 const checkoutButton = document.querySelector('.checkout-button-container');
+const closeButton = document.querySelector('#closeButton');
+const openButton = document.querySelector('#openButton');
 
 const openCart = () => {
 	cartContainer.style.right = `0`;
@@ -17,6 +18,10 @@ const showCheckoutButton = (arrLength) => {
 		checkoutButton.style.display = 'none';
 	}
 };
+
+openButton.addEventListener('click', openCart);
+
+closeButton.addEventListener('click', closeCart);
 
 //URL LISTADO DE PELIS
 //https://api.themoviedb.org/4/list/${list_id}?page=1&api_key=dde722cb807472090076a60be85c0010
@@ -64,6 +69,8 @@ const throwError = (message) => {
 const addToCart = async (movieObj) => {
 	try {
 		const movie = movieObj
+		console.log(movieObj)
+		// console.log(movieObj.split(","))
 		const indexMovies = moviesInCart.map((movie) => movie.id)
 		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
 		if (!indexMovies.includes(movie.id)) {
@@ -71,10 +78,10 @@ const addToCart = async (movieObj) => {
 			renderMovieInCart(moviesInCart)
 			showCheckoutButton(moviesInCart.length)
 			openCart()
-			localStorage.setItem(
-				'shoppingCart',
-				JSON.stringify(moviesInCart)
-			)
+			// localStorage.setItem(
+			// 	'shoppingCart',
+			// 	JSON.stringify(moviesInCart)
+			// )
 		} else {
 			throwError('Peli repetida')
 			return
@@ -91,28 +98,17 @@ const cartList = document.querySelector('.cart-list');
 //renderizar moviesInCart
 const renderMovieInCart = async (moviesArray) => {
 	try {
-		//cambiar 'genres' por los generos que vienen en los objeto de moviesArray
-		// const genres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=dde722cb807472090076a60be85c0010&language=en-US`)
-		// const response = await genres.json()
 		let template = ``;
 		moviesArray.map((movie) => {
-			let genreMovie = '';
-			movie.genres.forEach((genre) => {
-				genreMovie = genre.name
-			// response.genres.forEach((genero) => {
-			// 	if (genero.id === movie.genres[0].id) {
-			// 		genreMovie = genero.name;
-			// 	}
-			});
 			let url = imageUrl + movie.poster_path;
 			const cart = `
 				<div class="cart-item">
 					<div class="cart-item-img">
 						<img 
-						src="${url}" alt="movie-img">
+						src="${movie.poster_path}" alt="movie-img">
 					<div class="cart-info-container">
 						<h2>${movie.title}</h2>
-						<span>${genreMovie}</span>
+						<span>${movie.movies_categories[0].categories.name}</span>
 						<star-rating rating="${movie.vote_average}"></star-rating>
 					</div>
 				</div>
