@@ -6,7 +6,7 @@ class MoviesController implements IController<Request, Response>{
 
     async getAll(req: Request, res: Response): Promise<void> {
         const movies = await MoviesRepository.getAll();
-
+        //debe renderizar la vista de layouts/main_shop
         res.json(movies);
     }
 
