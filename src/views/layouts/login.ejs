@@ -1,7 +1,11 @@
 <%- include('../partials/head.ejs', {title : 'Login', style: 'login.css'}) %>
+<link href="/public/styles/navbar.css" rel="stylesheet">
 
 <%- include('../partials/body') %>
+<%- include('../components/navbarUser.ejs') %>
 
 <%- include('../components/Login.ejs') %>
 
+<script src="/public/scripts/redirectRegister.js"></script>
 <%- include('../partials/foot') %>
+
