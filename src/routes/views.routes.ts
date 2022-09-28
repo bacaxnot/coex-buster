@@ -4,7 +4,11 @@ import viewController from "../controllers/ViewController";
 const router: Router = Router();
 
 router
-    .get('/', viewController.getAll)
+    .get('/', (req: any, res: any) => {
+        res.redirect('/movies')
+    })
+
+    .get('/movies', viewController.getAll)
     .get('/movie/:id')
     .get('/history')
     .get('/history/order/:id')

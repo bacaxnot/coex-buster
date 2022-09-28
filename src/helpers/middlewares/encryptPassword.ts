@@ -9,13 +9,3 @@ prisma.$use(async (params: any, next: any)=>{
     }
     return await next(params)
 })
-
-prisma.$use(async (params, next)=>{
-    if(params.model === 'users' && params.action === 'findUnique'){
-        const passwordUser = params.args.data.password
-        const result = await next(params);
-        const passwordEncrypte = params.args.data.password;
-        const passwordValidate = bcrypt.compareSync(passwordUser, passwordEncrypte);
-        return passwordValidate;
-    }
-})

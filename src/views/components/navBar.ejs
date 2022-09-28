@@ -8,8 +8,10 @@
         <nav class="nav">
             <ul class="list-categories">
 
-                <li>%- data.name %></li>
-
+                <% movies.forEach(function(movie) { %>
+                    <li><% movie.name %></li>
+                <% }); %>
+                    
                 <label for="otherMenu" class="list-item down-list" id="otherItems">
                     Others
                     <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">

@@ -6,6 +6,7 @@
 <link href="/public/styles/navbar.css" rel="stylesheet">
 <link href="/public/styles/starsComponent.css" rel="stylesheet">
 <link href="/public/styles/movieCardComponent.css" rel="stylesheet">
+<link rel="stylesheet" href="/public/styles/mainShop.css" type="text/css">
 
 <div class="s-container">
 
@@ -15,22 +16,14 @@
         <div class="s-filter">
             <filter-bar><%- include('../components/search.ejs') %></filter-bar>
         </div>
-        <div id="genre-movies-shop-container"></div>
-        <section class="s-grid" id="MovieGalery">
-            <%- include('../components/movieCardComponent.ejs', {
-                id: id,
-                title: title,
-                overview: overview,
-                genres: genres,
-                path: path,
-                vote_average: vote_average
-            }) %>
-        </section>
     </main>
+        <div id="genre-movies-shop-container"></div>
+            <%- include('main_shop.ejs') %>
+    
     <footer class="s-footer">
         <pagination-bar><%- include('../components/paginationComponent.ejs') %></pagination-bar>
     </footer>
 </div>
 
 
-<%- include('./partials/foot') %>
+<%- include('../partials/foot') %>

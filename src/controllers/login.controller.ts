@@ -9,7 +9,6 @@ class LoginController implements IController<Request, Response> {
     
     async signIn(req: Request, res: Response): Promise<void> {
         const {email, password} = req.body
-        console.log(email, password)
         const user = await usersRepository.getEmail(email)
         const hashPassword = user.password
         const result = bcrypt.compare(password, hashPassword);
