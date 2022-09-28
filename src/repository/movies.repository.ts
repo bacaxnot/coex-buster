@@ -21,7 +21,6 @@ class MoviesRepository implements IMovieRepository<movies> {
         return data
     }
 
-
     async get(id: number): Promise<movies | null> {
         const data = await prisma.movies.findUnique({
             where: {

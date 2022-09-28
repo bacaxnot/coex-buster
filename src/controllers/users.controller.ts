@@ -1,6 +1,7 @@
 import UserRepository from "../repository/users.repository";
 import { Request, Response } from "express";
 import { IController } from "../helpers/interfaces/crud.interface";
+import '../helpers/middlewares/encryptPassword'
 
 
 class UsersController implements IController<Request, Response>{
@@ -15,12 +16,14 @@ class UsersController implements IController<Request, Response>{
     }
 
     async create(req: Request, res: Response): Promise<void> {
-        const {id, email, password} = req.body;
+        const {id, name, email, password} = req.body;
 
-        const data = await UserRepository.create({id, email, password});
+        const data = await UserRepository.create({id, name, email, password});
 
         res.json(data)
     }
+
+
 }
 
 export default new UsersController();
