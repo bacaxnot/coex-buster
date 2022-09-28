@@ -14,7 +14,7 @@ class LoginController implements IController<Request, Response> {
         const hashPassword = user.password
         const result = bcrypt.compare(password, hashPassword);
         if(!result){
-            throw new Error('contraseña incorrecta')
+            throw new Error('contraseña incorrecta');
         }
         res.redirect('movies')
     }
