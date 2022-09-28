@@ -19,6 +19,7 @@
         <div class="s-filter">
             <filter-bar> <%- include('../components/search.ejs') %> </filter-bar>
         </div>
+        <%- for movie in movies { %>
         <div id="genre-movies-shop-container"></div>
         <section class="s-grid" id="MovieGalery">
             <%- include('../components/movieCardComponent.ejs', {

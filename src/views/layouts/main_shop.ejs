@@ -25,14 +25,7 @@
 
 
             <div class="contenedor--movies--card">
-                <%- include('../components/movieCardComponent.ejs', {
-                id: movie.id,
-                title: movie.title,
-                overview: movie.overview,
-                genres: 'hola',
-                path: movie.poster_path,
-                vote_average: movie.vote_average
-            }) %>
+                <%- include('../components/movieCardComponent.ejs', movie) %>
             </div>
             <% }); %>
     </div>
