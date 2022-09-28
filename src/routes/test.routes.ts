@@ -40,6 +40,7 @@ router.get('/shop', (req, res) => {
 router.get('/sesion', (req,res)=>{
     res.render('components/prueba.ejs', {people:data, info:getInfo});
 })
+
 router.get('/movie', (req,res)=>{
     res.render('layouts/movie-detail.ejs', {people:data, info:getInfo});
 })
