@@ -13,6 +13,18 @@ header{
     align-items: center;
     height: 54px
 }
+
+.nav ul{
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+}
+
+li, a{
+    list-style: none;
+    text-decoration: none;
+}
+
 .email__sigin{
     color: var(--purple);
     font-size: 1rem;

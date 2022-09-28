@@ -10,12 +10,12 @@ class LoginController implements IController<Request, Response> {
     async signIn(req: Request, res: Response): Promise<void> {
         const {email, password} = req.body
         const user = await usersRepository.getEmail(email);
-        const result = await bcrypt.compare(password, user.password, function(err, result) {
-            if (err) { throw (err); }
-            console.log(result);
-            console.log("constraseña incorrecta");
-
-        });
+        const result = await bcrypt.compare(password, user.password);
+        console.log(result)
+        if(!result){
+            res.status(401).send("contraseña incorrecta");
+            return 
+        }
         res.redirect('movies')
     }
 

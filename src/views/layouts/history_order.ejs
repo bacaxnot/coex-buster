@@ -1,48 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../partials/head', {title : 'History'}) %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History</title>
-    <link rel="stylesheet" href="/public/styles/history.css" type="text/css">
-</head>
+<link rel="stylesheet" href="/public/styles/history.css" type="text/css">
+<link rel="stylesheet" href="/public/styles/orderComponent.css">
 
-<body>
-    <div id="app">
+<%- include('../partials/body') %>
 
-        <div class="header">
-            <!-- AGREGAR COMPONENTE DE HEADER EN ESTE BLOQUE-->
-            <div class="header-container">
-                <div class="header-logo">
-                    <a href="">
-                        <img src="/public/assets/icons/logo_coexbuster.svg">
-                    </a>
-                    <a href="">
-                        <img src="/public/assets/icons/icon_shopping_cart_notification.svg">
-                    </a>
-
-                </div>
+<div id="app">
+    <div class="header">
+        <!-- AGREGAR COMPONENTE DE HEADER EN ESTE BLOQUE-->
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="">
+                    <img src="/public/assets/icons/logo_coexbuster.svg">
+                </a>
+                <a href="">
+                    <img src="/public/assets/icons/icon_shopping_cart_notification.svg">
+                </a>
             </div>
         </div>
+    </div>
 
-        <div class="contenedor__history">
+    <div class="contenedor__history">
 
-            <section class="history__section">
-                <a href="/test/shop">
-                    <img class="history__flecha--retroceso" src="/public/assets/icons/back-arrow-comb2.svg">
-                </a>
-                <div class="history__section--orders">
-                    <span class="history__section--orders--word">My orders</span>
-                    <div class="history__section--orders--shopping" id="historyShopping">
-                        <!-- ${movie} -->
-                        <div><%- include('../components/orderComponent.ejs'); %></div>
-                    </div>
+        <section class="history__section">
+            <a href="/test/shop">
+                <img class="history__flecha--retroceso" src="/public/assets/icons/back-arrow-comb2.svg">
+            </a>
+            <div class="history__section--orders">
+                <span class="history__section--orders--word">My orders</span>
+                <div class="history__section--orders--shopping" id="historyShopping">
+                    <!-- ${movie} -->
+                    <div><%- include('../components/orderComponent.ejs'); %></div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+    </div>
+</div>
 
-</body>
+<script src="/public/scripts/orderComponent.js"></script>
 
-</html>
+<%- include('../partials/foot') %>
