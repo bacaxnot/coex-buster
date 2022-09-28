@@ -5,7 +5,10 @@ import { movies } from "@prisma/client"
 class MoviesRepository implements IMovieRepository<movies> {
 
     async getAll(): Promise<movies[]> {
+        const count = await prisma.movies.count();
         const data: any = await prisma.movies.findMany({
+            skip: 0,
+            take: 9,
             include: {
                 movies_categories: {
                     select: {
@@ -17,8 +20,8 @@ class MoviesRepository implements IMovieRepository<movies> {
                     }
                 }
             }
-        })
-        return data
+        })  
+        return [count,data];
     }
 
     async get(id: number): Promise<movies | null> {
@@ -92,7 +95,7 @@ class MoviesRepository implements IMovieRepository<movies> {
             where: {
                 category_id: id
             },
-            include:{
+            include: {
                 categories: true,
                 movies: true
             }

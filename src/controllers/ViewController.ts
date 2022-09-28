@@ -6,7 +6,7 @@ class ViewController implements IController<Request, Response>{
 
     async getAll(req: Request, res: Response): Promise<void> {
         const movies = await MoviesRepository.getAll();
-        res.render('layouts/shop', { movies: movies });
+        res.render('layouts/shop', { movies: movies[1],count: movies[0] });
     }
 
     async getAllByCategory(req: Request, res: Response): Promise<void> {
