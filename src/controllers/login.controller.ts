@@ -16,7 +16,7 @@ class LoginController implements IController<Request, Response> {
         if(!result){
             throw new Error('contraseña incorrecta')
         }
-        res.json({result})
+        res.redirect('movies')
     }
 
     async signUp(req: Request, res: Response): Promise<void> {
