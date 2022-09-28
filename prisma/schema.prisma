@@ -44,7 +44,7 @@ model companies_movies {
   companies  companies @relation(fields: [company_id], references: [id], onDelete: Cascade, map: "companies_movies_ibfk_2")
 
   @@index([company_id], map: "company_id")
-  @@index([movie_id], map: "movie_id") 
+  @@index([movie_id], map: "movie_id")
 }
 
 model countries {
@@ -158,6 +158,6 @@ model users {
   id           Int            @id @default(autoincrement())
   name         String         @db.VarChar(50)
   email        String         @unique(map: "email") @db.VarChar(50)
-  password     String         @db.VarChar(50)
+  password     String         @db.VarChar(100)
   transactions transactions[]
 }
