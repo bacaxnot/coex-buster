@@ -44,7 +44,7 @@ model companies_movies {
   companies  companies @relation(fields: [company_id], references: [id], onDelete: Cascade, map: "companies_movies_ibfk_2")
 
   @@index([company_id], map: "company_id")
-  @@index([movie_id], map: "movie_id")
+  @@index([movie_id], map: "movie_id") 
 }
 
 model countries {

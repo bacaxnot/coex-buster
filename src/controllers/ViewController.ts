@@ -2,15 +2,15 @@ import MoviesRepository from "../repository/movies.repository";
 import { IController } from "../helpers/interfaces/crud.interface";
 import { Request, Response } from "express";
 
-class MoviesController implements IController<Request, Response>{
+class ViewController implements IController<Request, Response>{
 
     async getAll(req: Request, res: Response): Promise<void> {
         const movies = await MoviesRepository.getAll();
-        res.json(movies);
+        res.render('layouts/main_shop', { movies: movies });
     }
 
     async getAllByCategory(req: Request, res: Response): Promise<void> {
-        let category : any = req.query.category
+        let category: any = req.query.category
         category = parseInt(category)
         const movies = await MoviesRepository.getAllByCategory(category);
         res.json({
@@ -30,7 +30,7 @@ class MoviesController implements IController<Request, Response>{
 
         const movie = await MoviesRepository.get(id);
 
-        res.json({movie: movie});
+        res.json({ movie: movie });
     }
 
     async update(req: Request, res: Response): Promise<void> {
@@ -60,4 +60,4 @@ class MoviesController implements IController<Request, Response>{
 }
 
 
-export default new MoviesController();
+export default new ViewController();
