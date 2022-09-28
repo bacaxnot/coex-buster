@@ -14,6 +14,6 @@ router
 
 
 router
-.route('/del/shop/:id')
+.route('/del/shop')
 .delete(shoppingController.deleted);
 export default router;
