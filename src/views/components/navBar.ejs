@@ -4,12 +4,20 @@
             <img src="/public/assets/icons/logo_coexbuster.svg" width="80px" alt="">
         </a>
     </div>
-    <% if (typeof categories != 'undefined') { %>
-        <div class="categories">
-            <nav class="nav">
-                <ul class="list-categories">
+    <div class="categories">
+        <nav class="nav">
+            <ul class="list-categories">
+
+                <% categories.forEach(function(cat) { %>
+                    <a href="/movies/category?category=<%- cat.id %>"><li><%- cat.name %></li></a>
+                <% }); %>
+                    
+                <label for="otherMenu" class="list-item down-list" id="otherItems">
+                    Others
+                    <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
+                <select class="other-categories" name="" id=""  onchange="location = this.value">
                     <% categories.forEach(function(cat) { %>
-                        <a href=""><li><%- cat.name %></li></a>
+                        <option value="/movies/category?category=<%- cat.id %>"><%- cat.name %></option>
                     <% }); %>
                     <label for="otherMenu" class="list-item down-list" id="otherItems">
                         Others
@@ -38,9 +46,10 @@
             </div> 
         </div> -->
         <drop-menu id="drop-menu" class="displayNone"></drop-menu>
-        <a href="#" as="button" id="openButton">
+        <a as="button" id="openButton">
             <img src="../../../public/assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27">
         </a>
     </div>
 
 </header>
+

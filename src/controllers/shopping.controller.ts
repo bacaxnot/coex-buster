@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { transaction_detail } from '@prisma/client';
 
 
 class ShoppingController
@@ -24,14 +25,14 @@ class ShoppingController
             const target = data.filter((e:any) => e.id_user == req.body.id_user); // Buscando el user
             if (target.length == 0) {  // Si no existe el user, agrega la req a la cookie
                 data.push(req.body)
-                res.cookie('shop', data) 
+                res.cookie('shop', data)
             }
             else {
                 console.log(target)
                 const userMovies = target[0].movies;
                 userMovies.push(...req.body.movies);
                 res.cookie('shop', data)}
-            } 
+            }
         res.json({code:201, message:'Created order'});
     }
 

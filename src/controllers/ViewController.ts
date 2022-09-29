@@ -17,16 +17,23 @@ class ViewController implements IController<Request, Response>{
     }
     async getAllByCategory(req: Request, res: Response): Promise<void> {
         let category: any = req.query.category
+        console.log(category)
         category = parseInt(category)
-        const categories = await MoviesRepository.getAllByCategory(category);
-        res.render('layouts/shop', { categories: categories });
+        const movies : any = await MoviesRepository.getAllByCategoryById(category);
+        // const result = movies.map(element => element.movies );
+        const categories = await MoviesRepository.getAllCategories();
+        res.render('layouts/shop', { result: movies, categories:categories });
     }
+
+    
 
     async getAllBySearch(req: Request, res: Response): Promise<void> {
         const search = req.query.search
+        // console.log(search);
         const movies = await MoviesRepository.getAllBySearch(search);
-
-        res.json(movies);
+        const categories = await MoviesRepository.getAllCategories();
+        //  res.json(movies);
+        res.render('layouts/shop', { result:movies, categories:categories});
     }
 
     async get(req: Request, res: Response): Promise<void> {
