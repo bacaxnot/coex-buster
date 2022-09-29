@@ -175,6 +175,13 @@ router.get('/movie/detail', (req, res) => {
     res.render('layouts/movie-detail')
 })
 
+router.get('/error', (req, res) => {
+    res.render('layouts/error', {
+        status: 404,
+        error: 'Unauthorized'
+    })
+})
+
 
 
 export default router
