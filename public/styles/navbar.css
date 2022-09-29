@@ -85,3 +85,121 @@ li, a{
 .displayBlock{
     display:block !important;
 }
+button{
+    background-color: transparent;
+    color: white;
+    border-color: transparent;
+}
+
+header{
+    width: 100%;
+    color: white;
+    background-color: #02021C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 54px
+}
+.email__sigin{
+    color: var(--purple);
+    font-size: 1rem;
+}
+.email__sigin:hover{
+    color: var(--purple-input);
+}
+.email__sigin:hover .sigin__arrow{
+    filter: var(--purple-gray-fil);
+}
+.logo{
+    width: 168px;
+    height: 30px;
+}
+
+.logo img{
+    height: 100%;
+    width: 100%;
+}
+
+.derHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width:20%;
+}
+
+.sesion{
+    color:#7B2ABF;
+}
+
+a:hover{
+    transition: 0.2s;
+    color: #7B2ABF;
+    cursor: pointer;
+}
+
+li {
+    display: inline;
+    list-style: none;
+    margin: 1%;
+    font-size: 18px;
+}
+
+.izHeader li{
+    cursor: pointer;
+}
+
+.btn-hidden{
+    display: none !important;
+}
+.btn-drop-menu:hover{
+    color:white;
+}
+
+.btn-sesion-login{
+    position: relative;
+}
+.sigin__arrow{
+    filter: var(--purple-fil);
+    block-size: auto;
+    inline-size: 12px;
+}
+
+.hr-dropdown{
+    margin-left:12px;   
+    border:none;
+    height: 0.5px;
+    background-color: #4b4b4b;
+}
+
+.btn-sesion-login:hover .drop-menu{
+    display: block;
+}
+.btn-singup-nav{
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.btn-login-nav{
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.btn-login-nav:hover{
+    background-color: var(--purple);
+}
+.btn-singup-nav:hover{
+    background-color: var(--purple);
+}
+
+.displayNone{
+    display: none;
+}
+
+.displayBlock{
+    display:block !important;
+}

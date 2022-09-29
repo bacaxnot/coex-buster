@@ -1,5 +1,5 @@
 import prisma from "../helpers/db/db";
-import { ITransactionRepository } from "../models/interfaces/transaction.interface";
+import { ITransactionRepository } from "../helpers/interfaces/transaction.interface";
 import { transactions } from "@prisma/client";
 
 class TransactionRepository implements ITransactionRepository<transactions>{
