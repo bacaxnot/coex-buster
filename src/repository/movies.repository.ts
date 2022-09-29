@@ -1,6 +1,7 @@
 import prisma from "../helpers/db/db";
 import { IMovieRepository } from "../helpers/interfaces/movie.interface";
 import { movies } from "@prisma/client"
+
 class MoviesRepository implements IMovieRepository<movies> {
 
     async getAll(): Promise<movies[]> {
@@ -48,7 +49,7 @@ class MoviesRepository implements IMovieRepository<movies> {
                 }
             }
         })
-        return [count, data, page];
+        return {count, data, page};
     }
 
     async get(id: number): Promise<movies | null> {

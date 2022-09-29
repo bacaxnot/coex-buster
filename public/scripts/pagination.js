@@ -34,9 +34,9 @@ prev.addEventListener('click', () => {
         currentPage--;
         nextPage--;
         // console.log(prevPage, currentPage, nextPage);
-        window.location.replace(`/movies/paginate/${currentPage}`)
+        window.location.replace(`/movies/${currentPage}`)
     }
-
+    
 })
 
 next.addEventListener('click', () => {
@@ -49,10 +49,10 @@ next.addEventListener('click', () => {
         prevPage++;
         // current.innerHTML = currentPage;
         // console.log(prevPage, currentPage, nextPage);
-        window.location.replace(`/movies/paginate/${currentPage}`)
+        window.location.replace(`/movies/${currentPage}`)
     } else {
         console.log("highest limit reached")
         next.classList.add('disabled');
     }
-
+    
 })
