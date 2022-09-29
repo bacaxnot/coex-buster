@@ -8,7 +8,7 @@ class ShoppingController
     {
         const usrid = req.params.id;
         const cookies = Object.keys(req.cookies);
-        if(!cookies.includes('shop')) res.json({code:400, msg:'Empty'}); // Valida si la cookie existe
+        if(!cookies.includes('shop')) res.cookie('shop', []).json({code:400, msg:'Empty'}); // Valida si la cookie existe
         const data = req.cookies.shop;
         const usrInfo = data.filter((element:any) => element['id_user'] == usrid);
         usrInfo.length == 0 ? res.json({code:400, msg:'No orders yet'}) : res.json(usrInfo[0].movies);

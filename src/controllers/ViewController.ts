@@ -38,33 +38,24 @@ class ViewController implements IController<Request, Response>{
         const categories = await MoviesRepository.getAllCategories();
         res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories });
     }
-
+    
     async get(req: Request, res: Response): Promise<void> {
         const id = parseInt(req.params.id);
         const movie = await MoviesRepository.get(id);
         res.json({ movie: movie });
     }
-
     async update(req: Request, res: Response): Promise<void> {
         const id = parseInt(req.params.id);
-
         const movie = await MoviesRepository.update(id, req.body);
-
         res.json(movie);
     }
-
     async delete(req: Request, res: Response): Promise<void> {
         const id = parseInt(req.params.id);
-
         const movie = await MoviesRepository.update(id, req.body);
-
         res.json(movie);
     }
-
     async create(req: Request, res: Response): Promise<void> {
-
         const movie = await MoviesRepository.create(req.body);
-
         res.json(movie);
     }
 
