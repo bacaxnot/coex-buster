@@ -19,6 +19,7 @@ const data = [
 ]
 
 const getInfo = "Después de los eventos devastadores de 'Vengadores: Infinity War', el universo está en ruinas debido a las acciones de Thanos. Con la ayuda de los aliados que quedaron, los Vengadores deberán reunirse una vez más para intentar deshacer sus acciones y restaurar el orden en el universo de una vez por todas, sin importar cuáles sean las consecuencias... Cuarta y última entrega de la saga 'Vengadores'."
+const trailer = "https://www.youtube.com/embed/XJcXjUB0yqY"
 
 router.get('/shop', (req, res) => {
     var movies = [
@@ -36,6 +37,15 @@ router.get('/shop', (req, res) => {
         movies: movies,
     });
 });
+
+router.get('/sesion', (req,res)=>{
+    res.render('components/prueba.ejs', {people:data, info:getInfo, trailer:trailer});
+})
+
+router.get('/movie', (req,res)=>{
+    res.render('layouts/movie-detail.ejs', {people:data, info:getInfo, trailer:trailer});
+})
+
 
 router.get('/history/order', (req, res) => {  //colocarle al order:id
     res.render('layouts/history_order.ejs', {
@@ -144,6 +154,7 @@ router.get('/order', (req, res) => {
         ]
     })
 });
+
 
 
 export default router
