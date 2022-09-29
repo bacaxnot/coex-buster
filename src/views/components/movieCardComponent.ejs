@@ -2,17 +2,17 @@
 
 <div class="mcc-grid__card">
     <figure class="mcc-card__cover">
-        <button class="mcc-go-to-detail" id="<%= movie.id %>">
-            <img 
-                src="<%= movie.path %>"
-                alt="<%= typeof movie.title != 'undefined' ? movie.title : 'untitled' %>"
+        <button class="mcc-go-to-detail" id="<%= id %>">
+            <img
+                src="<%= path %>"
+                alt="<%= typeof title != 'undefined' ? title : 'untitled' %>"
                 class="mcc-card__poster">
             <span class="mcc-card__title">
-                <%= typeof movie.title != 'undefined' ? movie.title : 'untitled' %>
+                <%= typeof title != 'undefined' ? title : 'untitled' %>
             </span>
             <span class="mcc-card__overview">
                 <p class="mcc-card__text">
-                    <%= typeof movie.overview != 'undefined' ? movie.overview : 'overview not found' %>
+                    <%= typeof overview != 'undefined' ? overview : 'overview not found' %>
                 </p>
             </span>
         </button>
@@ -20,31 +20,10 @@
     <div class="mcc-card__table">
         <div class="mcc-table__header">
             <p class="mcc-table__genre">
-                <%= typeof movie.genres != 'undefined' ? movie.genres : 'genres not found' %>
+                <%= typeof genres != 'undefined' ? genres : 'genres not found' %>
             </p>
-            <%- include('./starsComponent.ejs', {vote_average: movie.vote_average}) %>
-        </div>
-        <!-- <div class="mcc-table__btn--add" onclick='addToCart({
-            id: 64,
-            title: "braise",
-            overview: "Nobis unde perferendis qui quo soluta quasi repellendus.",
-            poster_path: "https://loremflickr.com/500/500/people",
-            release_date: "2025-05-19T00:00:00.000Z",
-            popularity: 467,
-            vote_average: 1056,
-            vote_count: 58874,
-            adult: false,
-            language_id: 1,
-            runtime: 162,
-            video_key: "https://loremflickr.com/1024/768/city",
-            movies_categories: [
-            {
-                categories: {
-                name: "thriller"
-                }
-            }
-            ]
-        },)'' id="<%=// id %>">Add To Cart</div> -->
-        <div class="mcc-table__btn--add" onclick='addToCart("<%= Object. %>")' id="<%= movie.id %>">Add To Cart</div>
+            <%- include('./starsComponent.ejs', {vote_average: vote_average}) %>
+        </div> 
+        <div class="mcc-table__btn--add"  id="<%= id %>">Add To Cart</div>
     </div>
 </div>

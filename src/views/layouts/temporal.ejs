@@ -21,7 +21,16 @@
         </div>
         <div id="genre-movies-shop-container"></div>
         <section class="s-grid" id="MovieGalery">
-            <%- include('../components/movieCardComponent.ejs') %>
+            <% result.forEach(row => { %>
+                <%- include('../components/movieCardComponent.ejs', {
+                    id: row.id,
+                    title: row.title,
+                    overview: row.overview,
+                    genres: row.genres,
+                    path: row.path,
+                    vote_average: row.vote_average
+                }) %>
+            <% }) %>
         </section>
     </main>
     <footer class="s-footer">
