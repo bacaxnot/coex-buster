@@ -21,20 +21,31 @@
     <!-- CARDS DE MOVIES -->
     
     <div class="contenedor--movies">
-        <% movies.forEach(function(movie) { %>
-
-
-            <div class="contenedor--movies--card">
-                <%- include('../components/movieCardComponent.ejs', {
-                id: movie.id,
-                title: movie.title,
-                overview: movie.overview,
-                genres: 'hola',
-                path: movie.poster_path,
-                vote_average: movie.vote_average
-            }) %>
-            </div>
-            <% }); %>
+        <% result.forEach(function(row) { %>
+            <% if (row.movies) { %>
+                <div class="contenedor--movies--card">
+                    <%- include('../components/movieCardComponent.ejs', {
+                    id: row.movies.id,
+                    title: row.movies.title,
+                    overview: row.movies.overview,
+                    genres: 'hola',
+                    path: row.movies.poster_path,
+                    vote_average: row.movies.vote_average
+                    }) %>
+                </div>
+            <% } else { %>
+                <div class="contenedor--movies--card">
+                    <%- include('../components/movieCardComponent.ejs', {
+                    id: row.id,
+                    title: row.title,
+                    overview: row.overview,
+                    genres: 'hola',
+                    path: row.poster_path,
+                    vote_average: row.vote_average
+                    }) %>
+                </div>
+            <% } %>
+        <% }); %>
     </div>
 
     <script src="/public/scripts/mainShop.js"></script>
