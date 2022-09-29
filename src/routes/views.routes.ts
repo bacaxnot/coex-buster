@@ -20,5 +20,6 @@ router
     .get('/register', (req, res)=> {
         res.render('layouts/register')
     })
+    .get('/movies/detail/:id', viewController.movieDetail)
 
 export default router;

@@ -20,7 +20,7 @@ class ViewController implements IController<Request, Response>{
         res.render('layouts/shop', { result: movies, categories:categories });
     }
 
-    
+
 
     async getAllBySearch(req: Request, res: Response): Promise<void> {
         const search = req.query.search
@@ -58,6 +58,14 @@ class ViewController implements IController<Request, Response>{
         const movie = await MoviesRepository.create(req.body);
 
         res.json(movie);
+    }
+
+    async movieDetail (req: Request, res:Response): Promise<void>{
+
+        const id = parseInt(req.params.id)
+        const movie = await MoviesRepository.get(id)
+        res.render('layouts/movie-detail.ejs', {detalle:movie});
+        
     }
 
 
