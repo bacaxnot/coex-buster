@@ -1,18 +1,19 @@
 import { Router } from "express";
 import viewController from "../controllers/ViewController";
-import tokenAuthentication from "../helpers/middlewares/tokenAuthentication";
 
 const router: Router = Router();
 
 router
     .get('/', (req: any, res: any) => {
-        res.redirect('/movies/1')
+        res.redirect('/movies')
     })
 
-    .get('/movies/:pag', viewController.getAll)
+    .get('/movies', viewController.getAll)
     .get('/movie/:id')
-    .get('/history', tokenAuthentication)
-    .get('/history/order/:id', tokenAuthentication)
+    .get('/movies/category', viewController.getAllByCategoryId)
+    .get('/movies/search', viewController.getAllBySearch)
+    .get('/history')
+    .get('/history/order/:id')
     .get('/login', (req, res) => {
         res.render('layouts/login')
     })
