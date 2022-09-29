@@ -10,8 +10,8 @@ router
 
     .get('/movies', viewController.getAll)
     .get('/movie/:id')
-    .get('/movie/', viewController.getAllByCategoryId)
-    .get('/prueba', viewController.getAllBySearch)
+    .get('/movies/category', viewController.getAllByCategoryId)
+    .get('/movies/search', viewController.getAllBySearch)
     .get('/history')
     .get('/history/order/:id')
     .get('/login', (req, res) => {
