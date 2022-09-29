@@ -28,7 +28,7 @@
                     id: row.movies.id,
                     title: row.movies.title,
                     overview: row.movies.overview,
-                    genres: 'hola',
+                    genres: row.categories.name,
                     path: row.movies.poster_path,
                     vote_average: row.movies.vote_average
                     }) %>
@@ -39,7 +39,7 @@
                     id: row.id,
                     title: row.title,
                     overview: row.overview,
-                    genres: 'hola',
+                    genres: row.movies_categories,
                     path: row.poster_path,
                     vote_average: row.vote_average
                     }) %>
@@ -48,6 +48,10 @@
         <% }); %>
     </div>
 
+    <div class="contenedor--movies">
+        <% result.forEach(function(row,index) { %>
+            <li><%- row.name %></li>
+        <% }); %>
     <script src="/public/scripts/mainShop.js"></script>
     <script src="/public/scripts/redirectLogin.js"></script>
     <script src="/public/scripts/redirectRegister.js"></script> 

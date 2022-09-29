@@ -4,10 +4,17 @@ import { Request, Response } from "express";
 
 class ViewController implements IController<Request, Response>{
 
-    async getAll(req: Request, res: Response): Promise<void> {           
-        const movies = await MoviesRepository.getAll();
+    async getAll(req: Request, res: Response): Promise<any> {           
+        const movies : any = await MoviesRepository.getAll();
         const categories = await MoviesRepository.getAllCategories();
-
+        movies[1].forEach((element : any, index: any) => {
+            const genres : any = []
+            element.movies_categories.forEach((genre : any) => {
+                genres.push(genre.categories.name)
+            })
+            element.movies_categories = genres
+        })
+        // return res.json(movies[1]);
         res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], categories: categories });
     }
 
@@ -28,7 +35,6 @@ class ViewController implements IController<Request, Response>{
         // console.log(search);
         const movies: any = await MoviesRepository.getAllBySearch(search);
         const categories = await MoviesRepository.getAllCategories();
-        //  res.json(movies);
         res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories});
     }
 
