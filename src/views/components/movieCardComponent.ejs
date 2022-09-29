@@ -5,7 +5,7 @@
         <button class="mcc-go-to-detail" id="<%= id %>">
             <img 
                 src="<%= path %>"
-                alt="<%= typeof movie.title != 'undefined' ? movie.title : 'untitled' %>"
+                alt="<%= typeof title != 'undefined' ? title : 'untitled' %>"
                 class="mcc-card__poster">
             <span class="mcc-card__title">
                 <%= typeof title != 'undefined' ? title : 'untitled' %>
@@ -24,6 +24,6 @@
             </p>
             <%- include('./starsComponent.ejs', {vote_average: vote_average}) %>
         </div>
-        <div class="mcc-table__btn--add" onclick="addMovie(movie)" id="<%= id %>">Add To Cart</div>
+        <div class="mcc-table__btn--add" onclick="addMovie('<% id %>')" id="<%= id %>">Add To Cart</div>
     </div>
 </div>

@@ -23,7 +23,9 @@
     <div class="contenedor--movies">
         <% result.forEach(function(movie) { %>
             <div class="contenedor--movies--card">
-                <%- include('../components/movieCardComponent.ejs', movie) %>
+                <%- include('../components/movieCardComponent.ejs', {
+                    
+                }) %>
             </div>
         <% }); %>
     </div>
