@@ -10,9 +10,12 @@
 
 <div class="s-container">
 
-    <nav-bar><%- include('../components/navbar.ejs') %></nav-bar>
+    <nav-bar> <%- include('../components/navbar.ejs') %></nav-bar>
 
     <main class="s-content">
+        <div class="shoppingCart">
+            <%- include('../components/shoppingCartComponent.ejs') %>
+        </div>
         <div class="s-filter">
             <filter-bar><%- include('../components/search.ejs') %></filter-bar>
         </div>
@@ -22,6 +25,8 @@
     
     <footer class="s-footer">
         <pagination-bar><%- include('../components/paginationComponent.ejs') %></pagination-bar>
+        <!-- <script src="/public/scripts/shoppingCart.js"></script> -->
+
     </footer>
 </div>
 

@@ -111,16 +111,32 @@ router.get('/history/order', (req, res) => {  //colocarle al order:id
 router.get('/', (req, res) => {
     // res.render('index', { message: 'hello world' })
     res.render('layouts/temporal', {
-        id: 176,
-        path: '/ok4ot3YbfDYZcINXf91JUfq3maB.jpg',
-        title: 'Saw',
-        overview: '',
-        genres: [
-            'Horror',
-            'Thriller',
-            'Crime'
-        ],
-        vote_average: 7.4
+        result : [
+            {
+                id: 65,
+                path: '/ok4ot3YbfDYZcINXf91JUfq3maB.jpg',
+                title: 'Saw',
+                overview: '',
+                genres: [
+                    'Horror',
+                    'Thriller',
+                    'Crime'
+                ],
+                vote_average: 7.4
+            },
+            {
+                id: 64,
+                path: '/ok4ot3YbfDYZcINXf91JUfq3maB.jpg',
+                title: 'Saw 2',
+                overview: '',
+                genres: [
+                    'Horror',
+                    'Thriller',
+                    'Crime'
+                ],
+                vote_average: 4
+            }
+        ]
     })
 })
 
@@ -154,6 +170,10 @@ router.get('/order', (req, res) => {
         ]
     })
 });
+
+router.get('/movie/detail', (req, res) => {
+    res.render('layouts/movie-detail')
+})
 
 
 

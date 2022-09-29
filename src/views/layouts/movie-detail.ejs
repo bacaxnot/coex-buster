@@ -1,7 +1,13 @@
 <%- include('../partials/head', {title : 'Movie Detail', style:
 'movieDetail.css'}) %> <%- include('../partials/body') %>
-<nav>navbar</nav>
+<link rel="stylesheet" href="/public/styles/shoppingCart.css">
+<link href="/public/styles/navbar.css" rel="stylesheet">
+<header class="s-header">
+    <nav-bar><%- include('../components/navbar.ejs') %></nav-bar>
+</header>
 <main>
     <%- include('../partials/movie-detail') %>
+    
+   
 </main>
 <%- include('../partials/foot') %>

@@ -11,7 +11,7 @@ declare global {
 }
 
 const tokenAuthentication = async (req:Request, res:Response, next:NextFunction)=>{
-    const token = req.header('x-access-token');
+    const token = req.cookies('x-access-token');
     if (!token) {
         return res.status(401).send('No estas autorizado');
     }
