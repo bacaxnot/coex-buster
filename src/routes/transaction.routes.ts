@@ -9,7 +9,7 @@ router
     .get(transaction_detailController.getOne);
 router
     .route('/history')
-    .get(transaction_detailController.getAll)
+    .get(transactionController.getAll)
 
 router
     .route('/history/order/create')

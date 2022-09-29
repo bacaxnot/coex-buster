@@ -1,5 +1,5 @@
 
-const redirect = document.getElementById("login");
-redirect.addEventListener("click", ( ) =>{
-  window.location.replace('/login');
+const redirectLogin = document.getElementById("login");
+redirectLogin.addEventListener("click", ( ) =>{
+  window.location.href = '/login';
 })

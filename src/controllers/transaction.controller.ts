@@ -13,8 +13,14 @@ class TransactionController implements ITransactionController{
         res.json(query);
     }
     async getAll(req: Request, res:Response): Promise<void> {
-        const records = await transactionRepository.getAll();
-        res.json(records);
+        const result = await transactionRepository.getAll();
+        // res.json(result);
+        result.forEach((element : any) => {
+            element.create_date = new Date(element.create_date).toLocaleString();
+        })
+        res.render('layouts/history_order.ejs', {
+            result : result
+        })
     }
     async create(req: Request, res:Response): Promise<void> {
         const data = req.body;

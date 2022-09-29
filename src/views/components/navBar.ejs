@@ -1,29 +1,33 @@
 <header class="header">
     <div class="izHeader">
-        <a class="logo" href="./index.html">
-            <img src="../../../public/assets/icons/logo_coexbuster.svg" width="80px" alt="">
+        <a class="logo" id="home">
+            <img src="/public/assets/icons/logo_coexbuster.svg" width="80px" alt="">
         </a>
     </div>
-    <div class="categories">
-        <nav class="nav">
-            <ul class="list-categories">
-
-                <li>%- data.name %></li>
-
-                <label for="otherMenu" class="list-item down-list" id="otherItems">
-                    Others
-                    <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
-                </label>
-                <select class="other-categories" name="" id="">
-                    <option value=""><li>%- dataOther.name %></li></option>
-                </select>
-            </ul>
-        </nav>
-    </div>
+    <% if (typeof categories != 'undefined') { %>
+        <div class="categories">
+            <nav class="nav">
+                <ul class="list-categories">
+                    <% categories.forEach(function(cat) { %>
+                        <a href=""><li><%- cat.name %></li></a>
+                    <% }); %>
+                    <label for="otherMenu" class="list-item down-list" id="otherItems">
+                        Others
+                        <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
+                        <select class="other-categories" name="" id="">
+                            <% categories.forEach(function(cat) { %>
+                                <option value=""><li><%- cat.name %></li></option>
+                            <% }); %>
+                        </select>
+                    </label>
+                </ul>
+            </nav>
+        </div>
+    <% } %>
     <div class="derHeader">
         <div class="btn-sesion" id="btn-nosesion-nav">
-            <button id="login-btn" class="btn-login-nav">Log in</button>
-            <button id="singup-btn" class="btn-singup-nav">Sing up</button>
+            <button id="login" class="btn-login-nav">Log in</button>
+            <button id="register" class="btn-singup-nav">Sing up</button>
         </div>
         <!-- <div class="btn-sesion-login " id="btn-sesion-nav">
             <div class="btn-drop-menu">

@@ -6,10 +6,8 @@ class MoviesController implements IController<Request, Response>{
 
     async getAll(req: Request, res: Response): Promise<void> {
         const movies = await MoviesRepository.getAll();
-
         res.json(movies);
     }
-
 
     async getAllByCategory(req: Request, res: Response): Promise<void> {
         let category : any = req.query.category
@@ -45,7 +43,6 @@ class MoviesController implements IController<Request, Response>{
 
     async delete(req: Request, res: Response): Promise<void> {
         const id = parseInt(req.params.id);
-
         const movie = await MoviesRepository.update(id, req.body);
 
         res.json(movie);
