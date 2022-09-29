@@ -1,29 +1,29 @@
 <header class="header">
     <div class="izHeader">
         <a class="logo" id="home">
-            <img src="../../../public/assets/icons/logo_coexbuster.svg" width="80px" alt="">
+            <img src="/public/assets/icons/logo_coexbuster.svg" width="80px" alt="">
         </a>
     </div>
-    <div class="categories">
-        <nav class="nav">
-            <ul class="list-categories">
-
-                <% categories.forEach(function(cat) { %>
-                    <a href=""><li><%- cat.name %></li></a>
-                <% }); %>
-                    
-                <label for="otherMenu" class="list-item down-list" id="otherItems">
-                    Others
-                    <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
-                <select class="other-categories" name="" id="">
+    <% if (typeof categories != 'undefined') { %>
+        <div class="categories">
+            <nav class="nav">
+                <ul class="list-categories">
                     <% categories.forEach(function(cat) { %>
-                        <option value=""><li><%- cat.name %></li></option>
+                        <a href=""><li><%- cat.name %></li></a>
                     <% }); %>
-                </select>
-                </label>
-            </ul>
-        </nav>
-    </div>
+                    <label for="otherMenu" class="list-item down-list" id="otherItems">
+                        Others
+                        <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
+                        <select class="other-categories" name="" id="">
+                            <% categories.forEach(function(cat) { %>
+                                <option value=""><li><%- cat.name %></li></option>
+                            <% }); %>
+                        </select>
+                    </label>
+                </ul>
+            </nav>
+        </div>
+    <% } %>
     <div class="derHeader">
         <div class="btn-sesion" id="btn-nosesion-nav">
             <button id="login" class="btn-login-nav">Log in</button>

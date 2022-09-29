@@ -7,7 +7,7 @@
 }
 
 .od-container {
-    padding-top: 84px;
+    padding-top: 1px;
     position: relative;
     width: 100%;
     padding-bottom: 1rem;
@@ -17,7 +17,7 @@
     cursor: pointer;
     position: absolute;
     right: calc(100% - 50% + 250px);
-    top: 25px;
+    top: 35px;
     background-color: transparent;
     border: none;
 }
