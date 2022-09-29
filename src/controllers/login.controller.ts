@@ -1,7 +1,9 @@
-import { Request, Response } from "express"
+import { Request, Response } from "express";
+import jwt, {Secret} from 'jsonwebtoken';
+import bcrypt from "bcrypt";
+import config from "../config";
 import { IController } from "../helpers/interfaces/crud.interface"
 import usersRepository from "../repository/users.repository"
-import bcrypt from "bcrypt";
 
 
 class LoginController implements IController<Request, Response> {
@@ -11,11 +13,12 @@ class LoginController implements IController<Request, Response> {
         const {email, password} = req.body
         const user = await usersRepository.getEmail(email);
         const result = await bcrypt.compare(password, user.password);
-        console.log(result)
         if(!result){
             res.status(401).send("contraseña incorrecta");
             return 
         }
+        const tokenJwt = jwt.sign({id:user.id}, config.SECRET as Secret);
+        res.setHeader('x-access-token', tokenJwt);
         res.redirect('movies')
     }
 

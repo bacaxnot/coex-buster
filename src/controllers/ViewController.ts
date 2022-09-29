@@ -4,10 +4,11 @@ import { Request, Response } from "express";
 
 class ViewController implements IController<Request, Response>{
 
-    async getAll(req: Request, res: Response): Promise<void> {
-        const movies = await MoviesRepository.getAll();
+    async getAll(req: Request, res: Response): Promise<void> {           
+        const {pag} = req.params;         
+        const movies = await MoviesRepository.getPaginated(pag);
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { movies: movies, categories: categories });
+        res.render('layouts/shop', { paginate: movies.page, movies: movies.data, count: movies.count, categories: categories });
     }
 
     async getAllByCategory(req: Request, res: Response): Promise<void> {

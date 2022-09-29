@@ -4,10 +4,18 @@ import { IController } from "../helpers/interfaces/crud.interface";
 import '../helpers/middlewares/encryptPassword'
 
 
+declare global {
+    namespace Express{
+        interface Request {
+            userId:string
+        }
+    }
+}
+
 class UsersController implements IController<Request, Response>{
 
     async getOne(req: Request, res: Response): Promise<void> {
-        const id = parseInt(req.params.id);
+        const id = parseInt(req.userId);
 
         const user = await UserRepository.get(id);
 
