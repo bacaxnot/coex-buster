@@ -66,18 +66,12 @@ const throwError = (message) => {
 }
 
 const list = document.querySelectorAll('.mcc-table__btn--add');
-// const listTitle = document.querySelectorAll('.mcc-card__title');
-// const listPath = document.querySelectorAll('.mcc-card__poster');
 list.forEach((element, index) => {
 	element.addEventListener('click', () => {
 		const id = element.getAttribute('id');
 		fetch(`http://localhost:3000/api/v1/movies/${id}`)
 		.then((response) => response.json())
 		.then((data) => addToCart(data));
-		// console.log(movie);
-		// console.log(id, index);
-		// console.log(listTitle[index].innerHTML)
-		// console.log(listPath[index].getAttribute('src'));
 	})
 })
 
@@ -89,9 +83,6 @@ list.forEach((element, index) => {
 //funcion para añadir una peli al shopping cart
 const addToCart = async (movie) => {
 	try {
-		// console.log(movieObj)
-
-		// console.log(movieObj.split(","))
 		const indexMovies = moviesInCart.map((movie) => movie.movie.id)
 		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
 		if (!indexMovies.includes(movie.movie.id)) {
@@ -107,22 +98,17 @@ const addToCart = async (movie) => {
 					},
 					body: JSON.stringify({
 					movie,
-				  })
+				})
 				});
-			  
 				if (response.ok) {
-				  const result = await response.json();
-				  console.log(result);
+					const result = await response.json();
+					console.log(result);
 				}
-			  } catch (err) {
+				} catch (err) {
 				console.error(err);
 			}
 
-			openCart()
-			// localStorage.setItem(
-			// 	'shoppingCart',
-			// 	JSON.stringify(moviesInCart)
-			// )
+			// openCart()
 		} else {
 			throwError('Peli repetida')
 			return
