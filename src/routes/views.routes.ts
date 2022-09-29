@@ -17,8 +17,8 @@ router
     .get('/movies/category', viewController.getAllByCategoryId)
     .get('/movies/search', viewController.getAllBySearch)
     // .get('/history', tokenAuthentication)
-    .get('/history', viewController.getHistory)
-    .get('/history/order/:id', viewController.getOrderDetail)
+    .get('/history',  tokenAuthentication, viewController.getHistory)
+    .get('/history/order/:id',  tokenAuthentication, viewController.getOrderDetail)
     .get('/login', (req, res) => {
         res.render('layouts/login')
     })
