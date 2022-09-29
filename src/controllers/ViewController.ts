@@ -11,7 +11,7 @@ class ViewController implements IController<Request, Response>{
     }
 
     async getAllByCategoryId(req: Request, res: Response): Promise<void> {
-        let category: any = req.params.category
+        let category: any = req.query.category
         console.log(category)
         category = parseInt(category)
         const movies : any = await MoviesRepository.getAllByCategoryById(category);
