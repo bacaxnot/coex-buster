@@ -17,6 +17,8 @@ router
     // .get('/history', tokenAuthentication)
     .get('/history', transactionController.getAll)
     .get('/history/order/:id', transaction_detailController.getOne)
+    .get('/movies/category', viewController.getAllByCategoryId)
+    .get('/movies/search', viewController.getAllBySearch)
     .get('/login', (req, res) => {
         res.render('layouts/login')
     })
