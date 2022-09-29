@@ -57,13 +57,13 @@
     .input_login{
         color: white;
         width: 100%;
-        padding: 1rem 0rem 1rem 1rem;
+        padding: 1rem 0rem 0.7rem 1rem;
         border: none;
         font-size: 16px;
         border-radius: 10px;
         background-color: var(--purple-input);
         margin-top: 2%;
-        margin-bottom: 10%;
+        margin-bottom: 8%;
     }
     .input_login:focus{
         outline: none;
@@ -132,7 +132,7 @@
     @media screen and ( max-width: 10250px){
     
         #login{
-            margin-top: 80px;
+            margin-top: 50px;
         }
     
         .login{
