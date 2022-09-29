@@ -9,12 +9,9 @@ router
         res.redirect('/movies/1')
     })
 
-<<<<<<< HEAD
     .get('/movies', viewController.getAll )
     .get('/movies/paginate/:pag', viewController.getPaginate )
-=======
     .get('/movies/:pag', viewController.getAll)
->>>>>>> 07999cc4c299c4e450eb3de5d17cdcedf8742f69
     .get('/movie/:id')
     .get('/history', tokenAuthentication)
     .get('/history/order/:id', tokenAuthentication)
