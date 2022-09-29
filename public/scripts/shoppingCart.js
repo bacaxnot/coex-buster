@@ -89,7 +89,6 @@ const addToCart = async (movie) => {
 			moviesInCart.push(movie)
 			renderMovieInCart(moviesInCart)
 			showCheckoutButton(moviesInCart.length)
-
 			try {
 				const response = await fetch("http://localhost:3000/api/v1/shop/add", {
 					method: 'POST',
@@ -97,7 +96,8 @@ const addToCart = async (movie) => {
 					'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({
-					movie,
+						id_user: 1,
+						movies : movie,
 				})
 				});
 				if (response.ok) {

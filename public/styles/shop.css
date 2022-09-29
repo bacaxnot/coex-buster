@@ -37,7 +37,7 @@ nav-bar {
 
 .s-content{
     padding: 30px 100px;
-    margin-top: 84px;
+
     /* FLEX */
     display: flex;
     flex-direction: column;

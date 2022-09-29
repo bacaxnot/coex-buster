@@ -11,11 +11,12 @@ declare global {
 }
 
 const tokenAuthentication = async (req:Request, res:Response, next:NextFunction)=>{
-    const token = req.header('x-access-token');
-    if (!token) {
+    const {auth} = req.cookies;
+    // console.log(auth)
+    if (!auth) {
         return res.status(401).send('No estas autorizado');
     }
-    const tokenValidated = await jwt.verify(token, config.SECRET as Secret) as JwtPayload;
+    const tokenValidated = await jwt.verify(auth, config.SECRET as Secret) as JwtPayload;
     req.userId = tokenValidated.id
     next();
 }
