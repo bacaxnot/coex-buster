@@ -21,13 +21,11 @@
     <!-- CARDS DE MOVIES -->
     
     <div class="contenedor--movies">
-        <% movies.forEach(function(movie) { %>
-
-
+        <% result.movies.forEach(function(movie) { %>
             <div class="contenedor--movies--card">
                 <%- include('../components/movieCardComponent.ejs', movie) %>
             </div>
-            <% }); %>
+        <% }); %>
     </div>
 
     <script src="/public/scripts/mainShop.js"></script>
