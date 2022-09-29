@@ -19,10 +19,9 @@ class LoginController implements IController<Request, Response> {
         }
         const tokenJwt = jwt.sign({id:user.id}, config.SECRET as Secret);
         res.cookie('auth', tokenJwt, {
-            httpOnly: true,
-            maxAge: 60*60*24,
+            httpOnly: true
         });
-        res.redirect('/movies/1')
+        res.redirect('/movies')
     }
 
     async signUp(req: Request, res: Response): Promise<void> {
