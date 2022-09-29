@@ -7,13 +7,13 @@ class ViewController implements IController<Request, Response>{
     async getAll(req: Request, res: Response): Promise<void> {           
         const movies = await MoviesRepository.getAll();
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { result: movies, categories: categories });
+        res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], categories: categories });
     }
     async getPaginate(req: Request, res: Response): Promise<void> {  
             const pag = req.params.pag;         
             const movies = await MoviesRepository.getPaginated(pag);
             const categories = await MoviesRepository.getAllCategories();
-            res.render('layouts/shop', { paginate: movies[2], movies: movies[1], count: movies[0], categories: categories });
+            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories });
     }
     async getAllByCategory(req: Request, res: Response): Promise<void> {
         let category: any = req.query.category
