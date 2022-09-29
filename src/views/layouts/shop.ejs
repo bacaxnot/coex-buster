@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/public/styles/mainShop.css" type="text/css">
 
 <div class="s-container">
-
-    <nav-bar><%- include('../components/navbar.ejs') %></nav-bar>
+    <nav-bar><%- include('../components/navbar.ejs', movies) %></nav-bar>
 
     <main class="s-content">
         <div class="s-filter">
@@ -18,7 +17,7 @@
         </div>
     </main>
         <div id="genre-movies-shop-container"></div>
-            <%- include('main_shop.ejs') %>
+            <%- include('./main_shop.ejs', movies) %>
     
     <footer class="s-footer">
         <pagination-bar><%- include('../components/paginationComponent.ejs') %></pagination-bar>

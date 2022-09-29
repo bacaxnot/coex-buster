@@ -21,9 +21,7 @@
     <!-- CARDS DE MOVIES -->
     
     <div class="contenedor--movies">
-        <% movies.forEach(function(movie) { %>
-
-
+        <% movies.moviesArr.forEach(function(movie) { %>
             <div class="contenedor--movies--card">
                 <%- include('../components/movieCardComponent.ejs', movie) %>
             </div>

@@ -18,13 +18,6 @@ const showCheckoutButton = (arrLength) => {
 	}
 };
 
-//URL LISTADO DE PELIS
-//https://api.themoviedb.org/4/list/${list_id}?page=1&api_key=dde722cb807472090076a60be85c0010
-//https://api.themoviedb.org/3/discover/movie?with_genres=878&api_key=d2b1df9d64af7fb2a0342bd9d23e1449&language=es-MX&page=2
-
-//URL PELIS POR ID
-//https://api.themoviedb.org/3/movie/${movie_id}?api_key=dde722cb807472090076a60be85c0010&language=en-US
-
 const imageUrl = `https://image.tmdb.org/t/p/w500/`;
 const moviesInCart = [];
 
@@ -38,7 +31,6 @@ window.onload = () => {
 	renderMovieInCart(moviesInCart);
 };
 
-//redirige a LOGIN / MYHISTORY dependiendo de la sesion
 const renderCart = () => {
 	window.location = '/cart/index.html';
 }
@@ -61,9 +53,8 @@ const throwError = (message) => {
 //Obtengo las pelis de la lista numero 1
 
 //funcion para añadir una peli al shopping cart
-const addToCart = async (movieObj) => {
+const addToCart = async (movie) => {
 	try {
-		const movie = movieObj
 		const indexMovies = moviesInCart.map((movie) => movie.id)
 		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
 		if (!indexMovies.includes(movie.id)) {
@@ -86,24 +77,13 @@ const addToCart = async (movieObj) => {
 
 
 
-const cartList = document.querySelector('.cart-list');
+const cartList = document.querySelector('.cart-list')
 
 //renderizar moviesInCart
 const renderMovieInCart = async (moviesArray) => {
 	try {
-		//cambiar 'genres' por los generos que vienen en los objeto de moviesArray
-		// const genres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=dde722cb807472090076a60be85c0010&language=en-US`)
-		// const response = await genres.json()
 		let template = ``;
 		moviesArray.map((movie) => {
-			let genreMovie = '';
-			movie.genres.forEach((genre) => {
-				genreMovie = genre.name
-			// response.genres.forEach((genero) => {
-			// 	if (genero.id === movie.genres[0].id) {
-			// 		genreMovie = genero.name;
-			// 	}
-			});
 			let url = imageUrl + movie.poster_path;
 			const cart = `
 				<div class="cart-item">
@@ -112,7 +92,7 @@ const renderMovieInCart = async (moviesArray) => {
 						src="${url}" alt="movie-img">
 					<div class="cart-info-container">
 						<h2>${movie.title}</h2>
-						<span>${genreMovie}</span>
+						<span>${movie.movies_categories.categories}</span>
 						<star-rating rating="${movie.vote_average}"></star-rating>
 					</div>
 				</div>

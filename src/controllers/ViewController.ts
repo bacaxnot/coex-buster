@@ -5,9 +5,12 @@ import { Request, Response } from "express";
 class ViewController implements IController<Request, Response>{
 
     async getAll(req: Request, res: Response): Promise<void> {
-        const movies = await MoviesRepository.getAll();
-        const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { movies: movies, categories: categories });
+        const moviesArr = await MoviesRepository.getAll();
+        const movies= {
+            moviesArr: await moviesArr,
+        }
+        console.log(movies)
+        res.render('layouts/shop', movies);
     }
 
     async getAllByCategory(req: Request, res: Response): Promise<void> {
