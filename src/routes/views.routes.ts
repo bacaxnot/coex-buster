@@ -9,6 +9,7 @@ router
     })
 
     .get('/movies', viewController.getAll)
+    .get('/movies/paginate/:pag', viewController.getPaginate)
     .get('/movie/:id')
     .get('/history')
     .get('/history/order/:id')
