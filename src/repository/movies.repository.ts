@@ -49,7 +49,7 @@ class MoviesRepository implements IMovieRepository<movies> {
                 }
             }
         })
-        return [count, data, page];
+        return {count, data, page};
     }
 
     async get(id: number): Promise<movies | null> {
@@ -132,8 +132,7 @@ class MoviesRepository implements IMovieRepository<movies> {
     }
 
     async getAllCategories(): Promise<void> {
-        const movies: any = await prisma.categories.findMany({
-        });
+        const movies: any = await prisma.categories.findMany();
         return movies
     }
 
