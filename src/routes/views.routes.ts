@@ -6,7 +6,7 @@ const router: Router = Router();
 
 router
     .get('/', (req: any, res: any) => {
-        res.redirect('/movies/1')
+        res.redirect('/movies')
     })
 
     .get('/movies', viewController.getAll )
