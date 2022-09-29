@@ -82,39 +82,34 @@ list.forEach((element, index) => {
 
 //funcion para añadir una peli al shopping cart
 const addToCart = async (movie) => {
-	try {
-		const indexMovies = moviesInCart.map((movie) => movie.movie.id)
-		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
-		if (!indexMovies.includes(movie.movie.id)) {
-			moviesInCart.push(movie)
-			renderMovieInCart(moviesInCart)
-			showCheckoutButton(moviesInCart.length)
-
-			try {
-				const response = await fetch("http://localhost:3000/api/v1/shop/add", {
-					method: 'POST',
-					headers: {
-					'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({
-					movie,
-				})
-				});
-				if (response.ok) {
-					const result = await response.json();
-					console.log(result);
-				}
-				} catch (err) {
-				console.error(err);
+	const indexMovies = moviesInCart.map((movie) => movie.movie.id)
+	//comprobamos que la pelicula seleccionada no este repetida en moviesCart
+	if (!indexMovies.includes(movie.movie.id)) {
+		moviesInCart.push(movie)
+		renderMovieInCart(moviesInCart)
+		showCheckoutButton(moviesInCart.length)
+		try {
+			const response = await fetch("http://localhost:3000/api/v1/shop/add", {
+				method: 'POST',
+				headers: {
+				'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+				id_user: 1,
+				movies: movie,
+			})
+			});
+			if (response.ok) {
+				const result = await response.json();
+				console.log(result);
 			}
-
-			// openCart()
-		} else {
-			throwError('Peli repetida')
-			return
+			} catch (err) {
+			console.error(err);
 		}
-	} catch (error) {
-		console.error(error)
+		// openCart()
+	} else {
+		throwError('Peli repetida')
+		return
 	}
 };
 
