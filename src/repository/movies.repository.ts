@@ -49,7 +49,7 @@ class MoviesRepository implements IMovieRepository<movies> {
                 }
             }
         })
-        return [count, data, page];
+        return {count, data, page};
     }
 
     async get(id: number): Promise<movies | null> {

@@ -6,11 +6,10 @@ const router: Router = Router();
 
 router
     .get('/', (req: any, res: any) => {
-        res.redirect('/movies')
+        res.redirect('/movies/1')
     })
 
-    .get('/movies', viewController.getAll)
-    .get('/movies/paginate/:pag', viewController.getPaginate)
+    .get('/movies/:pag', viewController.getAll)
     .get('/movie/:id')
     .get('/history', tokenAuthentication)
     .get('/history/order/:id', tokenAuthentication)

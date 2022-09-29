@@ -92,7 +92,7 @@ model movies {
   vote_count         Int?
   adult              Boolean?
   language_id        Int?
-  runtime            Int?                 @db.UnsignedInt
+  runtime            Int?                 @db.UnsignedTinyInt
   video_key          String?              @db.VarChar(50)
   languages          languages?           @relation(fields: [language_id], references: [id], onDelete: Cascade, map: "movies_ibfk_1")
   companies_movies   companies_movies[]
