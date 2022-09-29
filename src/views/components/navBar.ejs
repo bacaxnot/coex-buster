@@ -8,9 +8,9 @@
         <nav class="nav">
             <ul class="list-categories">
 
-                <% //categories.forEach(function(cat) { %>
-                    <!-- <a href=""><li><%- //cat.name %></li></a> -->
-                <% //}); %>
+                <% categories.forEach(function(cat) { %>
+                    <a href="movie?category=<%- cat.id %>"><li><%- cat.name %></li></a>
+                <% }); %>
                     
                 <label for="otherMenu" class="list-item down-list" id="otherItems">
                     Others
@@ -44,3 +44,4 @@
     </div>
 
 </header>
+
