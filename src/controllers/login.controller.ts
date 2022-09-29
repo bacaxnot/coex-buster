@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import jwt, {Secret} from 'jsonwebtoken';
+import bcrypt from "bcrypt";
 import config from "../config";
 import { IController } from "../helpers/interfaces/crud.interface"
 import usersRepository from "../repository/users.repository"
-import bcrypt from "bcrypt";
 
 
 class LoginController implements IController<Request, Response> {
