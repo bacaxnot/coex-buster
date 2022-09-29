@@ -5,7 +5,10 @@ import { movies } from "@prisma/client"
 class MoviesRepository implements IMovieRepository<movies> {
 
     async getAll(): Promise<movies[]> {
+        const count = await prisma.movies.count();
         const data: any = await prisma.movies.findMany({
+            skip: 0,
+            take: 11,
             include: {
                 movies_categories: {
                     select: {
@@ -18,7 +21,35 @@ class MoviesRepository implements IMovieRepository<movies> {
                 }
             }
         })
-        return data
+        return [count, data];
+    }
+
+    async getPaginated(pagination: string): Promise<any> {
+        let page = parseInt(pagination);
+        let skip = 11;
+        if (page <= 1){
+            skip = 0
+        }
+        if(page>2){
+            skip *= page;
+        }
+        const count = await prisma.movies.count();
+        const data: any = await prisma.movies.findMany({
+            skip: skip,
+            take: 11,
+            include: {
+                movies_categories: {
+                    select: {
+                        categories: {
+                            select: {
+                                name: true
+                            }
+                        }
+                    }
+                }
+            }
+        })
+        return [count, data, page];
     }
 
     async get(id: number): Promise<movies | null> {
@@ -92,7 +123,7 @@ class MoviesRepository implements IMovieRepository<movies> {
             where: {
                 category_id: id
             },
-            include:{
+            include: {
                 categories: true,
                 movies: true
             }
