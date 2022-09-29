@@ -7,8 +7,16 @@ class ViewController implements IController<Request, Response>{
     async getAll(req: Request, res: Response): Promise<void> {           
         const movies = await MoviesRepository.getAll();
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: 1 ,movies: movies[1], count: movies[0], categories: categories });
+        res.render('layouts/shop', { paginate: 1 ,result: movies[1], count: movies[0], categories: categories });
+    }
 
+    async getPaginate(req: Request, res: Response): Promise<void> {  
+        const pag = req.params.pag;         
+        const movies = await MoviesRepository.getPaginated(pag);
+        // console.log(movies[2])
+        const categories = await MoviesRepository.getAllCategories();
+        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories });
+        // res.render('layouts/shop', { result: movies, categories: categories });
     }
 
     async getAllByCategoryId(req: Request, res: Response): Promise<void> {
@@ -18,7 +26,7 @@ class ViewController implements IController<Request, Response>{
         const movies : any = await MoviesRepository.getAllByCategoryById(category);
         // const result = movies.map(element => element.movies );
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { result: movies, categories:categories });
+        res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories:categories });
     }
 
     
@@ -32,47 +40,25 @@ class ViewController implements IController<Request, Response>{
         res.render('layouts/shop', { result:movies, categories:categories});
 
     }
-
+    
     async get(req: Request, res: Response): Promise<void> {
         const id = parseInt(req.params.id);
         const movie = await MoviesRepository.get(id);
         res.json({ movie: movie });
     }
-
     async update(req: Request, res: Response): Promise<void> {
         const id = parseInt(req.params.id);
-
         const movie = await MoviesRepository.update(id, req.body);
-
         res.json(movie);
     }
-
     async delete(req: Request, res: Response): Promise<void> {
         const id = parseInt(req.params.id);
-
         const movie = await MoviesRepository.update(id, req.body);
-
         res.json(movie);
     }
-
     async create(req: Request, res: Response): Promise<void> {
-
         const movie = await MoviesRepository.create(req.body);
-
         res.json(movie);
-    }
-    async getPaginate(req: Request, res: Response): Promise<void> {  
-            const pag = req.params.pag;
-            const movies = await MoviesRepository.getPaginated(pag);
-            const categories = await MoviesRepository.getAllCategories();
-            res.render('layouts/shop', { paginate: movies[2], movies: movies[1], count: movies[0], categories: categories });
-    }
-
-    async getAllByCategory(req: Request, res: Response): Promise<void> {
-        let category: any = req.query.category
-        category = parseInt(category)
-        const categories = await MoviesRepository.getAllByCategoryById(category);
-        res.render('layouts/shop', { categories: categories });
     }
 }
 export default new ViewController();

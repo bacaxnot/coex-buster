@@ -95,9 +95,9 @@ const addToCart = async (movie) => {
 				'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
-				id_user: 1,
-				movies: movie,
-			})
+					id_user: 1,
+					movies: movie,
+				})
 			});
 			if (response.ok) {
 				const result = await response.json();
