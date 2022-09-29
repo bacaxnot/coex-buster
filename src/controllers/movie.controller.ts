@@ -43,7 +43,6 @@ class MoviesController implements IController<Request, Response>{
 
     async delete(req: Request, res: Response): Promise<void> {
         const id = parseInt(req.params.id);
-
         const movie = await MoviesRepository.update(id, req.body);
 
         res.json(movie);
