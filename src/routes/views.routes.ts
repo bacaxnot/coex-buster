@@ -11,6 +11,7 @@ router
     .get('/movies', viewController.getAll)
     .get('/movie/:id')
     .get('/movie/:category', viewController.getAllByCategoryId)
+    .get('/prueba', viewController.getAllBySearch)
     .get('/history')
     .get('/history/order/:id')
     .get('/login', (req, res) => {
