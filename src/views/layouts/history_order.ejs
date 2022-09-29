@@ -2,41 +2,27 @@
 
 <link rel="stylesheet" href="/public/styles/history.css" type="text/css">
 <link rel="stylesheet" href="/public/styles/orderComponent.css">
+<link rel="stylesheet" href="/public/styles/backButton.css">
+<link href="/public/styles/navbar.css" rel="stylesheet">
 
 <%- include('../partials/body') %>
 
-<div id="app">
-    <div class="header">
-        <!-- AGREGAR COMPONENTE DE HEADER EN ESTE BLOQUE-->
-        <div class="header-container">
-            <div class="header-logo">
-                <a href="">
-                    <img src="/public/assets/icons/logo_coexbuster.svg">
-                </a>
-                <a href="">
-                    <img src="/public/assets/icons/icon_shopping_cart_notification.svg">
-                </a>
+<%- include('../components/navbar.ejs') %>
+
+<div class="contenedor__history">
+    <section class="history__section">
+        <%- include('../components/backButton.ejs') %>
+        <div class="history__section--orders">
+            <span class="history__section--orders--word">My orders</span>
+            <div class="history__section--orders--shopping" id="historyShopping">
+                <!-- ${movie} -->
+                <div><%- include('../components/orderComponent.ejs'); %></div>
             </div>
         </div>
-    </div>
-
-    <div class="contenedor__history">
-
-        <section class="history__section">
-            <a href="/test/shop">
-                <img class="history__flecha--retroceso" src="/public/assets/icons/back-arrow-comb2.svg">
-            </a>
-            <div class="history__section--orders">
-                <span class="history__section--orders--word">My orders</span>
-                <div class="history__section--orders--shopping" id="historyShopping">
-                    <!-- ${movie} -->
-                    <div><%- include('../components/orderComponent.ejs'); %></div>
-                </div>
-            </div>
-        </section>
-    </div>
+    </section>
 </div>
 
 <script src="/public/scripts/orderComponent.js"></script>
+<script src="/public/scripts/backButton.js"></script>
 
 <%- include('../partials/foot') %>
