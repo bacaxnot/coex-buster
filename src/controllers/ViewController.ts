@@ -125,6 +125,7 @@ class ViewController implements IController<Request, Response>{
                     }
                     const result = await transactions_detailRepository.create(data);
                 })
+                res.cookie('shop', []);
                 res.redirect('/history')
                 return
             }
