@@ -22,7 +22,7 @@
             <% if (typeof genres == 'object' || typeof genres == 'array') { %>
                 <p class="mcc-table__genre" title="<%=  genres.join(', ') %>">
                     <% for( let index = 0; index < 2; index++ ) { %>
-                        <% if (genres.length == 1) { %>
+                        <% if (genres.length <= 1) { %>
                             <%= genres[index] %>
                         <% } else { %>
                             <%= (index < 1) ? genres[index] + ', ' : genres[index] %>
