@@ -1,13 +1,26 @@
 <%- include('../partials/head', {title : 'Movie Detail', style:
-'movieDetail.css'}) %> <%- include('../partials/body') %>
+'movieDetail.css'}) %> 
+
 <link rel="stylesheet" href="/public/styles/shoppingCart.css">
 <link href="/public/styles/navbar.css" rel="stylesheet">
-<header class="s-header">
-    <nav-bar><%- include('../components/navbar.ejs') %></nav-bar>
-</header>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.6.6/glider.css" integrity="sha512-rEnjEH5u8xKS8NLcXC4nuZwT89x+tMB19ddbolNGE7DTl6o3JEo11kHAwryLlALFnxdONjO4xVpjunLWdiZR1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<%- include('../partials/body') %>
+
+<%- include('../components/navbar.ejs') %>
+
 <main>
     <%- include('../partials/movie-detail') %>
-    
-   
 </main>
+
+<script src="/public/scripts/infoSwitcher.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.6.6/glider.min.js" integrity="sha512-RidPlemZ+Xtdq62dXb81kYFycgFQJ71CKg+YbKw+deBWB0TLIqCraOn6k0CWDH2rGvE1a8ruqMB+4E4OLVJ7Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.6.6/glider.min.js" integrity="sha512-RidPlemZ+Xtdq62dXb81kYFycgFQJ71CKg+YbKw+deBWB0TLIqCraOn6k0CWDH2rGvE1a8ruqMB+4E4OLVJ7Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/public/scripts/carousel.js" type="module"></script>
+
 <%- include('../partials/foot') %>

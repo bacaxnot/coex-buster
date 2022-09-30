@@ -1,57 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <link rel="stylesheet" href="/public/styles/mainShop.css" type="text/css">
-</head>
-
-<body>
-    <div>
-        <!-- AQUI VA EL COMPONENTE HEADER -->
-    </div>
-
-    <div>
-        <!-- AQUI VA EL COMPONENTE BUSCADOR -->
-    </div>
-
-    <!-- CARDS DE MOVIES -->
-    
-    <div class="contenedor--movies">
-        <% result.forEach(function(row) { %>
-            <% if (row.movies) { %>
-                <div class="contenedor--movies--card">
-                    <%- include('../components/movieCardComponent.ejs', {
-                    id: row.movies.id,
-                    title: row.movies.title,
-                    overview: row.movies.overview,
-                    genres: 'hola',
-                    path: row.movies.poster_path,
-                    vote_average: row.movies.vote_average
-                    }) %>
-                </div>
-            <% } else { %>
-                <div class="contenedor--movies--card">
-                    <%- include('../components/movieCardComponent.ejs', {
-                    id: row.id,
-                    title: row.title,
-                    overview: row.overview,
-                    genres: 'hola',
-                    path: row.poster_path,
-                    vote_average: row.vote_average
-                    }) %>
-                </div>
-            <% } %>
-        <% }); %>
-    </div>
-
-    <script src="/public/scripts/mainShop.js"></script>
-    <script src="/public/scripts/redirectLogin.js"></script>
-    <script src="/public/scripts/redirectRegister.js"></script> 
-    
-</body>
-
-</html>
+<div class="contenedor--movies">
+    <% result.forEach(function(row) { %>
+        <% if (row.movies) { %>
+            <div class="contenedor--movies--card">
+                <%- include('../components/movieCardComponent.ejs', {
+                id: row.movies.id,
+                title: row.movies.title,
+                overview: row.movies.overview,
+                genres: row.categories.name,
+                path: row.movies.poster_path,
+                vote_average: row.movies.vote_average
+                }) %>
+            </div>
+        <% } else { %>
+            <div class="contenedor--movies--card">
+                <%- include('../components/movieCardComponent.ejs', {
+                id: row.id,
+                title: row.title,
+                overview: row.overview,
+                genres: row.movies_categories,
+                path: row.poster_path,
+                vote_average: row.vote_average
+                }) %>
+            </div>
+        <% } %>
+    <% }); %>
+</div>

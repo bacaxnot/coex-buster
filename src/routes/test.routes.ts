@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import MoviesRepository from '../repository/movies.repository'
 
 const router: Router = Router();
 
@@ -44,6 +45,16 @@ router.get('/sesion', (req,res)=>{
 
 router.get('/movie', (req,res)=>{
     res.render('layouts/movie-detail.ejs', {people:data, info:getInfo, trailer:trailer});
+})
+
+router.get('/movie/:id', async (req,res)=>{
+
+    const id = parseInt(req.params.id)
+    const movie = await MoviesRepository.get(id)
+    //res.send(movie)
+    res.render('layouts/movie-detail.ejs', {detalle:movie});
+    //res.render('components/carousel.ejs', {detalle:movie});
+    
 })
 
 
