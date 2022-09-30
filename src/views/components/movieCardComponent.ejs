@@ -19,9 +19,21 @@
     </figure>
     <div class="mcc-card__table">
         <div class="mcc-table__header">
-            <p class="mcc-table__genre">
-                <%= typeof genres != 'undefined' ? genres : 'genres not found' %>
-            </p>
+            <% if (typeof genres == 'object' || typeof genres == 'array') { %>
+                <p class="mcc-table__genre" title="<%=  genres.join(', ') %>">
+                    <% for( let index = 0; index < 2; index++ ) { %>
+                        <% if (genres.length == 1) { %>
+                            <%= genres[index] %>
+                        <% } else { %>
+                            <%= (index < 1) ? genres[index] + ', ' : genres[index] %>
+                        <% } %>
+                    <% } %>
+                </p>
+            <% } else { %>
+                <p class="mcc-table__genre" title="<%=  genres %>">
+                    <%= genres %>
+                </p>
+            <% } %>
             <%- include('./starsComponent.ejs', {vote_average: vote_average}) %>
         </div> 
         <div class="mcc-table__btn--add"  id="<%= id %>">Add To Cart</div>

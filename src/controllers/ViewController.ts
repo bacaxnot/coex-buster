@@ -4,15 +4,22 @@ import { IController } from "../helpers/interfaces/crud.interface";
 import { Request, Response } from "express";
 import transactionRepository from "../repository/transaction.repository";
 import transactions_detailRepository from "../repository/transactions_detail.repository";
+import actorsRepository from "../repository/actors.repository";
 
 class ViewController implements IController<Request, Response>{
 
-    async getAll(req: Request, res: Response): Promise<void> {        
-        const user = req.user; 
-        const movies = await MoviesRepository.getAll();
+    async getAll(req: Request, res: Response): Promise<void> {
+        const user = req.user;           
+        const movies : any = await MoviesRepository.getAll();
         const categories = await MoviesRepository.getAllCategories();
-        console.log(user); 
-        res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], categories: categories, user: user});
+        movies[1].forEach((element : any, index: any) => {
+            const genres : any = []
+            element.movies_categories.forEach((genre : any) => {
+                genres.push(genre.categories.name)
+            })
+            element.movies_categories = genres
+        })
+        res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], categories: categories, user:user });
     }
 
     async getAllByCategoryId(req: Request, res: Response): Promise<void> {
@@ -25,8 +32,6 @@ class ViewController implements IController<Request, Response>{
         console.log(user); 
         res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories: categories, user: user});
     }
-
-    
 
     async getAllBySearch(req: Request, res: Response): Promise<void> {
         const search = req.query.search
@@ -65,6 +70,18 @@ class ViewController implements IController<Request, Response>{
         const movie = await MoviesRepository.create(req.body);
         res.json(movie);
     }
+
+    async movieDetail (req: Request, res:Response): Promise<void>{
+
+        const id = parseInt(req.params.id)
+        const movie = await MoviesRepository.get(id)
+        const actors = await actorsRepository.getAll(id)
+       
+       
+       res.render('layouts/movie-detail.ejs', {detalle:movie, actors: actors});
+        
+    }
+
 
     async getHistory(req: Request, res:Response): Promise<void> {
         const {user} = req;

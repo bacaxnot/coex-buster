@@ -6,7 +6,7 @@
                 id: row.movies.id,
                 title: row.movies.title,
                 overview: row.movies.overview,
-                genres: 'hola',
+                genres: row.categories.name,
                 path: row.movies.poster_path,
                 vote_average: row.movies.vote_average
                 }) %>
@@ -17,7 +17,7 @@
                 id: row.id,
                 title: row.title,
                 overview: row.overview,
-                genres: 'hola',
+                genres: row.movies_categories,
                 path: row.poster_path,
                 vote_average: row.vote_average
                 }) %>

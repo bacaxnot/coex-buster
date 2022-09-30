@@ -1,6 +1,3 @@
-body {
-    background-color: var(--purple-bg);
-}
 
 /*************** HOME MOVIES *************/
 .contenedor--movies {
@@ -11,7 +8,7 @@ body {
 }
 
 .contenedor--movies--card {
-    width: 300px;
+    width: fit-content;
     text-align: center;
     margin: auto;
 /*     background: linear-gradient(to top, #02021C, #02021C60 100%, #110E3500); */

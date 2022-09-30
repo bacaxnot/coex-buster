@@ -20,6 +20,7 @@ class MoviesRepository implements IMovieRepository<movies> {
                 }
             }
         })
+
         return [count, data];
     }
 
@@ -64,6 +65,10 @@ class MoviesRepository implements IMovieRepository<movies> {
                                 name: true
                             }
                         }
+                    }
+                }, languages: {
+                    select:{
+                        name:true
                     }
                 }
             }
