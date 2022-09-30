@@ -5,7 +5,7 @@ const inputPassword2 = document.getElementById('passwordComfirm');
 formulario.addEventListener('submit', (e) => {
     e.preventDefault()
     if(inputPassword1.value !== inputPassword2.value){
-        console.log("error pass");
+        console.log("error pass: ", inputPassword1.value, inputPassword2.value);
         Swal.fire({
             icon: 'error',
             title: 'Oops...',

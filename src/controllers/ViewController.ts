@@ -10,13 +10,11 @@ class ViewController implements IController<Request, Response>{
 
     renderLogin(req: Request, res: Response){
         const user = req.user
-        console.log(`Este es el usuario que le voy a mandar ${user.id} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
         res.render('layouts/login', {path:req.originalUrl, user:user})
     }
 
     renderRegister(req:Request, res:Response){
         const user = req.user
-        console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
         res.render('layouts/register', {path:req.originalUrl, user:user})
     }
 
@@ -34,7 +32,6 @@ class ViewController implements IController<Request, Response>{
                 })
                 element.movies_categories = genres
             })
-            console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl}`)
             res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], id:id , categories: categories, user:user, path: req.originalUrl});
         } catch (error) {
             res.render('layouts/error', {error: error})
