@@ -122,8 +122,18 @@ class MoviesRepository implements IMovieRepository<movies> {
         return movie;
     }
 
-    async getAllByCategoryById(id: number): Promise<void> {
+    async getAllByCategoryById(id: number,pagination: string): Promise<any> {
+        let page = parseInt(pagination);
+        let skip = 11;
+        if (page <= 1){
+            skip = 0
+        }
+        if(page>2){
+            skip *= page;
+        }
         const movies: any = await prisma.movies_categories.findMany({
+            skip: skip,
+            take: 11,
             where: {
                 category_id: id
             },
@@ -132,7 +142,14 @@ class MoviesRepository implements IMovieRepository<movies> {
                 movies: true
             }
         });
-        return movies
+        //saber cuantas peliculas tengo que listar
+        const count: any = await prisma.movies_categories.count({
+            where: {
+                category_id: id
+            }
+        });
+
+        return [count, movies, page, id];
     }
 
     async getAllCategories(): Promise<void> {
@@ -140,7 +157,15 @@ class MoviesRepository implements IMovieRepository<movies> {
         return movies
     }
 
-    async getAllBySearch(name: any):  Promise<movies[]> {
+    async getAllBySearch(name: any,pagination: string):  Promise<movies[]> {
+        let page = parseInt(pagination);
+        let skip = 11;
+        if (page <= 1){
+            skip = 0
+        }
+        if(page>2){
+            skip *= page;
+        }
         const count = await prisma.movies.count({
             where: {
                 title: {
@@ -149,7 +174,7 @@ class MoviesRepository implements IMovieRepository<movies> {
             }
         });
         const movies: any = await prisma.movies.findMany({
-            skip: 0,
+            skip: skip,
             take: 11,
             where: {
                 title: {
@@ -157,7 +182,7 @@ class MoviesRepository implements IMovieRepository<movies> {
                 }
             }
         });
-        return [count, movies];
+        return [count, movies,page];
     }
 }
 
