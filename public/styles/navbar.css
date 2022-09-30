@@ -10,14 +10,31 @@ li, a{
 }
 
 .email__sigin{
+    position: relative;
+    background: transparent;
+    border: none;
     color: var(--purple);
     font-size: 1rem;
 }
-.email__sigin:hover{
-    color: var(--purple-input);
+.email__sigin>option {
+    color: var(--purple);
+    background-color: var(--purple-input);
 }
-.email__sigin:hover .sigin__arrow{
-    filter: var(--purple-gray-fil);
+.email-menu {
+    padding: 10px;
+    border: .2px solid white;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    background-color: var(--purple-input);
+}
+.user-correo:hover{
+    background: white;
+}
+
+.show-hidden {
+    display: block;
 }
 
 .logo img{
@@ -61,12 +78,6 @@ header{
 .email__sigin{
     color: var(--purple);
     font-size: 1rem;
-}
-.email__sigin:hover{
-    color: var(--purple-input);
-}
-.email__sigin:hover .sigin__arrow{
-    filter: var(--purple-gray-fil);
 }
 .logo{
     width: 168px;

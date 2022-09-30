@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import config from "../config";
 import { IController } from "../helpers/interfaces/crud.interface"
 import usersRepository from "../repository/users.repository"
+import cookieParser from "cookie-parser";
 
 
 class LoginController implements IController<Request, Response> {
@@ -33,6 +34,11 @@ class LoginController implements IController<Request, Response> {
         const data = await usersRepository.create({id, name, email, password})
         res.redirect('/login')
         console.log("se creo usuario");
+    }
+
+    async logOut(req: Request, res: Response): Promise<void>{
+        res.clearCookie('auth')
+        res.send('cookie borrada')
     }
 }
 
