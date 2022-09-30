@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import config from "../config";
 import { IController } from "../helpers/interfaces/crud.interface"
 import usersRepository from "../repository/users.repository"
+import Swal from 'sweetalert2'
 
 
 class LoginController implements IController<Request, Response> {
@@ -19,13 +20,15 @@ class LoginController implements IController<Request, Response> {
         }
         const tokenJwt = jwt.sign({id:user.id}, config.SECRET as Secret);
         res.setHeader('x-access-token', tokenJwt);
-        res.redirect('movies')
+        res.redirect('../../movies')
     }
 
     async signUp(req: Request, res: Response): Promise<void> {
-        const {id, name, email, password} = req.body
+        const {id, name, email, password, passwordComfirm} = req.body
+        console.log(password, passwordComfirm)
         const data = await usersRepository.create({id, name, email, password})
-        res.json(data)
+        res.redirect('/login')
+        console.log("se creo usuario");
     }
 }
 
