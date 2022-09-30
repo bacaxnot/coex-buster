@@ -130,7 +130,7 @@
 .error-bar {
     right: 45%;
     position: fixed;
-    background: red;
+    background: var(--red-warning);
     padding: 5px 10px;
     border-radius: 10px;
     bottom: 20px;

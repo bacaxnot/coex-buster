@@ -128,7 +128,9 @@ class ViewController implements IController<Request, Response>{
                     console.log(result);
                 })
                 res.redirect('/history')
+                return
             }
+            res.redirect('/login')
         } catch (error : any) {
             res.render('layouts/error', {error: error})
         }
