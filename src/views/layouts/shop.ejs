@@ -7,10 +7,12 @@
 <link href="/public/styles/starsComponent.css" rel="stylesheet">
 <link href="/public/styles/movieCardComponent.css" rel="stylesheet">
 <link rel="stylesheet" href="/public/styles/mainShop.css" type="text/css">
+<link rel="stylesheet" href="/public/styles/paginationComponent.css" >
+<link rel="stylesheet" href="/public/styles/shoppingCart.css">
 
 <div class="s-container">
 
-    <nav-bar> <%- include('../components/navbar.ejs') %></nav-bar>
+    <%- include('../components/navBar.ejs', {user}) %>
 
     <main class="s-content">
         <div class="shoppingCart">
@@ -20,16 +22,16 @@
             <filter-bar><%- include('../components/search.ejs') %></filter-bar>
         </div>
     </main>
-        <div id="genre-movies-shop-container"></div>
-            <%- include('main_shop.ejs') %>
-            
-    
+    <%- include('main_shop.ejs') %>
     <footer class="s-footer">
-        <pagination-bar><%- include('../components/paginationComponent.ejs') %></pagination-bar>
-        <!-- <script src="/public/scripts/shoppingCart.js"></script> -->
-
+        <%- include('../components/paginationComponent.ejs') %>
     </footer>
 </div>
 
+<script src="/public/scripts/checkButton.js"></script>
+<script src="/public/scripts/redirectLogin.js"></script>
+<script src="/public/scripts/redirectRegister.js"></script>
+<script src="/public/scripts/pagination.js"></script>
+<script src="/public/scripts/shoppingCart.js"></script>
 
 <%- include('../partials/foot') %>

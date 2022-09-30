@@ -17,12 +17,11 @@ class LoginController implements IController<Request, Response> {
             res.status(401).send("contraseña incorrecta");
             return 
         }
-        const tokenJwt = jwt.sign({id:user.id}, config.SECRET as Secret);
-        res.cookie('x-access-token', tokenJwt, {
-            httpOnly: true,
-            maxAge: 60*60*24,
+        const tokenJwt = jwt.sign({user:user}, config.SECRET as Secret);
+        res.cookie('auth', tokenJwt, {
+            httpOnly: true
         });
-        res.redirect('/movies/1')
+        res.redirect('/movies')
     }
 
     async signUp(req: Request, res: Response): Promise<void> {
