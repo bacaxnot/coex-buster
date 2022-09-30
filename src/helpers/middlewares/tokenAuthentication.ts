@@ -26,7 +26,7 @@ const tokenAuthentication = (req:Request, res:Response, next:NextFunction)=>{
     }
     if(auth){
         const tokenValidated = jwt.verify(auth, config.SECRET as Secret) as JwtPayload;
-        req.user = tokenValidated.user
+        req.user = tokenValidated.user as user;
         return next();
     }
     req.user = {

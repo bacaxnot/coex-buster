@@ -1,5 +1,4 @@
 import MoviesRepository from "../repository/movies.repository";
-import usersRepository from "../repository/users.repository";
 import { IController } from "../helpers/interfaces/crud.interface";
 import { Request, Response } from "express";
 import UserRepository from "../repository/users.repository";
@@ -9,8 +8,20 @@ import actorsRepository from "../repository/actors.repository";
 
 class ViewController implements IController<Request, Response>{
 
+    renderLogin(req: Request, res: Response){
+        const user = req.user
+        console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
+        res.render('layouts/login', {path:req.originalUrl, user:user})
+    }
+
+    renderRegister(req:Request, res:Response){
+        const user = req.user
+        console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
+        res.render('layouts/register', {path:req.originalUrl, user:user})
+    }
+
     async getAll(req: Request, res: Response): Promise<void> {
-        const user = req.user;           
+        const user = req.user         
         const movies : any = await MoviesRepository.getAll();
         const categories = await MoviesRepository.getAllCategories();
         movies[1].forEach((element : any, index: any) => {
@@ -20,63 +31,43 @@ class ViewController implements IController<Request, Response>{
             })
             element.movies_categories = genres
         })
-        res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], categories: categories, user:user });
+        console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl}`)
+        res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], categories: categories, user:user, path: req.originalUrl });
     }
 
     async getAllByCategoryId(req: Request, res: Response): Promise<void> {
         let category: any = req.query.category
-        console.log(category)
         category = parseInt(category)
-        const user = req.user;  
+        const user = req.user 
         const movies : any = await MoviesRepository.getAllByCategoryById(category);
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories: categories, user: user});
+        res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories: categories, user: user, path: req.originalUrl});
     }
 
     async getAllBySearch(req: Request, res: Response): Promise<void> {
         const search = req.query.search
-        const user = req.user; 
+        const user = req.user
         const movies: any = await MoviesRepository.getAllBySearch(search);
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, user: user});
+        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, user: user, path: req.originalUrl});
     }
 
     async getPaginate(req: Request, res: Response): Promise<void> { 
         const pag = req.params.pag;         
-        const user = req.user; 
+        const user = req.user
         const movies = await MoviesRepository.getPaginated(pag);
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, user: user});
-    }
-    
-    async get(req: Request, res: Response): Promise<void> {
-        const id = parseInt(req.params.id);
-        const movie = await MoviesRepository.get(id);
-        res.json({ movie: movie });
-    }
-    async update(req: Request, res: Response): Promise<void> {
-        const id = parseInt(req.params.id);
-        const movie = await MoviesRepository.update(id, req.body);
-        res.json(movie);
-    }
-    async delete(req: Request, res: Response): Promise<void> {
-        const id = parseInt(req.params.id);
-        const movie = await MoviesRepository.update(id, req.body);
-        res.json(movie);
-    }
-    async create(req: Request, res: Response): Promise<void> {
-        const movie = await MoviesRepository.create(req.body);
-        res.json(movie);
+        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, user: user, path: req.originalUrl});
     }
 
     async movieDetail (req: Request, res:Response): Promise<void>{
-
+        const user = req.user
         const id = parseInt(req.params.id)
         const movie = await MoviesRepository.get(id)
         const actors = await actorsRepository.getAll(id)
        
        
-       res.render('layouts/movie-detail.ejs', {detalle:movie, actors: actors});
+       res.render('layouts/movie-detail.ejs', {detalle:movie, actors: actors, path: req.originalUrl, user});
         
     }
 
@@ -126,24 +117,30 @@ class ViewController implements IController<Request, Response>{
     }
 
     async getHistory(req: Request, res:Response): Promise<void> {
+        const user = req.user
         const {id} = req.user;
         const result : any = await transactionRepository.get(id);
         result.forEach((element : any) => {
             element.create_date = new Date(element.create_date).toLocaleString();
         })
         res.render('layouts/history_order.ejs', {
-            result : result
+            result : result,
+            path: req.originalUrl,
+            user
         })
     }
 
     async getOrderDetail(req: Request, res:Response): Promise<void> {
         const id = parseInt(req.params.id);
+        const user = req.user
         const result : any = await transactions_detailRepository.get(id);
         result.forEach((element : any) => {
             element.transactions.create_date = new Date(element.transactions.create_date).toLocaleString();
         })
         res.render('layouts/orderDetail', {
-            products : result
+            products : result,
+            path: req.originalUrl,
+            user
         })
     }
 }

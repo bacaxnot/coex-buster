@@ -19,7 +19,8 @@ class LoginController implements IController<Request, Response> {
         }
         const tokenJwt = jwt.sign({user:user}, config.SECRET as Secret);
         res.cookie('auth', tokenJwt, {
-            httpOnly: true
+            httpOnly: true,
+            expires: new Date(Date.now() + 60*60*24)
         });
         res.redirect('/movies')
     }
