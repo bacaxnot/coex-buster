@@ -9,19 +9,21 @@ import actorsRepository from "../repository/actors.repository";
 class ViewController implements IController<Request, Response>{
 
     renderLogin(req: Request, res: Response){
-        const user = JSON.stringify(req.user)
-        console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
+        const user = req.user
+        console.log(`Este es el usuario que le voy a mandar ${user.id} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
         res.render('layouts/login', {path:req.originalUrl, user:user})
     }
 
     renderRegister(req:Request, res:Response){
-        const user = JSON.stringify(req.user)
+        const user = req.user
         console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
         res.render('layouts/register', {path:req.originalUrl, user:user})
     }
 
     async getAll(req: Request, res: Response): Promise<void> {
-        const user = req.user         
+        const user = req.user       
+        const id = 0;
+        console.log(typeof id)
         const movies : any = await MoviesRepository.getAll();
         const categories = await MoviesRepository.getAllCategories();
         movies[1].forEach((element : any, index: any) => {
@@ -32,7 +34,7 @@ class ViewController implements IController<Request, Response>{
             element.movies_categories = genres
         })
         console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl}`)
-        res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], categories: categories, user:user, path: req.originalUrl, id:0 });
+        res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], id:id , categories: categories, user:user, path: req.originalUrl});
     }
 
     async getAllByCategoryId(req: Request, res: Response): Promise<void> {
@@ -42,7 +44,7 @@ class ViewController implements IController<Request, Response>{
         const user = req.user 
         const movies : any = await MoviesRepository.getAllByCategoryById(category, pag);
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories: categories, user: user, path: req.originalUrl, id:0});
+        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, id: movies[3], user: user, path: req.originalUrl});
     }
 
     async getPaginate(req: Request, res: Response): Promise<void> {  

@@ -18,7 +18,7 @@ const adminRoutes = (app:Express)=>{
     app.use('/api/v1', shoppingRouter)
     app.use('/api/v1', actorsRouter);
     app.use('/test', testRouter);
-    app.use('*', errorRouter);
+    // app.use('*', errorRouter);
 }
 
 export default adminRoutes;

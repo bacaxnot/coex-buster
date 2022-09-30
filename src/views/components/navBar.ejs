@@ -30,30 +30,30 @@
             </nav>
         </div>
     <% } %>
-    <div class="derHeader"
-        <% if(user == 0){ %> 
-        <div class="btn-sesion" id="btn-nosesion-nav">
-            <button id="login" class="btn-login-nav">Log in</button>
-            <button id="register" class="btn-singup-nav">Sing up</button>
-        </div>
-        <% } else { %>
-         
-        <div class="btn-sesion-login " id="btn-sesion-nav">
-            <div class="btn-drop-menu">
-                <button class="email__sigin" type="button" id='sigin_arrow' >
-                    <label class="user-correo"><%= user.email%></label>
-                    <img src="../../../public/assets/icons/arrow_down_black.svg" alt="" width="18px" heigth="27" class="sigin__arrow">
-                </button>
-            </div> 
-        </div>
-        <%}%>
-        <drop-menu id="drop-menu" class="displayNone"></drop-menu>
+    <div class="derHeader">
+        <% if (path!=="/login"&& path!== '/register') { %>
+            <% if(user.id == 0){ %> 
+                <%= console.log("hola mundo 3") %> 
+                <div class="btn-sesion-hidden" id="btn-nosesion-nav btn-hidden">
+                    <button id="login" class="btn-login-nav">Log in</button>
+                    <button id="register" class="btn-singup-nav">Sing up</button>
+                </di>
+
+            <% } else { %>
+            
+                <div class="btn-sesion-login " id="btn-sesion-nav">
+                    <div class="btn-drop-menu">
+                        <button class="email__sigin" type="button" id='sigin_arrow' >
+                            <label class="user-correo"><%= user.email%></label>
+                            <img src="../../../public/assets/icons/arrow_down_black.svg" alt="" width="18px" heigth="27" class="sigin__arrow">
+                        </button>
+                    </div> 
+                </div>
+                <drop-menu id="drop-menu" class="displayNone"></drop-menu>
+            <%}%>
+        <% } %>
         <a as="button" id="openButton">
             <img src="../../../public/assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27">
         </a>
     </div>
-    <script>
-        let user = `<%- JSON.stringify(user) %>`
-    </script>
-
 </header>
