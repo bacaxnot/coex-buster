@@ -20,7 +20,6 @@ class MoviesRepository implements IMovieRepository<movies> {
                 }
             }
         })
-
         return [count, data];
     }
 

@@ -1,8 +1,6 @@
 import { Router } from "express";
 import viewController from "../controllers/ViewController";
 import tokenAuthentication from "../helpers/middlewares/tokenAuthentication";
-import transactionController from "../controllers/transaction.controller";
-import transaction_detailController from "../controllers/transaction_detail.controller";
 
 const router: Router = Router();
 
