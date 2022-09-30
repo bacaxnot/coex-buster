@@ -4,7 +4,6 @@ const closeButton = document.querySelector('#closeButton');
 const openButton = document.querySelector('#openButton');
 let moviesInCart = [];
 user = JSON.parse(user)
-console.log(user, user.id)
 const openCart = async () => {
 	cartContainer.style.right = `0`;
 	renderMovieInCart(moviesInCart);
@@ -115,7 +114,7 @@ const addToCart = async (movie) => {
 			} catch (err) {
 			console.error(err);
 		}
-
+		throwError('Peli añadida')
 
 		// openCart()
 	} else {
