@@ -16,4 +16,9 @@ router
 router
     .route('/shop/del')
     .delete(shoppingController.deleted);
+
+
+router
+    .route('/shop/clear')
+    .delete(shoppingController.clearCookie);
 export default router;

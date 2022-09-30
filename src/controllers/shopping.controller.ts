@@ -48,6 +48,11 @@ class ShoppingController
         res.cookie('shop', data);
         res.json({code:200, msg:'Deleted'});
     }
+
+    clearCookie(req: Request, res: Response)
+    {
+        res.cookie('shop', []).status(200).send({code:200, msg:'clear'});
+    }
 }
 
 export default new ShoppingController();

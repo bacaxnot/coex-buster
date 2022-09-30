@@ -47,18 +47,21 @@
 <link href="/public/styles/movieCardComponent.css" rel="stylesheet">
 <link rel="stylesheet" href="/public/styles/shoppingCart.css">
 
-
 <div class="s-container">
     <header class="s-header">
         <nav-bar><%- include('../components/navBar.ejs') %></nav-bar>
     </header>
+    <div class="shoppingCartContainer">
+        <%- include('../components/shoppingCartComponent.ejs') %>
+    </div>
     <main class="s-content">
         <div class="shoppingCart">
             <%- include('../components/shoppingCartComponent.ejs') %>
         </div>
         <div class="s-filter">
-            <filter-bar> <% include('../components/search.ejs') %> </filter-bar>
+            <filter-bar> <%- include('../components/search.ejs') %> </filter-bar>
         </div>
+        <%- for movie in movies { %>
         <div id="genre-movies-shop-container"></div>
         <section class="s-grid" id="MovieGalery">
             <% result.forEach(row => { %>

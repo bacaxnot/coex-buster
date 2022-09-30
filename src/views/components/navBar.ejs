@@ -29,26 +29,44 @@
                 </ul>
             </nav>
         </div>
-    <% } %>
-    <% if (typeof categories != 'undefined') { %>
+    <% } %> 
     <div class="derHeader">
-        <div class="btn-sesion-hidden" id="btn-nosesion-nav btn-hidden">
-            <button id="login" class="btn-login-nav">Log in</button>
-            <button id="register" class="btn-singup-nav">Sing up</button>
-        </div>
-        <div class="btn-sesion-login " id="btn-sesion-nav">
-            <div class="btn-drop-menu">
-                <button class="email__sigin" type="button" id='sigin_arrow' >
-                    <label class="user-correo">admin@admin.com</label>
-                    <img src="../../../public/assets/icons/arrow_down_black.svg" alt="" width="18px" heigth="27" class="sigin__arrow">
-                </button>
-            </div> 
-        </div> 
-        <drop-menu id="drop-menu" class="displayNone"></drop-menu>
+        <% if (path!=="/login"&& path!== '/register') { %>
+            <% if(user.id == 0){ %> 
+                <div class="btn-sesion-hidden" id="btn-nosesion-nav btn-hidden">
+                    <button id="login" class="btn-login-nav">Log in</button>
+                    <button id="register" class="btn-singup-nav">Sign up</button>
+                </div>
+
+            <% } else { %>
+            
+                <div class="btn-sesion-login " id="btn-sesion-nav">
+                    <div class="btn-drop-menu">
+                        <div class="email__sigin" type="button" id='sigin_arrow' >
+                            <div class="user-correo"><%= user.email%></div>
+                            <div class="email-menu">
+                                <div class="user-correo">
+                                    <a href="/history">
+                                        <span>History Orders</span>
+                                    </a>
+                                </div>
+                                <div class="user-correo" id="logOutBtn">
+                                    <span>Log Out</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            <%}%>
+        <% } %>
         <a as="button" id="openButton">
             <img src="../../../public/assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27">
         </a>
     </div>
-    <% } %>
+</header>
 
+    <script src="/public/scripts/navBar.js"></script>
+    <script>
+        let user = '<%- JSON.stringify(user) %>'
+    </script>
 </header>
