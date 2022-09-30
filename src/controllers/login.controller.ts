@@ -14,7 +14,7 @@ class LoginController implements IController<Request, Response> {
         const user = await usersRepository.getEmail(email);
         const result = await bcrypt.compare(password, user.password);
         if(!result){
-            res.status(401).send("contraseña incorrecta");
+            res.redirect('login')
             return 
         }
         const tokenJwt = jwt.sign({user:user}, config.SECRET as Secret, {
