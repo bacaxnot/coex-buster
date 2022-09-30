@@ -18,9 +18,8 @@ class LoginController implements IController<Request, Response> {
             return 
         }
         const tokenJwt = jwt.sign({id:user.id}, config.SECRET as Secret);
-        res.cookie('x-access-token', tokenJwt, {
-            httpOnly: true,
-            maxAge: 60*60*24,
+        res.cookie('auth', tokenJwt, {
+            httpOnly: true
         });
         res.redirect('/movies')
     }

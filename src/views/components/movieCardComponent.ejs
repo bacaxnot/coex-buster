@@ -20,7 +20,7 @@
     <div class="mcc-card__table">
         <div class="mcc-table__header">
             <p class="mcc-table__genre">
-                <%= typeof genres != 'undefined' ? genres : 'genres not found' %>
+                <%= typeof genres != 'undefined' ? genres : '' %>
             </p>
             <%- include('./starsComponent.ejs', {vote_average: vote_average}) %>
         </div> 
