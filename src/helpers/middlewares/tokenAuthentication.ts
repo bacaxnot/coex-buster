@@ -5,19 +5,23 @@ import config from "../../config";
 declare global {
     namespace Express{
         interface Request {
-            userId:string
+            user:Object|number
         }
     }
 }
 
-const tokenAuthentication = async (req:Request, res:Response, next:NextFunction)=>{
+const tokenAuthentication = (req:Request, res:Response, next:NextFunction)=>{
     const {auth} = req.cookies;
-    // console.log(auth)
-    if (!auth) {
+    const routes = req.route
+    if ((!auth &&(routes.path === '/history' || routes.path === '/history/order/:id'))) {
         return res.status(401).send('No estas autorizado');
     }
-    const tokenValidated = await jwt.verify(auth, config.SECRET as Secret) as JwtPayload;
-    req.userId = tokenValidated.id
+    if(auth){
+        const tokenValidated = jwt.verify(auth, config.SECRET as Secret) as JwtPayload;
+        req.user = tokenValidated.user
+        return next();
+    }
+    req.user = 0;
     next();
 }
 

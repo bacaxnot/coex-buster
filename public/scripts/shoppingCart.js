@@ -2,7 +2,7 @@ const cartContainer = document.querySelector('.cart-container');
 const checkoutButton = document.querySelector('.checkout-button-container');
 const closeButton = document.querySelector('#closeButton');
 const openButton = document.querySelector('#openButton');
-
+console.log(userss)
 let moviesInCart = [];
 
 const openCart = async () => {

@@ -17,7 +17,7 @@ class LoginController implements IController<Request, Response> {
             res.status(401).send("contraseña incorrecta");
             return 
         }
-        const tokenJwt = jwt.sign({id:user.id}, config.SECRET as Secret);
+        const tokenJwt = jwt.sign({user:user}, config.SECRET as Secret);
         res.cookie('auth', tokenJwt, {
             httpOnly: true
         });

@@ -11,12 +11,11 @@ router
         res.redirect('/movies')
     })
 
-
-    .get('/movies', viewController.getAll )
-    .get('/movies/paginate/:pag', viewController.getPaginate )
+    .get('/movies', tokenAuthentication, viewController.getAll )
+    .get('/movies/paginate/:pag', tokenAuthentication, viewController.getPaginate )
     .get('/movie/:id')
-    .get('/movies/category', viewController.getAllByCategoryId)
-    .get('/movies/search', viewController.getAllBySearch)
+    .get('/movies/category', tokenAuthentication, viewController.getAllByCategoryId)
+    .get('/movies/search', tokenAuthentication,  viewController.getAllBySearch)
     .get('/history',  tokenAuthentication, viewController.getHistory)
     .get('/history/order/:id',  tokenAuthentication, viewController.getOrderDetail)
     .get('/login', (req, res) => {
