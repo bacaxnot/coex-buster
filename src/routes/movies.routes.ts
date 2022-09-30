@@ -1,11 +1,13 @@
 import { Router} from "express";
 import MoviesController from "../controllers/movie.controller";
+import ViewController from "../controllers/ViewController";
+
 
 const router : Router = Router();
 
 router
     .route('/movies')
-    .get(MoviesController.getAll)
+    .get(ViewController.getAll)
 
 router
     .route('/movies/search')

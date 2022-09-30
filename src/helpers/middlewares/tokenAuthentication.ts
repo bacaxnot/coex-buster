@@ -36,4 +36,3 @@ const tokenAuthentication = (req:Request, res:Response, next:NextFunction)=>{
 }
 
 export default tokenAuthentication
-
