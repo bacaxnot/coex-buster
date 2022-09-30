@@ -10,13 +10,11 @@ class ViewController implements IController<Request, Response>{
 
     renderLogin(req: Request, res: Response){
         const user = req.user
-        console.log(`Este es el usuario que le voy a mandar ${user.id} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
         res.render('layouts/login', {path:req.originalUrl, user:user})
     }
 
     renderRegister(req:Request, res:Response){
         const user = req.user
-        console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
         res.render('layouts/register', {path:req.originalUrl, user:user})
     }
 
@@ -31,7 +29,6 @@ class ViewController implements IController<Request, Response>{
             })
             element.movies_categories = genres
         })
-        console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl}`)
         res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], categories: categories, user:user, path: req.originalUrl, id:0 });
     }
 
@@ -42,7 +39,7 @@ class ViewController implements IController<Request, Response>{
         const user = req.user 
         const movies : any = await MoviesRepository.getAllByCategoryById(category, pag);
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories: categories, user: user, path: req.originalUrl, id:0});
+        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, user: user, path: req.originalUrl, id:0});
     }
 
     async getPaginate(req: Request, res: Response): Promise<void> {  
