@@ -9,13 +9,13 @@ import actorsRepository from "../repository/actors.repository";
 class ViewController implements IController<Request, Response>{
 
     renderLogin(req: Request, res: Response){
-        const user = JSON.stringify(req.user)
-        console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
+        const user = req.user
+        console.log(`Este es el usuario que le voy a mandar ${user.id} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
         res.render('layouts/login', {path:req.originalUrl, user:user})
     }
 
     renderRegister(req:Request, res:Response){
-        const user = JSON.stringify(req.user)
+        const user = req.user
         console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
         res.render('layouts/register', {path:req.originalUrl, user:user})
     }
