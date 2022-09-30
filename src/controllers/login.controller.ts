@@ -22,7 +22,7 @@ class LoginController implements IController<Request, Response> {
             httpOnly: true,
             maxAge: 60*60*24,
         });
-        res.redirect('/movies/1')
+        res.redirect('/movies')
     }
 
     async signUp(req: Request, res: Response): Promise<void> {

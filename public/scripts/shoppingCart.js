@@ -23,25 +23,14 @@ openButton.addEventListener('click', openCart);
 
 closeButton.addEventListener('click', closeCart);
 
-//URL LISTADO DE PELIS
-//https://api.themoviedb.org/4/list/${list_id}?page=1&api_key=dde722cb807472090076a60be85c0010
-//https://api.themoviedb.org/3/discover/movie?with_genres=878&api_key=d2b1df9d64af7fb2a0342bd9d23e1449&language=es-MX&page=2
-
-//URL PELIS POR ID
-//https://api.themoviedb.org/3/movie/${movie_id}?api_key=dde722cb807472090076a60be85c0010&language=en-US
-
 const imageUrl = `https://image.tmdb.org/t/p/w500/`;
 const moviesInCart = [];
 
 //cargar los datos del localStorage a moviesInCart para luego renderizar las movies del shoppingCart
 window.onload = async () => {
-	const moviesCookies= await fetch('http://localhost:3000/api/v1/shop/get/203')
+	const moviesCookies= await fetch('http://localhost:3000/api/v1/shop/get/1')
 	const pruebita = await moviesCookies.json()
-	// const moviesArr = JSON.parse(moviesCookies);
-	console.log(pruebita)
-	moviesCookies.forEach((movie) => {
-		moviesInCart.push(movie);
-	});
+	
 	renderMovieInCart(moviesInCart);
 };
 
@@ -74,16 +63,9 @@ list.forEach((element, index) => {
 	})
 })
 
-
-
-
-//Obtengo las pelis de la lista numero 1
-
 //funcion para añadir una peli al shopping cart
 const addToCart = async (movie) => {
-	try {
 		const indexMovies = moviesInCart.map((movie) => movie.movie.id)
-		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
 		if (!indexMovies.includes(movie.movie.id)) {
 			moviesInCart.push(movie)
 			renderMovieInCart(moviesInCart)
@@ -112,9 +94,6 @@ const addToCart = async (movie) => {
 			throwError('Peli repetida')
 			return
 		}
-	} catch (error) {
-		console.error(error)
-	}
 };
 
 
@@ -125,9 +104,7 @@ const cartList = document.querySelector('.cart-list')
 const renderMovieInCart = async (moviesArray) => {
 	try {
 		let template = ``;
-		console.log(moviesArray)
 		moviesArray.map((movie) => {
-			console.log(movie.movie.vote_average)
 			let url = imageUrl + movie.movie.poster_path;
 			const cart = `
 				<div class="cart-item">
@@ -153,7 +130,7 @@ const renderMovieInCart = async (moviesArray) => {
 
 //funcion de eliminar elemento de shopping cart
 const deleteMovieInCart = (id) => {
-	let indexMovie = moviesInCart.findIndex((movie) => movie.id === id);
+	let indexMovie = moviesInCart.findIndex((movie) => movie.movie.id === id);
 	moviesInCart.splice(indexMovie, 1);
 	showCheckoutButton(moviesInCart.length);
 	localStorage.setItem('shoppingCart', JSON.stringify(moviesInCart));
