@@ -11,6 +11,7 @@ router
         res.redirect('/movies')
     })
 
+
     .get('/movies', viewController.getAll )
     .get('/movies/paginate/:pag', viewController.getPaginate )
     .get('/movie/:id')
@@ -24,5 +25,6 @@ router
     .get('/register', (req, res)=> {
         res.render('layouts/register')
     })
+    .get('/movies/detail/:id', viewController.movieDetail)
 
 export default router;

@@ -3,11 +3,11 @@
         <div class="carousel">
             <div class="carousel__contenedor">
                 <div class="carousel__lista" id="glider1">
-                    <% for(let i = 0; i < people.length; i++) {%>
+                    <% for(let i = 0; i < actors.length; i++) {%>
                     <div class="carousel__elemento" >
-                        <img src="<%= people[i].img %>" alt="<%= people[i].name %>">
+                        <img src="<%= actors[i].profile_path %>" alt="<%= actors[i].name %>">
                         <div class="titulo1">
-                            <p class="carousel__titulo"> <%= people[i].name %></p>
+                            <p class="carousel__titulo"> <%= actors[i].name %></p>
                         </div>
                         
                     </div>

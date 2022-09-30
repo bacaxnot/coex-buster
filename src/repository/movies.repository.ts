@@ -66,6 +66,10 @@ class MoviesRepository implements IMovieRepository<movies> {
                             }
                         }
                     }
+                }, languages: {
+                    select:{
+                        name:true
+                    }
                 }
             }
         })
