@@ -22,7 +22,6 @@ class ViewController implements IController<Request, Response>{
         try {
             const user = req.user       
             const id = 0;
-            console.log(typeof id)
             const movies : any = await MoviesRepository.getAll();
             const categories = await MoviesRepository.getAllCategories();
             movies[1].forEach((element : any, index: any) => {
@@ -125,7 +124,6 @@ class ViewController implements IController<Request, Response>{
                         quantity: 1
                     }
                     const result = await transactions_detailRepository.create(data);
-                    console.log(result);
                 })
                 res.redirect('/history')
             }
