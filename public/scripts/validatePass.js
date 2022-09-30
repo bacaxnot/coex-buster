@@ -15,8 +15,10 @@ formulario.addEventListener('submit', (e) => {
         Swal.fire({
             icon: 'success',
             text: 'User add succes',
-            confirmButtonText: 'Login'});
-        formulario.submit();
-        //window.location.href = '/login';
+            confirmButtonText: 'Login'
+        }).then((result)=>{
+            if (result.isConfirmed) {
+                formulario.submit();
+            }});
     }
 });
