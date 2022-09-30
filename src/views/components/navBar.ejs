@@ -31,7 +31,7 @@
         </div>
     <% } %>
     <div class="derHeader"
-        <% if ((path!=="/login" || path !== "/register")) { %>
+        <% if (path!=="/login"&& path!== '/register') { %>
             <% if(user.id == 0){ %> 
                 <%= console.log("hola mundo 3") %> 
                 <div class="btn-sesion-hidden" id="btn-nosesion-nav btn-hidden">
