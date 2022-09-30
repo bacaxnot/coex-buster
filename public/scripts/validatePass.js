@@ -18,7 +18,5 @@ formulario.addEventListener('submit', (e) => {
             confirmButtonText: 'Login'});
         formulario.submit();
         //window.location.href = '/login';
-        
-
     }
 });
