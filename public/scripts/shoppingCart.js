@@ -141,7 +141,7 @@ const renderMovieInCart = async (moviesArray) => {
 				category = movie.movies_categories[0].categories.name
 			}
 			const cart = `
-				<div class="cart-item">
+				<div class="cart-item" id="${movie.movie.id}">
 					<div class="cart-item-img">
 						<img
 						src="${movie.poster_path}" alt="movie-img">

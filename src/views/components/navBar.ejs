@@ -1,6 +1,6 @@
 <header class="header">
     <div class="izHeader">
-        <a class="logo" id="home">
+        <a class="logo" id="home" href="/">
             <img src="/public/assets/icons/logo_coexbuster.svg" width="80px" alt="">
         </a>
     </div>
@@ -9,7 +9,7 @@
             <nav class="nav">
                 <ul class="list-categories">
                     <% categories.forEach(function(cat) { %>
-                        <a href="/movies/category?category=<%- cat.id %>"><li><%- cat.name %></li></a>
+                        <a href="/movies/category/1?category=<%- cat.id %>"><li><%- cat.name %></li></a>
                     <% }); %>
                         
                     <label for="otherMenu" class="list-item down-list" id="otherItems">
@@ -17,7 +17,7 @@
                         <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
                     <select class="other-categories" name="" id=""  onchange="location = this.value">
                         <% categories.forEach(function(cat) { %>
-                            <option value="/movies/category?category=<%- cat.id %>"><%- cat.name %></option>
+                            <option value="/movies/category/1?category=<%- cat.id %>"><%- cat.name %></option>
                         <% }); %>
                         <label for="otherMenu" class="list-item down-list" id="otherItems">
                             Others
@@ -55,4 +55,5 @@
     <script>
         let user = `<%- JSON.stringify(user) %>`
     </script>
+
 </header>

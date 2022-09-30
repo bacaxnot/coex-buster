@@ -14,9 +14,11 @@ router
     .get('/movies', tokenAuthentication, viewController.getAll )
     .get('/movies/paginate/:pag', tokenAuthentication, viewController.getPaginate )
     .get('/movie/:id')
-    .get('/movies/category', tokenAuthentication, viewController.getAllByCategoryId)
-    .get('/movies/search', tokenAuthentication,  viewController.getAllBySearch)
+    .get('/movies/category/:pag', tokenAuthentication, viewController.getAllByCategoryId)
+    .get('/movies/search/:pag', tokenAuthentication,  viewController.getAllBySearch)
     .get('/history',  tokenAuthentication, viewController.getHistory)
+    .get('/history/store',  tokenAuthentication, viewController.createTransaction)
+    .get('/history/order/store',  tokenAuthentication, viewController.createTransactionDetail)
     .get('/history/order/:id',  tokenAuthentication, viewController.getOrderDetail)
     .get('/login', (req, res) => {
         res.render('layouts/login')

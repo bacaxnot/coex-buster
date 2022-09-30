@@ -13,12 +13,13 @@ class TransactionRepository implements ITransactionRepository<transactions>{
     }
 
     async get(id: number): Promise<transactions> {
-        let data:any = await prisma.transactions.findUnique({
+        let data:any = await prisma.transactions.findMany({
             where:{
-                id:id
+                user_id:id
             },
             include:{
-                users:true
+                users:true,
+                transaction_detail:true
             }
         });
         return data;
