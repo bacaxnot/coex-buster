@@ -22,7 +22,7 @@ class LoginController implements IController<Request, Response> {
         res.cookie('auth', tokenJwt, {
             httpOnly: true
         });
-        res.redirect('/movies')
+        res.redirect('/movies');
     }
 
     async signUp(req: Request, res: Response): Promise<void> {
