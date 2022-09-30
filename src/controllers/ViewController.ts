@@ -29,7 +29,6 @@ class ViewController implements IController<Request, Response>{
         const user = req.user;  
         const movies : any = await MoviesRepository.getAllByCategoryById(category);
         const categories = await MoviesRepository.getAllCategories();
-        console.log(user); 
         res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories: categories, user: user});
     }
 
@@ -38,7 +37,6 @@ class ViewController implements IController<Request, Response>{
         const user = req.user; 
         const movies: any = await MoviesRepository.getAllBySearch(search);
         const categories = await MoviesRepository.getAllCategories();
-        console.log(user); 
         res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, user: user});
     }
 
@@ -47,7 +45,6 @@ class ViewController implements IController<Request, Response>{
         const user = req.user; 
         const movies = await MoviesRepository.getPaginated(pag);
         const categories = await MoviesRepository.getAllCategories();
-        console.log(user); 
         res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, user: user});
     }
     
