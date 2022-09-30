@@ -1,6 +1,6 @@
 <header class="header">
     <div class="izHeader">
-        <a class="logo" id="home">
+        <a class="logo" id="home" href="/">
             <img src="/public/assets/icons/logo_coexbuster.svg" width="80px" alt="">
         </a>
     </div>
@@ -9,7 +9,7 @@
             <nav class="nav">
                 <ul class="list-categories">
                     <% categories.forEach(function(cat) { %>
-                        <a href="/movies/category?category=<%- cat.id %>"><li><%- cat.name %></li></a>
+                        <a href="/movies/category/1?category=<%- cat.id %>"><li><%- cat.name %></li></a>
                     <% }); %>
                         
                     <label for="otherMenu" class="list-item down-list" id="otherItems">
@@ -17,7 +17,7 @@
                         <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
                     <select class="other-categories" name="" id=""  onchange="location = this.value">
                         <% categories.forEach(function(cat) { %>
-                            <option value="/movies/category?category=<%- cat.id %>"><%- cat.name %></option>
+                            <option value="/movies/category/1?category=<%- cat.id %>"><%- cat.name %></option>
                         <% }); %>
                         <label for="otherMenu" class="list-item down-list" id="otherItems">
                             Others
@@ -30,23 +30,25 @@
             </nav>
         </div>
     <% } %>
+    <% if (typeof categories != 'undefined') { %>
     <div class="derHeader">
-        <div class="btn-sesion" id="btn-nosesion-nav">
+        <div class="btn-sesion-hidden" id="btn-nosesion-nav btn-hidden">
             <button id="login" class="btn-login-nav">Log in</button>
             <button id="register" class="btn-singup-nav">Sing up</button>
         </div>
-        <!-- <div class="btn-sesion-login " id="btn-sesion-nav">
+        <div class="btn-sesion-login " id="btn-sesion-nav">
             <div class="btn-drop-menu">
                 <button class="email__sigin" type="button" id='sigin_arrow' >
                     <label class="user-correo">admin@admin.com</label>
                     <img src="../../../public/assets/icons/arrow_down_black.svg" alt="" width="18px" heigth="27" class="sigin__arrow">
                 </button>
             </div> 
-        </div> -->
+        </div> 
         <drop-menu id="drop-menu" class="displayNone"></drop-menu>
         <a as="button" id="openButton">
             <img src="../../../public/assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27">
         </a>
     </div>
+    <% } %>
 
 </header>
