@@ -30,13 +30,13 @@
             </nav>
         </div>
     <% } %>
-    <div class="derHeader"
-        <% if ((path!=="/login" || path !== "/register")) { %>
+    <div class="derHeader">
+        <% if (path!=="/login"&& path!== '/register') { %>
             <% if(user.id == 0){ %> 
-                    <div class="btn-sesion-hidden" id="btn-nosesion-nav btn-hidden">
+                <div class="btn-sesion-hidden" id="btn-nosesion-nav btn-hidden">
                     <button id="login" class="btn-login-nav">Log in</button>
                     <button id="register" class="btn-singup-nav">Sing up</button>
-                </di>
+                </div>
 
             <% } else { %>
             
@@ -64,6 +64,13 @@
             <img src="../../../public/assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27">
         </a>
     </div>
+<<<<<<< HEAD
 </header>
 
 <script src="/public/scripts/navBar.js"></script>
+=======
+    <script>
+        let user = '<%- JSON.stringify(user) %>'
+    </script>
+</header>
+>>>>>>> 4a0b7329f49f6c23eb68bef2bd12f39c6150f048

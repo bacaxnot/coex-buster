@@ -8,7 +8,8 @@
                 overview: row.movies.overview,
                 genres: row.categories.name,
                 path: row.movies.poster_path,
-                vote_average: row.movies.vote_average
+                vote_average: row.movies.vote_average,
+                user: user
                 }) %>
             </div>
         <% } else { %>
@@ -19,7 +20,8 @@
                 overview: row.overview,
                 genres: row.movies_categories,
                 path: row.poster_path,
-                vote_average: row.vote_average
+                vote_average: row.vote_average,
+                user: user
                 }) %>
             </div>
         <% } %>

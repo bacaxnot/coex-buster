@@ -23,7 +23,7 @@
             <div class="od-order__list">
                 <% products.forEach(product => { %>
                     <a 
-                        href="<%= product.movies.id %>" 
+                        href="/movies/detail/<%= product.movies.id %>" 
                         class="od-list__link" 
                         title="Go to <%= typeof product.movies.title != 'undefined' ? product.movies.title : 'untitled' %>"
                     >
@@ -41,7 +41,8 @@
                                 </h4>
                                 <div class="od-item__genres">
                                     <p class="od-item__genre">
-                                        <%= typeof product.movies.genres != 'undefined' ? product.movies.genres : 'genres not found' %>
+                                        <%= product.movies.genres %> 
+                                        <%= typeof product.movies.genres != 'undefined' ? product.movies.genres : ' ' %>
                                     </p>
                                 </div>
                                 <%- include('../components/starsComponent.ejs', {vote_average: product.movies.vote_average}) %>
