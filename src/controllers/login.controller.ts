@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 import config from "../config";
 import { IController } from "../helpers/interfaces/crud.interface"
 import usersRepository from "../repository/users.repository"
-import Swal from 'sweetalert2'
 
 
 class LoginController implements IController<Request, Response> {

@@ -9,13 +9,13 @@ import actorsRepository from "../repository/actors.repository";
 class ViewController implements IController<Request, Response>{
 
     renderLogin(req: Request, res: Response){
-        const user = req.user
+        const user = JSON.stringify(req.user)
         console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
         res.render('layouts/login', {path:req.originalUrl, user:user})
     }
 
     renderRegister(req:Request, res:Response){
-        const user = req.user
+        const user = JSON.stringify(req.user)
         console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl} y soy tipo ${typeof req.originalUrl}`)
         res.render('layouts/register', {path:req.originalUrl, user:user})
     }
@@ -42,7 +42,7 @@ class ViewController implements IController<Request, Response>{
         const user = req.user 
         const movies : any = await MoviesRepository.getAllByCategoryById(category, pag);
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories: categories, user: user, path: req.originalUrl});
+        res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories: categories, user: user, path: req.originalUrl, id:0});
     }
 
     async getPaginate(req: Request, res: Response): Promise<void> {  
