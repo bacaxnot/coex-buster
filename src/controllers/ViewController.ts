@@ -3,6 +3,7 @@ import { IController } from "../helpers/interfaces/crud.interface";
 import { Request, Response } from "express";
 import transactionRepository from "../repository/transaction.repository";
 import transactions_detailRepository from "../repository/transactions_detail.repository";
+import actorsRepository from "../repository/actors.repository";
 
 class ViewController implements IController<Request, Response>{
 
@@ -71,7 +72,10 @@ class ViewController implements IController<Request, Response>{
 
         const id = parseInt(req.params.id)
         const movie = await MoviesRepository.get(id)
-        res.render('layouts/movie-detail.ejs', {detalle:movie});
+        const actors = await actorsRepository.getAll(id)
+       
+       
+       res.render('layouts/movie-detail.ejs', {detalle:movie, actors: actors});
         
     }
 
