@@ -6,23 +6,6 @@ import '../helpers/middlewares/encryptPassword'
 
 class UsersController implements IController<Request, Response>{
 
-    async getOne(req: Request, res: Response): Promise<void> {
-        // const id = req.userId;
-
-        // const user = await UserRepository.get(id);
-
-        // res.json(user);
-        
-    }
-
-    async create(req: Request, res: Response): Promise<void> {
-        const {id, name, email, password} = req.body;
-
-        const data = await UserRepository.create({id, name, email, password});
-
-        res.json(data)
-    }
-
 
 }
 
