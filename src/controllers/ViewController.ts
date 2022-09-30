@@ -86,8 +86,8 @@ class ViewController implements IController<Request, Response>{
 
 
     async getHistory(req: Request, res:Response): Promise<void> {
-        const {userId} = req;
-        const result = await transactionRepository.getAll();
+        const id : any = req.userId;
+        const result : any = await transactionRepository.get(id);
         result.forEach((element : any) => {
             element.create_date = new Date(element.create_date).toLocaleString();
         })
