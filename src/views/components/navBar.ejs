@@ -1,9 +1,10 @@
 <header class="header">
     <div class="izHeader">
-        <a class="logo" href="./index.html">
-            <img src="../../../public/assets/icons/logo_coexbuster.svg" width="80px" alt="">
+        <a class="logo" id="home" href="/">
+            <img src="/public/assets/icons/logo_coexbuster.svg" width="80px" alt="">
         </a>
     </div>
+<<<<<<< HEAD
     <div class="categories">
         <nav class="nav">
             <ul class="list-categories">
@@ -18,29 +19,71 @@
                 <select class="other-categories" name="" id="">
                     <% movies.moviesArr.forEach(function(movie) { %>
                         <option value=""><li><%- movie.title %></li></option>
+=======
+    <% if (typeof categories != 'undefined') { %>
+        <div class="categories">
+            <nav class="nav">
+                <ul class="list-categories">
+                    <% categories.forEach(function(cat) { %>
+                        <a href="/movies/category/1?category=<%- cat.id %>"><li><%- cat.name %></li></a>
+>>>>>>> 2ce8616386febf4f62211d5aa78c63563a8646f9
                     <% }); %>
-                </select>
-                </label>
-            </ul>
-        </nav>
-    </div>
-    <div class="derHeader">
-        <div class="btn-sesion" id="btn-nosesion-nav">
-            <button id="login-btn" class="btn-login-nav">Log in</button>
-            <button id="singup-btn" class="btn-singup-nav">Sing up</button>
+                        
+                    <label for="otherMenu" class="list-item down-list" id="otherItems">
+                        Others
+                        <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
+                    <select class="other-categories" name="" id=""  onchange="location = this.value">
+                        <% categories.forEach(function(cat) { %>
+                            <option value="/movies/category/1?category=<%- cat.id %>"><%- cat.name %></option>
+                        <% }); %>
+                        <label for="otherMenu" class="list-item down-list" id="otherItems">
+                            Others
+                            <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
+                            <select class="other-categories" name="" id="">
+                            
+                        </select>
+                    </label>
+                </ul>
+            </nav>
         </div>
-        <!-- <div class="btn-sesion-login " id="btn-sesion-nav">
-            <div class="btn-drop-menu">
-                <button class="email__sigin" type="button" id='sigin_arrow' >
-                    <label class="user-correo">admin@admin.com</label>
-                    <img src="../../../public/assets/icons/arrow_down_black.svg" alt="" width="18px" heigth="27" class="sigin__arrow">
-                </button>
-            </div> 
-        </div> -->
-        <drop-menu id="drop-menu" class="displayNone"></drop-menu>
-        <a href="#" as="button" id="openButton">
+    <% } %> 
+    <div class="derHeader">
+        <% if (path!=="/login"&& path!== '/register') { %>
+            <% if(user.id == 0){ %> 
+                <div class="btn-sesion-hidden" id="btn-nosesion-nav btn-hidden">
+                    <button id="login" class="btn-login-nav">Log in</button>
+                    <button id="register" class="btn-singup-nav">Sign up</button>
+                </div>
+
+            <% } else { %>
+            
+                <div class="btn-sesion-login " id="btn-sesion-nav">
+                    <div class="btn-drop-menu">
+                        <div class="email__sigin" type="button" id='sigin_arrow' >
+                            <div class="user-correo"><%= user.email%></div>
+                            <div class="email-menu">
+                                <div class="user-correo">
+                                    <a href="/history">
+                                        <span>History Orders</span>
+                                    </a>
+                                </div>
+                                <div class="user-correo" id="logOutBtn">
+                                    <span>Log Out</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            <%}%>
+        <% } %>
+        <a as="button" id="openButton">
             <img src="../../../public/assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27">
         </a>
     </div>
+</header>
 
+    <script src="/public/scripts/navBar.js"></script>
+    <script>
+        let user = '<%- JSON.stringify(user) %>'
+    </script>
 </header>

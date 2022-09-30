@@ -11,8 +11,9 @@ class MoviesController implements IController<Request, Response>{
 
     async getAllByCategory(req: Request, res: Response): Promise<void> {
         let category : any = req.query.category
+        const pag = req.params.pag; 
         category = parseInt(category)
-        const movies = await MoviesRepository.getAllByCategory(category);
+        const movies = await MoviesRepository.getAllByCategoryById(category,pag);
         res.json({
             movies: movies
         });
@@ -20,7 +21,8 @@ class MoviesController implements IController<Request, Response>{
 
     async getAllBySearch(req: Request, res: Response): Promise<void> {
         const search = req.query.search
-        const movies = await MoviesRepository.getAllBySearch(search);
+        const pag = req.params.pag
+        const movies = await MoviesRepository.getAllBySearch(search,pag);
 
         res.json(movies);
     }
@@ -43,7 +45,6 @@ class MoviesController implements IController<Request, Response>{
 
     async delete(req: Request, res: Response): Promise<void> {
         const id = parseInt(req.params.id);
-
         const movie = await MoviesRepository.update(id, req.body);
 
         res.json(movie);

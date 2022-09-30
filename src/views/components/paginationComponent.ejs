@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/public/styles/paginationComponent.css" >
-</head>
-<body>
 <div class="pagination">
     <div class="page" id="prev">Previous Page</div>
-    <div class="current" id="current">1</div>
+    <input type="hidden" id="currentPagination" value=<%=paginate%>>
+    <div class="current"><%=paginate%></div>
     <div class="page" id="next">Next Page</div>
+    <input type="hidden" id="total" value=<%=count%>> 
+    <input type="hidden" id="category" value=<%=id%>> 
 </div>
-<script src="/public/scripts/pagination.js"></script>
-</body>
-</html>
+

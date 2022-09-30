@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { transaction_detail } from '@prisma/client';
 
 
 class ShoppingController
@@ -7,7 +8,7 @@ class ShoppingController
     {
         const usrid = req.params.id;
         const cookies = Object.keys(req.cookies);
-        if(!cookies.includes('shop')) res.json({code:400, msg:'Empty'}); // Valida si la cookie existe
+        if(!cookies.includes('shop')) res.cookie('shop', []).json({code:400, msg:'Empty'}); // Valida si la cookie existe
         const data = req.cookies.shop;
         const usrInfo = data.filter((element:any) => element['id_user'] == usrid);
         usrInfo.length == 0 ? res.json({code:400, msg:'No orders yet'}) : res.json(usrInfo[0].movies);
@@ -24,14 +25,14 @@ class ShoppingController
             const target = data.filter((e:any) => e.id_user == req.body.id_user); // Buscando el user
             if (target.length == 0) {  // Si no existe el user, agrega la req a la cookie
                 data.push(req.body)
-                res.cookie('shop', data) 
+                res.cookie('shop', data)
             }
             else {
                 console.log(target)
                 const userMovies = target[0].movies;
                 userMovies.push(...req.body.movies);
                 res.cookie('shop', data)}
-            } 
+            }
         res.json({code:201, message:'Created order'});
     }
 
@@ -46,6 +47,11 @@ class ShoppingController
         usrInfo[0].movies = filtered;
         res.cookie('shop', data);
         res.json({code:200, msg:'Deleted'});
+    }
+
+    clearCookie(req: Request, res: Response)
+    {
+        res.cookie('shop', []).status(200).send({code:200, msg:'clear'});
     }
 }
 

@@ -11,7 +11,7 @@ main{
     min-height: calc(100vh - var(--nav-height));
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 }
 .main-card{
     display: grid;
@@ -79,9 +79,9 @@ main{
     grid-template-columns: auto auto 1fr;
     column-gap: 20px;
 }
-.main-info-slot{
+/* .main-info-slot{
     width: calc(100% - var(--img-width));
-}
+} */
 .sec-info-card{
     display: flex;
     justify-content: space-between;

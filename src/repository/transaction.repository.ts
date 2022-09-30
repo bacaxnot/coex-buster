@@ -1,5 +1,5 @@
 import prisma from "../helpers/db/db";
-import { ITransactionRepository } from "../models/interfaces/transaction.interface";
+import { ITransactionRepository } from "../helpers/interfaces/transaction.interface";
 import { transactions } from "@prisma/client";
 
 class TransactionRepository implements ITransactionRepository<transactions>{
@@ -13,12 +13,13 @@ class TransactionRepository implements ITransactionRepository<transactions>{
     }
 
     async get(id: number): Promise<transactions> {
-        let data:any = await prisma.transactions.findUnique({
+        let data:any = await prisma.transactions.findMany({
             where:{
-                id:id
+                user_id:id
             },
             include:{
-                users:true
+                users:true,
+                transaction_detail:true
             }
         });
         return data;

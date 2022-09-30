@@ -1,28 +1,42 @@
 <%- include('../partials/head', {title : 'Movies'}) %>
 
-<link href="/public/styles/paginationComponent.css" rel="stylesheet">
-<link href="/public/styles/search.css" rel="stylesheet">
-<link href="/public/styles/shop.css" rel="stylesheet">
-<link href="/public/styles/navbar.css" rel="stylesheet">
-<link href="/public/styles/starsComponent.css" rel="stylesheet">
-<link href="/public/styles/movieCardComponent.css" rel="stylesheet">
-<link rel="stylesheet" href="/public/styles/mainShop.css" type="text/css">
+<link rel="stylesheet" href="/public/styles/home.css">
+
+<%- include('../partials/body') %>
 
 <div class="s-container">
+<<<<<<< HEAD
     <nav-bar><%- include('../components/navbar.ejs', movies) %></nav-bar>
+=======
+
+    <%- include('../components/navBar.ejs') %>
+>>>>>>> 2ce8616386febf4f62211d5aa78c63563a8646f9
 
     <main class="s-content">
+        <div class="shoppingCart">
+            <%- include('../components/shoppingCartComponent.ejs') %>
+        </div>
         <div class="s-filter">
             <filter-bar><%- include('../components/search.ejs') %></filter-bar>
         </div>
     </main>
+<<<<<<< HEAD
         <div id="genre-movies-shop-container"></div>
             <%- include('./main_shop.ejs', movies) %>
     
+=======
+    <%- include('main_shop.ejs') %>
+>>>>>>> 2ce8616386febf4f62211d5aa78c63563a8646f9
     <footer class="s-footer">
-        <pagination-bar><%- include('../components/paginationComponent.ejs') %></pagination-bar>
+        <%- include('../components/paginationComponent.ejs') %>
     </footer>
 </div>
 
+<script src="/public/scripts/checkButton.js"></script>
+<script src="/public/scripts/redirectLogin.js"></script>
+<script src="/public/scripts/redirectRegister.js"></script>
+<script src="/public/scripts/pagination.js"></script>
+<script src="/public/scripts/shoppingCart.js"></script>
+<script src="/public/scripts/movieCardComponent.js"></script>
 
 <%- include('../partials/foot') %>

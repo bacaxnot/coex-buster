@@ -1,5 +1,5 @@
 
-const redirect = document.getElementById("register");
-redirect.addEventListener("click", ( ) =>{
-  window.location.replace('/register');
+const redirectRegister = document.getElementById("register");
+redirectRegister.addEventListener("click", ( ) =>{
+  window.location = '/register';
 })
