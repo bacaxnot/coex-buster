@@ -45,26 +45,32 @@
 <link href="/public/styles/navbar.css" rel="stylesheet">
 <link href="/public/styles/starsComponent.css" rel="stylesheet">
 <link href="/public/styles/movieCardComponent.css" rel="stylesheet">
+<link rel="stylesheet" href="/public/styles/shoppingCart.css">
 
 
 <div class="s-container">
     <header class="s-header">
-        <nav-bar><%- include('../components/navbar.ejs') %></nav-bar>
+        <nav-bar><%- include('../components/navBar.ejs') %></nav-bar>
     </header>
     <main class="s-content">
+        <div class="shoppingCart">
+            <%- include('../components/shoppingCartComponent.ejs') %>
+        </div>
         <div class="s-filter">
             <filter-bar> <% include('../components/search.ejs') %> </filter-bar>
         </div>
         <div id="genre-movies-shop-container"></div>
         <section class="s-grid" id="MovieGalery">
-            <%- include('../components/movieCardComponent.ejs', {
-                id: id,
-                title: title,
-                overview: overview,
-                genres: genres,
-                path: path,
-                vote_average: vote_average
-            }) %>
+            <% result.forEach(row => { %>
+                <%- include('../components/movieCardComponent.ejs', {
+                    id: row.id,
+                    title: row.title,
+                    overview: row.overview,
+                    genres: row.genres,
+                    path: row.path,
+                    vote_average: row.vote_average
+                }) %>
+            <% }) %>
         </section>
     </main>
     <footer class="s-footer">

@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import MoviesRepository from '../repository/movies.repository'
 
 const router: Router = Router();
 
@@ -44,6 +45,16 @@ router.get('/sesion', (req,res)=>{
 
 router.get('/movie', (req,res)=>{
     res.render('layouts/movie-detail.ejs', {people:data, info:getInfo, trailer:trailer});
+})
+
+router.get('/movie/:id', async (req,res)=>{
+
+    const id = parseInt(req.params.id)
+    const movie = await MoviesRepository.get(id)
+    //res.send(movie)
+    res.render('layouts/movie-detail.ejs', {detalle:movie});
+    //res.render('components/carousel.ejs', {detalle:movie});
+    
 })
 
 
@@ -111,16 +122,32 @@ router.get('/history/order', (req, res) => {  //colocarle al order:id
 router.get('/', (req, res) => {
     // res.render('index', { message: 'hello world' })
     res.render('layouts/temporal', {
-        id: 176,
-        path: '/ok4ot3YbfDYZcINXf91JUfq3maB.jpg',
-        title: 'Saw',
-        overview: '',
-        genres: [
-            'Horror',
-            'Thriller',
-            'Crime'
-        ],
-        vote_average: 7.4
+        result : [
+            {
+                id: 65,
+                path: '/ok4ot3YbfDYZcINXf91JUfq3maB.jpg',
+                title: 'Saw',
+                overview: '',
+                genres: [
+                    'Horror',
+                    'Thriller',
+                    'Crime'
+                ],
+                vote_average: 7.4
+            },
+            {
+                id: 64,
+                path: '/ok4ot3YbfDYZcINXf91JUfq3maB.jpg',
+                title: 'Saw 2',
+                overview: '',
+                genres: [
+                    'Horror',
+                    'Thriller',
+                    'Crime'
+                ],
+                vote_average: 4
+            }
+        ]
     })
 })
 
@@ -154,6 +181,17 @@ router.get('/order', (req, res) => {
         ]
     })
 });
+
+router.get('/movie/detail', (req, res) => {
+    res.render('layouts/movie-detail')
+})
+
+router.get('/error', (req, res) => {
+    res.render('layouts/error', {
+        status: 404,
+        error: 'Unauthorized'
+    })
+})
 
 
 

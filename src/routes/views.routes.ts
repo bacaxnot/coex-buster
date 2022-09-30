@@ -11,17 +11,20 @@ router
         res.redirect('/movies')
     })
 
+
     .get('/movies', viewController.getAll )
     .get('/movies/paginate/:pag', viewController.getPaginate )
     .get('/movie/:id')
-    // .get('/history', tokenAuthentication)
-    .get('/history', transactionController.getAll)
-    .get('/history/order/:id', transaction_detailController.getOne)
+    .get('/movies/category', viewController.getAllByCategoryId)
+    .get('/movies/search', viewController.getAllBySearch)
+    .get('/history',  tokenAuthentication, viewController.getHistory)
+    .get('/history/order/:id',  tokenAuthentication, viewController.getOrderDetail)
     .get('/login', (req, res) => {
         res.render('layouts/login')
     })
     .get('/register', (req, res)=> {
         res.render('layouts/register')
     })
+    .get('/movies/detail/:id', viewController.movieDetail)
 
 export default router;

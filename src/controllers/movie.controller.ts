@@ -12,7 +12,7 @@ class MoviesController implements IController<Request, Response>{
     async getAllByCategory(req: Request, res: Response): Promise<void> {
         let category : any = req.query.category
         category = parseInt(category)
-        const movies = await MoviesRepository.getAllByCategory(category);
+        const movies = await MoviesRepository.getAllByCategoryById(category);
         res.json({
             movies: movies
         });

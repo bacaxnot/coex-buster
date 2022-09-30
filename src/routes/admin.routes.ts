@@ -7,14 +7,16 @@ import moviesRouter from "./movies.routes";
 import loginRouter from "./login.routes";
 import transactionRouter from './transaction.routes';
 import shoppingRouter from './shopping.routes';
+import errorRouter from './error.routes'
 const adminRoutes = (app:Express)=>{
     app.use(viewRouter);
-    app.use('/api/v1', loginRouter)
+    app.use(loginRouter)
     app.use('/api/v1', userRouter);
     app.use('/api/v1', moviesRouter);
     app.use('/api/v1', transactionRouter);
     app.use('/api/v1', shoppingRouter)
     app.use('/test', testRouter);
+    app.use('*', errorRouter);
 }
 
 export default adminRoutes;

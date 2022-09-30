@@ -20,6 +20,7 @@ class MoviesRepository implements IMovieRepository<movies> {
                 }
             }
         })
+
         return [count, data];
     }
 
@@ -64,6 +65,10 @@ class MoviesRepository implements IMovieRepository<movies> {
                                 name: true
                             }
                         }
+                    }
+                }, languages: {
+                    select:{
+                        name:true
                     }
                 }
             }
@@ -117,7 +122,7 @@ class MoviesRepository implements IMovieRepository<movies> {
         return movie;
     }
 
-    async getAllByCategory(id: number): Promise<void> {
+    async getAllByCategoryById(id: number): Promise<void> {
         const movies: any = await prisma.movies_categories.findMany({
             where: {
                 category_id: id
@@ -135,15 +140,24 @@ class MoviesRepository implements IMovieRepository<movies> {
         return movies
     }
 
-    async getAllBySearch(name: any): Promise<void> {
-        const movies: any = await prisma.movies.findMany({
+    async getAllBySearch(name: any):  Promise<movies[]> {
+        const count = await prisma.movies.count({
             where: {
                 title: {
                     contains: name
                 }
             }
         });
-        return movies
+        const movies: any = await prisma.movies.findMany({
+            skip: 0,
+            take: 11,
+            where: {
+                title: {
+                    contains: name
+                }
+            }
+        });
+        return [count, movies];
     }
 }
 

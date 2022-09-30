@@ -3,7 +3,7 @@
 <div class="mcc-grid__card">
     <figure class="mcc-card__cover">
         <button class="mcc-go-to-detail" id="<%= id %>">
-            <img 
+            <img
                 src="<%= path %>"
                 alt="<%= typeof title != 'undefined' ? title : 'untitled' %>"
                 class="mcc-card__poster">
@@ -20,10 +20,10 @@
     <div class="mcc-card__table">
         <div class="mcc-table__header">
             <p class="mcc-table__genre">
-                <%= typeof genres != 'undefined' ? genres : 'genres not found' %>
+                <%= typeof genres != 'undefined' ? genres : '' %>
             </p>
             <%- include('./starsComponent.ejs', {vote_average: vote_average}) %>
-        </div>
-        <div class="mcc-table__btn--add" id="<%= id %>">Add To Cart</div>
+        </div> 
+        <div class="mcc-table__btn--add"  id="<%= id %>">Add To Cart</div>
     </div>
 </div>
