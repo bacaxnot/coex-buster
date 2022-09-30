@@ -5,9 +5,6 @@ const next = document.getElementById('next')
 const current = document.getElementById('currentPagination').value
 let categoria = document.getElementById('category').value
 
-console.log(typeof categoria);
-console.log(categoria);
-
 if(categoria == '0'){
     categoria = 0;
 }else if(categoria == '1'){
@@ -24,9 +21,9 @@ if(categoria == '0'){
     categoria = categoria
 }
 
-console.log(typeof categoria);
-console.log(categoria);
-// console.log(current)
+
+
+
 //request value total de registros de la consulta
 const total = document.getElementById('total').value
 
@@ -47,7 +44,7 @@ if (totalPages > 11) {
     totalPages = 1
 }
 
-console.log(totalPages);
+
 
 // let lastUrl = '';
 
@@ -58,7 +55,7 @@ prev.addEventListener('click', () => {
     next.classList.remove('disabled');
     if (currentPage <= 1) {
         prev.classList.add('disabled');
-        console.log("lowest limit reached")
+        
     } else {
         prev.classList.remove('disabled');
         prevPage--;
@@ -72,7 +69,7 @@ prev.addEventListener('click', () => {
         } else {
             return window.location.replace(`/movies/paginate/${currentPage}`)
         }
-        // console.log(prevPage, currentPage, nextPage);
+        // 
     }
 
 })
@@ -86,7 +83,7 @@ next.addEventListener('click', () => {
         currentPage++;
         prevPage++;
         // current.innerHTML = currentPage;
-        // console.log(prevPage, currentPage, nextPage);
+        // 
         if (typeof categoria === 'string') {  
             return window.location.replace(`/movies/search/${currentPage}?search=${categoria}`)
         } else if (categoria > 0) {
@@ -95,8 +92,8 @@ next.addEventListener('click', () => {
             return window.location.replace(`/movies/paginate/${currentPage}`)
         }
     } else {
-        console.log(currentPage, nextPage, prevPage, totalPages);
-        console.log("highest limit reached")
+        
+        
         next.classList.add('disabled');
     }
 
