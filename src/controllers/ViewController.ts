@@ -7,16 +7,8 @@ class ViewController implements IController<Request, Response>{
     async getAll(req: Request, res: Response): Promise<void> {           
         const movies = await MoviesRepository.getAll();
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: 1 ,result: movies[1], count: movies[0], categories: categories });
-    }
 
-    async getPaginate(req: Request, res: Response): Promise<void> {  
-        const pag = req.params.pag;         
-        const movies = await MoviesRepository.getPaginated(pag);
-        // console.log(movies[2])
-        const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories });
-        // res.render('layouts/shop', { result: movies, categories: categories });
+        res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], categories: categories });
     }
 
     async getAllByCategoryId(req: Request, res: Response): Promise<void> {
@@ -26,7 +18,7 @@ class ViewController implements IController<Request, Response>{
         const movies : any = await MoviesRepository.getAllByCategoryById(category);
         // const result = movies.map(element => element.movies );
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories:categories });
+        res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories: categories });
     }
 
     
@@ -34,11 +26,17 @@ class ViewController implements IController<Request, Response>{
     async getAllBySearch(req: Request, res: Response): Promise<void> {
         const search = req.query.search
         // console.log(search);
-        const movies = await MoviesRepository.getAllBySearch(search);
+        const movies: any = await MoviesRepository.getAllBySearch(search);
         const categories = await MoviesRepository.getAllCategories();
         //  res.json(movies);
-        res.render('layouts/shop', { result:movies, categories:categories});
+        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories});
+    }
 
+    async getPaginate(req: Request, res: Response): Promise<void> {  
+        const pag = req.params.pag;         
+        const movies = await MoviesRepository.getPaginated(pag);
+        const categories = await MoviesRepository.getAllCategories();
+        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories });
     }
     
     async get(req: Request, res: Response): Promise<void> {
@@ -60,5 +58,8 @@ class ViewController implements IController<Request, Response>{
         const movie = await MoviesRepository.create(req.body);
         res.json(movie);
     }
+
+
 }
+
 export default new ViewController();
