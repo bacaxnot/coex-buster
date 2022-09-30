@@ -123,11 +123,13 @@
 }
 
 .mcc-table__genre {
+  cursor: help;
+  text-transform: capitalize;
   text-align: start;
   width: 100%;
   font-size: 14px;
   /* overflow: hidden; */
-  word-break: break-all;
+  /* word-break: break-all; */
 }
 
 .mcc-table__btn--add {
