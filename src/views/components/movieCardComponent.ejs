@@ -2,17 +2,10 @@
 
 <div class="mcc-grid__card">
     <figure class="mcc-card__cover">
-<<<<<<< HEAD
-        <button class="mcc-go-to-detail" id="<%= movie.id %>">
-            <img 
-                src="<%= movie.path %>"
-                alt="<%= typeof movie.title != 'undefined' ? movie.title : 'untitled' %>"
-=======
         <button class="mcc-go-to-detail" id="<%= id %>">
             <img
                 src="<%= path %>"
                 alt="<%= typeof title != 'undefined' ? title : 'untitled' %>"
->>>>>>> 2ce8616386febf4f62211d5aa78c63563a8646f9
                 class="mcc-card__poster">
             <span class="mcc-card__title">
                 <%= typeof title != 'undefined' ? title : 'untitled' %>
@@ -26,14 +19,6 @@
     </figure>
     <div class="mcc-card__table">
         <div class="mcc-table__header">
-<<<<<<< HEAD
-            <p class="mcc-table__genre">
-                <%= typeof movie.genres != 'undefined' ? movie.genres : 'genres not found' %>
-            </p>
-            <%- include('./starsComponent.ejs', {vote_average: movie.vote_average}) %>
-        </div>
-        <div class="mcc-table__btn--add" onclick="addMovie(movie)" id="<%= movie.id %>">Add To Cart</div>
-=======
             <% if (typeof genres == 'object' || typeof genres == 'array') { %>
                 <p class="mcc-table__genre" title="<%=  genres.join(', ') %>">
                     <% for( let index = 0; index < 2; index++ ) { %>
@@ -52,6 +37,5 @@
             <%- include('./starsComponent.ejs', {vote_average: vote_average}) %>
         </div> 
         <div class="mcc-table__btn--add"  id="<%= id %>" >Add To Cart</div>
->>>>>>> 2ce8616386febf4f62211d5aa78c63563a8646f9
     </div>
 </div>

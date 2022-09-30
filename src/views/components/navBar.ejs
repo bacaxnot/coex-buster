@@ -4,29 +4,12 @@
             <img src="/public/assets/icons/logo_coexbuster.svg" width="80px" alt="">
         </a>
     </div>
-<<<<<<< HEAD
-    <div class="categories">
-        <nav class="nav">
-            <ul class="list-categories">
-
-                <% movies.moviesArr.forEach(function(movie) { %>
-                    <a href=""><li><%- movie.title %></li></a>
-                <% }); %>
-                    
-                <label for="otherMenu" class="list-item down-list" id="otherItems">
-                    Others
-                    <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
-                <select class="other-categories" name="" id="">
-                    <% movies.moviesArr.forEach(function(movie) { %>
-                        <option value=""><li><%- movie.title %></li></option>
-=======
     <% if (typeof categories != 'undefined') { %>
         <div class="categories">
             <nav class="nav">
                 <ul class="list-categories">
                     <% categories.forEach(function(cat) { %>
                         <a href="/movies/category/1?category=<%- cat.id %>"><li><%- cat.name %></li></a>
->>>>>>> 2ce8616386febf4f62211d5aa78c63563a8646f9
                     <% }); %>
                         
                     <label for="otherMenu" class="list-item down-list" id="otherItems">

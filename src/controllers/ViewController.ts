@@ -8,19 +8,9 @@ import actorsRepository from "../repository/actors.repository";
 
 class ViewController implements IController<Request, Response>{
 
-<<<<<<< HEAD
-    async getAll(req: Request, res: Response): Promise<void> {
-        const moviesArr = await MoviesRepository.getAll();
-        const movies= {
-            moviesArr: await moviesArr,
-        }
-        console.log(movies)
-        res.render('layouts/shop', movies);
-=======
     renderLogin(req: Request, res: Response){
         const user = req.user
         res.render('layouts/login', {path:req.originalUrl, user:user})
->>>>>>> 2ce8616386febf4f62211d5aa78c63563a8646f9
     }
 
     renderRegister(req:Request, res:Response){

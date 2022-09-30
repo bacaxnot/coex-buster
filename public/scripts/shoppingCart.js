@@ -75,23 +75,6 @@ list.forEach(element => {
 
 //funcion para añadir una peli al shopping cart
 const addToCart = async (movie) => {
-<<<<<<< HEAD
-	try {
-		const indexMovies = moviesInCart.map((movie) => movie.id)
-		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
-		if (!indexMovies.includes(movie.id)) {
-			moviesInCart.push(movie)
-			renderMovieInCart(moviesInCart)
-			showCheckoutButton(moviesInCart.length)
-			openCart()
-			localStorage.setItem(
-				'shoppingCart',
-				JSON.stringify(moviesInCart)
-			)
-		} else {
-			throwError('Peli repetida')
-			return
-=======
 	if(moviesInCart.length == 10){
 		return throwError("Solo puedes agregar 10 peliculas")
 	}
@@ -104,7 +87,6 @@ const addToCart = async (movie) => {
 			poster_path: movie.movie.poster_path,
 			vote_average: movie.movie.vote_average,
 			movies_categories: movie.movie.movies_categories
->>>>>>> 2ce8616386febf4f62211d5aa78c63563a8646f9
 		}
 		moviesInCart.push(dataMovie)
 		renderMovieInCart(moviesInCart)

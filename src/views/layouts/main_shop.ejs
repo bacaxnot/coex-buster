@@ -1,33 +1,6 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <link rel="stylesheet" href="/public/styles/mainShop.css" type="text/css">
-</head>
-
-<body>
-    <div>
-        <!-- AQUI VA EL COMPONENTE HEADER -->
-    </div>
-
-    <div>
-        <!-- AQUI VA EL COMPONENTE BUSCADOR -->
-    </div>
-
-    <!-- CARDS DE MOVIES -->
-    
-    <div class="contenedor--movies">
-        <% movies.moviesArr.forEach(function(movie) { %>
-=======
 <div class="contenedor--movies">
     <% result.forEach(function(row) { %>
         <% if (row.movies) { %>
->>>>>>> 2ce8616386febf4f62211d5aa78c63563a8646f9
             <div class="contenedor--movies--card">
                 <%- include('../components/movieCardComponent.ejs', {
                 id: row.movies.id,
