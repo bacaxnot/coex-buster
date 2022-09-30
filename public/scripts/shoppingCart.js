@@ -2,9 +2,9 @@ const cartContainer = document.querySelector('.cart-container');
 const checkoutButton = document.querySelector('.checkout-button-container');
 const closeButton = document.querySelector('#closeButton');
 const openButton = document.querySelector('#openButton');
-console.log(userss)
 let moviesInCart = [];
-
+ user = JSON.parse(user)
+console.log(user, user.id)
 const openCart = async () => {
 	cartContainer.style.right = `0`;
 	renderMovieInCart(moviesInCart);
@@ -32,7 +32,8 @@ const imageUrl = `https://image.tmdb.org/t/p/w500/`;
 
 
 window.onload = async () => {
-	let moviesCookies= await fetch('http://localhost:3000/api/v1/shop/get/3')
+	const userId = (user.id).toString()
+	let moviesCookies= await fetch(`http://localhost:3000/api/v1/shop/get/${userId}`)
 	moviesCookies = await moviesCookies.json();
 	if(!moviesCookies.code){
 		moviesInCart = []
@@ -102,7 +103,7 @@ const addToCart = async (movie) => {
 					'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({
-						id_user: 3,
+						id_user: user.id,
 						movies: moviesInCart,
 					})
 				});
@@ -172,7 +173,7 @@ const deleteMovieInCart = async (id) => {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				id_user: 3,
+				id_user: user.id,
 				id_movie: id
 			})
 		});

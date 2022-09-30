@@ -21,7 +21,7 @@ const tokenAuthentication = (req:Request, res:Response, next:NextFunction)=>{
         req.user = tokenValidated.user
         return next();
     }
-    req.user = 0;
+    req.user = {id: 0};
     next();
 }
 
