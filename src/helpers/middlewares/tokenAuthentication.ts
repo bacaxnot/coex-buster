@@ -14,7 +14,8 @@ const tokenAuthentication = async (req:Request, res:Response, next:NextFunction)
     const {auth} = req.cookies;
     // console.log(auth)
     if (!auth) {
-        return res.status(401).send('No estas autorizado');
+        // return res.status(401).send('No estas autorizado');
+        return res.redirect('/login')
     }
     const tokenValidated = await jwt.verify(auth, config.SECRET as Secret) as JwtPayload;
     req.userId = tokenValidated.id
