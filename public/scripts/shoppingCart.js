@@ -131,7 +131,7 @@ const renderMovieInCart = async (moviesArray) => {
 			console.log(movie.movie.vote_average)
 			let url = imageUrl + movie.movie.poster_path;
 			const cart = `
-				<div class="cart-item">
+				<div class="cart-item" id="${movie.movie.id}">
 					<div class="cart-item-img">
 						<img 
 						src="${movie.movie.poster_path}" alt="movie-img">

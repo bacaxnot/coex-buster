@@ -2,13 +2,21 @@ import jwt, {Secret, JwtPayload} from "jsonwebtoken";
 import { Response, Request, NextFunction, Express } from "express";
 import config from "../../config";
 
+
+interface user {
+    id:number,
+    name?:string,
+    email?:string,
+    password?:string
+}
 declare global {
     namespace Express{
         interface Request {
-            user:Object|number
+            user:user
         }
     }
 }
+
 
 const tokenAuthentication = (req:Request, res:Response, next:NextFunction)=>{
     const {auth} = req.cookies;
@@ -21,7 +29,9 @@ const tokenAuthentication = (req:Request, res:Response, next:NextFunction)=>{
         req.user = tokenValidated.user
         return next();
     }
-    req.user = 0;
+    req.user = {
+        id: 0
+    };
     next();
 }
 
