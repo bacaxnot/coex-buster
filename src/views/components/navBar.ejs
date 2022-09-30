@@ -9,7 +9,7 @@
             <nav class="nav">
                 <ul class="list-categories">
                     <% categories.forEach(function(cat) { %>
-                        <a href="/movies/category?category=<%- cat.id %>"><li><%- cat.name %></li></a>
+                        <a href="/movies/category/1?category=<%- cat.id %>"><li><%- cat.name %></li></a>
                     <% }); %>
                         
                     <label for="otherMenu" class="list-item down-list" id="otherItems">
@@ -17,7 +17,7 @@
                         <img src="../../../public/assets/icons/arrow_down.svg" alt="arrow_down" class="list-icon">
                     <select class="other-categories" name="" id=""  onchange="location = this.value">
                         <% categories.forEach(function(cat) { %>
-                            <option value="/movies/category?category=<%- cat.id %>"><%- cat.name %></option>
+                            <option value="/movies/category/1?category=<%- cat.id %>"><%- cat.name %></option>
                         <% }); %>
                         <label for="otherMenu" class="list-item down-list" id="otherItems">
                             Others
@@ -36,7 +36,7 @@
             <%= console.log("hola mundo 2") %>
             <% if(user.id == 0){ %> 
                 <%= console.log("hola mundo 3") %> 
-                <div class="btn-sesion" id="btn-nosesion-nav">
+                <div class="btn-sesion-hidden" id="btn-nosesion-nav btn-hidden">
                     <button id="login" class="btn-login-nav">Log in</button>
                     <button id="register" class="btn-singup-nav">Sing up</button>
                 </di>
@@ -58,5 +58,6 @@
             <img src="../../../public/assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27">
         </a>
     </div>
+    <% } %>
 
 </header>

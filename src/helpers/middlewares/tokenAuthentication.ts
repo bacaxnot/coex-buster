@@ -22,7 +22,7 @@ const tokenAuthentication = (req:Request, res:Response, next:NextFunction)=>{
     const {auth} = req.cookies;
     const routes = req.route
     if ((!auth &&(routes.path === '/history' || routes.path === '/history/order/:id'))) {
-        return res.status(401).send('No estas autorizado');
+        return res.redirect('/login');
     }
     if(auth){
         const tokenValidated = jwt.verify(auth, config.SECRET as Secret) as JwtPayload;

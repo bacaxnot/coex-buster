@@ -3,16 +3,19 @@
         <label class="text_title">Register</label><br><br>
       <div class="login-info">
         <label class="text_login">Name</label><br>
-        <input class="input_login" type="text" name="name" id="name" placeholder="Full name"><br>
+        <input class="input_login" type="text" required name="name" id="name" placeholder="Full name"><br>
         <label class="text_login">Email Adress</label><br>
-        <input class="input_login" type="email" name="email" id="email" placeholder="correo@correo.com"><br>
+        <input class="input_login" type="email" required name="email" id="email" placeholder="correo@correo.com"><br>
         <label class="text_login">Password</label><br>
-        <input class="input_login" type="password" name="password" id="password" placeholder="***********" autocomplete="off"><br>
+        <input class="input_login" type="password"  required min="6" name="password" id="password" placeholder="***********" autocomplete="off"><br>
+        <label class="text_login">Comfirme Password</label><br>
+        <input class="input_login" type="password" required min="6" name="passwordComfirm" id="passwordComfirm" placeholder="***********" autocomplete="off"><br>
         <input type="hidden" value="1" id="id" name="id">
-        <button class="btn-login" type="submit">Register</button>
+        <button class="btn-login" type="submit" id="ola">Register</button>
       </div>
     </form>
   </div>
   <div class="extra_register">
     <button class="btn-singup" type="submit" id="login">Already have acount... Log in</button>
   </div>
+

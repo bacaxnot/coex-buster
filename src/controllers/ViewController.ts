@@ -32,32 +32,41 @@ class ViewController implements IController<Request, Response>{
             element.movies_categories = genres
         })
         console.log(`Este es el usuario que le voy a mandar ${user} y este el path en donde está ${req.originalUrl}`)
-        res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], categories: categories, user:user, path: req.originalUrl });
+        res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], categories: categories, user:user, path: req.originalUrl, id:0 });
     }
 
     async getAllByCategoryId(req: Request, res: Response): Promise<void> {
         let category: any = req.query.category
+        const pag = req.params.pag;
         category = parseInt(category)
         const user = req.user 
-        const movies : any = await MoviesRepository.getAllByCategoryById(category);
+        const movies : any = await MoviesRepository.getAllByCategoryById(category, pag);
         const categories = await MoviesRepository.getAllCategories();
         res.render('layouts/shop', { paginate: movies[2], result: movies, count: movies[0], categories: categories, user: user, path: req.originalUrl});
     }
 
-    async getAllBySearch(req: Request, res: Response): Promise<void> {
-        const search = req.query.search
-        const user = req.user
-        const movies: any = await MoviesRepository.getAllBySearch(search);
-        const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, user: user, path: req.originalUrl});
-    }
-
-    async getPaginate(req: Request, res: Response): Promise<void> { 
-        const pag = req.params.pag;         
-        const user = req.user
+    async getPaginate(req: Request, res: Response): Promise<void> {  
+        const pag = req.params.pag;
+        const user = req.user;         
         const movies = await MoviesRepository.getPaginated(pag);
         const categories = await MoviesRepository.getAllCategories();
-        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, user: user, path: req.originalUrl});
+        movies[1].forEach((element : any, index: any) => {
+            const genres : any = []
+            element.movies_categories.forEach((genre : any) => {
+                genres.push(genre.categories.name)
+            })
+            element.movies_categories = genres
+        })
+        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, id: 0, user:user, path: req.originalUrl});
+    }
+
+    async getAllBySearch(req: Request, res: Response): Promise<void> {
+        const search = req.query.search
+        const pag = req.params.pag;
+        const user = req.user;
+        const movies: any = await MoviesRepository.getAllBySearch(search,pag);
+        const categories = await MoviesRepository.getAllCategories();
+        res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, id: search, user: user, path: req.originalUrl });
     }
 
     async movieDetail (req: Request, res:Response): Promise<void>{
@@ -68,7 +77,6 @@ class ViewController implements IController<Request, Response>{
        
        
        res.render('layouts/movie-detail.ejs', {detalle:movie, actors: actors, path: req.originalUrl, user});
-        
     }
 
     async createTransaction(req: Request, res:Response): Promise<void> {
@@ -130,7 +138,7 @@ class ViewController implements IController<Request, Response>{
         })
     }
 
-    async getOrderDetail(req: Request, res:Response): Promise<void> {
+    async getOrderDetail(req: Request, res: Response): Promise<void> {
         const id = parseInt(req.params.id);
         const user = req.user
         const result : any = await transactions_detailRepository.get(id);

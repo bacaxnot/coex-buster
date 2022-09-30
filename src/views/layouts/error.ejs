@@ -11,6 +11,11 @@
         <p class="err-message__error">
             <%= typeof error != 'undefined' ? ': ' + error : '.' %>
         </p>
+        <% if (typeof action != 'undefined') { %>
+            <% if (action == 'login') { %>
+                <p class="err-message__action">Para continuar, ingrese <a href="/login">AQUÍ</a></p>
+            <% } %>
+        <% } %>
     </div>
 </main>
 
