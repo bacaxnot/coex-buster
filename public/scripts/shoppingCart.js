@@ -108,17 +108,16 @@ const addToCart = async (movie) => {
 				});
 				if (response.ok) {
 					const result = await response.json();
-					console.log(result);
 				}
 			}
 			} catch (err) {
 			console.error(err);
 		}
-		throwError('Peli añadida')
+		throwError('Película añadida')
 
 		// openCart()
 	} else {
-		throwError('Peli repetida')
+		throwError('Película repetida')
 		return
 	}
 };
@@ -157,7 +156,7 @@ const renderMovieInCart = async (moviesArray) => {
 		});
 		cartList.innerHTML = template;
 	} catch (error) {
-			console.log(error)
+		console.error(error);
 	}
 };
 
@@ -178,7 +177,6 @@ const deleteMovieInCart = async (id) => {
 		});
 		if (deleteMovie.ok) {
 			const result = await deleteMovie.json();
-			console.log(result);
 			moviesInCart.splice(indexMovie, 1);
 			showCheckoutButton(moviesInCart.length);
 			localStorage.setItem('shoppingCart', JSON.stringify(moviesInCart));
