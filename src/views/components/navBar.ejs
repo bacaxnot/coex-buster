@@ -65,8 +65,17 @@
 </header>
 
 <script>
-    let categories = '<%- JSON.stringify(categories) %>'
-    let user = '<%- JSON.stringify(user) %>'
+    let categories;
+</script>
+
+<% if (typeof categories !== 'undefined') { %>
+    <script>
+        categories = '<%- JSON.stringify(categories) %>'
+    </script>
+<% } %>
+
+    <script>
+        let user = '<%- JSON.stringify(user) %>'
     </script>
     <script src="/public/scripts/navBar.js"></script>
 </header>

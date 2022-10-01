@@ -3,7 +3,8 @@ const checkoutButton = document.querySelector('.checkout-button-container');
 const closeButton = document.querySelector('#closeButton');
 const openButton = document.querySelector('#openButton');
 let moviesInCart = [];
-user = JSON.parse(user)
+
+
 const openCart = async () => {
 	cartContainer.style.right = `0`;
 	renderMovieInCart(moviesInCart);
@@ -24,8 +25,6 @@ const showCheckoutButton = (arrLength) => {
 openButton.addEventListener('click', openCart);
 
 closeButton.addEventListener('click', closeCart);
-
-const imageUrl = `https://image.tmdb.org/t/p/w500/`;
 
 //cargar los datos del localStorage a moviesInCart para luego renderizar las movies del shoppingCart
 
@@ -66,10 +65,8 @@ const throwError = (message) => {
 const list = document.querySelectorAll('.mcc-table__btn--add');
 list.forEach(element => {
 	element.addEventListener('click', async  () => {
-		const id = element.getAttribute('id');
-		let movie = await fetch(`http://localhost:3000/api/v1/movies/${id}`)
-		movie = await movie.json();
-		addToCart(movie);
+		const dataMovie = JSON.parse(element.getAttribute('id'));
+		addToCart(dataMovie);
 	})
 })
 
@@ -80,15 +77,8 @@ const addToCart = async (movie) => {
 	}
 	const indexMovies = moviesInCart.map((movie) => movie.id)
 	//comprobamos que la pelicula seleccionada no este repetida en moviesCart
-	if (!indexMovies.includes(movie.movie.id)) {
-		let dataMovie = {
-			id: movie.movie.id,
-			title: movie.movie.title,
-			poster_path: movie.movie.poster_path,
-			vote_average: movie.movie.vote_average,
-			movies_categories: movie.movie.movies_categories
-		}
-		moviesInCart.push(dataMovie)
+	if (!indexMovies.includes(movie.id)) {
+		moviesInCart.push(movie)
 		renderMovieInCart(moviesInCart)
 		showCheckoutButton(moviesInCart.length)
 		try {
@@ -132,17 +122,16 @@ const renderMovieInCart = async (moviesArray) => {
 		let template = ``;
 		moviesArray.map((movie) => {
 			let category;
-			let url = imageUrl + movie.poster_path;
-			if(movie.movies_categories.length == 0){
+			if(!movie.genres || movie.genres.length === 0) {
 				category = "Dont have category"
 			}else{
-				category = movie.movies_categories[0].categories.name
+				category = movie.genres[0]
 			}
 			const cart = `
 				<div class="cart-item" id="${movie.id}">
 					<div class="cart-item-img">
 						<img
-						src="${movie.poster_path}" alt="movie-img">
+						src="${movie.path}" alt="movie-img">
 					<div class="cart-info-container">
 						<h2>${movie.title}</h2>
 						<span>${category}</span>
