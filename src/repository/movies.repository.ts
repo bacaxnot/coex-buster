@@ -151,8 +151,17 @@ class MoviesRepository implements IMovieRepository<movies> {
         return [count, movies, page, id];
     }
 
-    async getAllCategories(): Promise<void> {
-        const movies: any = await prisma.categories.findMany();
+    async getAllCategoriesFirtsFive(): Promise<void> {
+        const movies: any = await prisma.categories.findMany({
+            take: 5
+        });
+        return movies
+    }
+
+    async getAllCategoriesSelect(): Promise<void> {
+        const movies: any = await prisma.categories.findMany({
+            skip: 5
+        });
         return movies
     }
 
