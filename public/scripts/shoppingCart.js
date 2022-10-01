@@ -18,7 +18,6 @@ window.onload = async () => {
 
 const openCart = async () => {
 	cartContainer.style.right = `0`;
-	console.log(moviesInCart)
 	renderMovieInCart(moviesInCart);
 };
 
