@@ -23,7 +23,8 @@ class ViewController implements IController<Request, Response>{
             const user = req.user       
             const id = 0;
             const movies : any = await MoviesRepository.getAll();
-            const categories = await MoviesRepository.getAllCategories();
+            const categories = await MoviesRepository.getAllCategoriesFirtsFive();
+            const categoriesSelect = await MoviesRepository.getAllCategoriesSelect();
             movies[1].forEach((element : any, index: any) => {
                 const genres : any = []
                 element.movies_categories.forEach((genre : any) => {
@@ -31,7 +32,7 @@ class ViewController implements IController<Request, Response>{
                 })
                 element.movies_categories = genres
             })
-            res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], id:id , categories: categories, user:user, path: req.originalUrl});
+            res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], id:id , categories: categories, categoriesSelect: categoriesSelect, user:user, path: req.originalUrl});
         } catch (error) {
             res.render('layouts/error', {error: error})
         }
@@ -44,8 +45,9 @@ class ViewController implements IController<Request, Response>{
             category = parseInt(category)
             const user = req.user 
             const movies : any = await MoviesRepository.getAllByCategoryById(category, pag);
-            const categories = await MoviesRepository.getAllCategories();
-            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, id: movies[3], user: user, path: req.originalUrl});
+            const categories = await MoviesRepository.getAllCategoriesFirtsFive();
+            const categoriesSelect = await MoviesRepository.getAllCategoriesSelect();
+            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id: movies[3], user: user, path: req.originalUrl});
         } catch (error) {
             res.render('layouts/error', {error: error})
         }
@@ -56,7 +58,8 @@ class ViewController implements IController<Request, Response>{
             const pag = req.params.pag;
             const user = req.user;         
             const movies = await MoviesRepository.getPaginated(pag);
-            const categories = await MoviesRepository.getAllCategories();
+            const categories = await MoviesRepository.getAllCategoriesFirtsFive();
+            const categoriesSelect = await MoviesRepository.getAllCategoriesSelect();
             movies[1].forEach((element : any, index: any) => {
                 const genres : any = []
                 element.movies_categories.forEach((genre : any) => {
@@ -64,7 +67,7 @@ class ViewController implements IController<Request, Response>{
                 })
                 element.movies_categories = genres
             })
-            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, id: 0, user:user, path: req.originalUrl});
+            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id: 0, user:user, path: req.originalUrl});
         } catch (error) {
             res.render('layouts/error', {error: error}) 
         }
@@ -76,8 +79,9 @@ class ViewController implements IController<Request, Response>{
             const pag = req.params.pag;
             const user = req.user;
             const movies: any = await MoviesRepository.getAllBySearch(search,pag);
-            const categories = await MoviesRepository.getAllCategories();
-            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, id: search, user: user, path: req.originalUrl });
+            const categories = await MoviesRepository.getAllCategoriesFirtsFive();
+            const categoriesSelect = await MoviesRepository.getAllCategoriesSelect();
+            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id: search, user: user, path: req.originalUrl });
         } catch (error) {
             res.render('layouts/error', {error: error}) 
         }
