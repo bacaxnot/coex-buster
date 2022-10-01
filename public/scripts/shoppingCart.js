@@ -4,9 +4,21 @@ const closeButton = document.querySelector('#closeButton');
 const openButton = document.querySelector('#openButton');
 let moviesInCart = [];
 
+window.onload = async () => {
+	const userId = (user.id).toString()
+	let moviesCookies= await fetch(`http://localhost:3000/api/v1/shop/get/${userId}`)
+	moviesCookies = await moviesCookies.json();
+	if(!moviesCookies.code){
+		moviesInCart = []
+		moviesCookies.forEach(movie => {
+			moviesInCart.push(movie)
+		})
+	}
+};
 
 const openCart = async () => {
 	cartContainer.style.right = `0`;
+	console.log(moviesInCart)
 	renderMovieInCart(moviesInCart);
 };
 
@@ -29,18 +41,6 @@ closeButton.addEventListener('click', closeCart);
 //cargar los datos del localStorage a moviesInCart para luego renderizar las movies del shoppingCart
 
 
-window.onload = async () => {
-	const userId = (user.id).toString()
-	let moviesCookies= await fetch(`http://localhost:3000/api/v1/shop/get/${userId}`)
-	moviesCookies = await moviesCookies.json();
-	if(!moviesCookies.code){
-		moviesInCart = []
-		moviesCookies.forEach(movie => {
-			moviesInCart.push(movie)
-		})
-	}
-
-};
 
 
 //redirige a LOGIN / MYHISTORY dependiendo de la sesion
@@ -105,7 +105,7 @@ const addToCart = async (movie) => {
 		}
 		throwError('Película añadida')
 
-		// openCart()
+		openCart()
 	} else {
 		throwError('Película repetida')
 		return
