@@ -9,6 +9,7 @@ if(params.get("category")){
 	const paramOptions = params.get("category").split('/')
 	const arrayCategories = JSON.parse(categories)
 	const primerId = arrayCategories[0].id
+	const categoryOption = document.getElementById("categoryOption")
 	if(Number(paramOptions[0]) > arrayCategories[arrayCategories.length - 1].id) categoryOption.innerHTML = paramOptions[1]
 	categorySelected.forEach(element => {
 		if(paramPosition){
@@ -18,7 +19,6 @@ if(params.get("category")){
 		}
 	})
 }
-const categoryOption = document.getElementById("categoryOption")
 
 
 if(user.id !== 0){
