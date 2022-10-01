@@ -10,12 +10,12 @@ class ViewController implements IController<Request, Response>{
 
     renderLogin(req: Request, res: Response){
         const user = req.user
-        res.render('layouts/login', {path:req.originalUrl, user:user})
+        res.render('layouts/login', {path:req.originalUrl, user:user, categories: [], categoriesSelect: []})
     }
 
     renderRegister(req:Request, res:Response){
         const user = req.user
-        res.render('layouts/register', {path:req.originalUrl, user:user})
+        res.render('layouts/register', {path:req.originalUrl, user:user, categories: [], categoriesSelect: []})
     }
 
     async getAll(req: Request, res: Response): Promise<void> {

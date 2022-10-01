@@ -8,17 +8,18 @@
         <div class="categories">
             <nav class="nav">
                 <ul class="list-categories">
-                    <% categories.forEach(function(cat) { %>
-                        <a href="/movies/category/1?category=<%- cat.id %>/<%- cat.name %>"><li><%- cat.name %></li></a>
-                    <% }); %>
+                    <% categories.forEach( cat => { %>
+                        <a id="categorySelected" href="/movies/category/1?category=<%- cat.id %>/<%- cat.name %>">
+                            <li><%- cat.name %></li>
+                        </a>
+                    <% }) %>
                         
                     <% if (categoriesSelect != 0) { %>
                         <label for="otherMenu" class="list-item down-list" id="otherItems">
-                            Others
                             <select class="other-categories" name="" id=""  onchange="location = this.value">
-                                <option value="">--Others--</option>
-                                <% categoriesSelect.forEach(function(cat) { %>
-                                    <option value="/movies/category/1?category=<%- cat.id %>/<%- cat.name %>"><%- cat.name %></option>
+                                <option id="categoryOption" value=""> others </option>
+                                <% categoriesSelect.forEach( (cat) => { %>
+                                    <option id="category-selected" value="/movies/category/1?category=<%- cat.id %>/<%- cat.name %>"><%- cat.name %></option>
                                 <% }); %>
 
                             </select>
@@ -36,7 +37,6 @@
                     <button id="login" class="btn-login-nav">Log in</button>
                     <button id="register" class="btn-singup-nav">Sign up</button>
                 </div>
-
             <% } else { %>
             
                 <div class="btn-sesion-login " id="btn-sesion-nav">
@@ -57,15 +57,16 @@
                     </div> 
                 </div>
             <%}%>
+            <a as="button" id="openButton">
+                <img src="../../../public/assets/icons/icon_shopping_cart_notification.svg" alt="" width="30" heigth="27">
+            </a>
         <% } %>
-        <a as="button" id="openButton">
-            <img src="../../../public/assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27">
-        </a>
     </div>
 </header>
 
-    <script src="/public/scripts/navBar.js"></script>
-    <script>
-        let user = '<%- JSON.stringify(user) %>'
+<script>
+    let categories = '<%- JSON.stringify(categories) %>'
+    let user = '<%- JSON.stringify(user) %>'
     </script>
+    <script src="/public/scripts/navBar.js"></script>
 </header>
