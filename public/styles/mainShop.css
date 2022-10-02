@@ -80,3 +80,11 @@
 .item__star--gray {
     filter: var(--purple-gray-fil);
 }
+
+
+.name__category{
+
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+}
