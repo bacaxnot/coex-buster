@@ -11,12 +11,12 @@ class ViewController implements IController<Request, Response>{
 
     renderLogin(req: Request, res: Response) {
         const user = req.user
-        res.render('layouts/login', { path: req.originalUrl, user: user, categories: [], categoriesSelect: [] })
+        res.render('layouts/login', {path:req.originalUrl, user:user})
     }
 
     renderRegister(req: Request, res: Response) {
         const user = req.user
-        res.render('layouts/register', { path: req.originalUrl, user: user, categories: [], categoriesSelect: [] })
+        res.render('layouts/register', {path:req.originalUrl, user:user})
     }
 
     async getAll(req: Request, res: Response): Promise<void> {
@@ -48,16 +48,7 @@ class ViewController implements IController<Request, Response>{
             const movies: any = await MoviesRepository.getAllByCategoryById(category, pag);
             const categories = await MoviesRepository.getAllCategoriesFirtsFive();
             const categoriesSelect = await MoviesRepository.getAllCategoriesSelect();
-            let categoriesNames: Array<string> = [];
-
-            const ObjectCatName = Object.values(categories);
-
-            ObjectCatName.find((object: any) => {
-                categoriesNames.push(object.name);
-            });
-            
-            const id: Array<Number> = [movies[3], categoriesNames[(movies[3]) - 1], false];
-            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id, user: user, path: req.originalUrl });
+            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id: movies[3], user: user, path: req.originalUrl});
         } catch (error) {
             res.render('layouts/error', { error: error })
         }
