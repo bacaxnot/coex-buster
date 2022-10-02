@@ -81,11 +81,11 @@ const addToCart = async (movie) => {
 		renderMovieInCart(moviesInCart)
 		showCheckoutButton(moviesInCart.length)
 		try {
-			const clearCookie = await fetch("http://localhost:3000/api/v1/shop/clear",{
+			const clearCookie = await fetch("api/v1/shop/clear",{
 				method: 'DELETE'
 			})
 			if(clearCookie.ok){
-				const response = await fetch("http://localhost:3000/api/v1/shop/add", {
+				const response = await fetch("api/v1/shop/add", {
 					method: 'POST',
 					headers: {
 					'Content-Type': 'application/json'
