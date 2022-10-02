@@ -1,6 +1,18 @@
 //html value
 const prev = document.getElementById('prev')
 const next = document.getElementById('next')
+const nameCategory = document.getElementById('nameCategory')
+
+let categorySelect = ''
+const categoriesNavbar = document.querySelectorAll("#categorySelected")
+
+categoriesNavbar.forEach(category =>{
+    if(category.classList.value == "seleccionado"){
+        categorySelect = category.innerText
+        nameCategory.innerHTML = (category.innerText).toUpperCase()
+    }
+   
+})
 
 //request value
 const current = document.getElementById('currentPagination').value
@@ -60,7 +72,7 @@ prev.addEventListener('click', () => {
         if (typeof categoria === 'string') {
             return window.location.replace(`/movies/search/${currentPage}?search=${categoria}`)
         } else if (categoria > 0) {
-            return window.location.replace(`/movies/category/${currentPage}?category=${categoria}`)
+            return window.location.replace(`/movies/category/${currentPage}?category=${categoria}/${categorySelect}`)
         } else {
             return window.location.replace(`/movies/paginate/${currentPage}`)
         }
@@ -82,7 +94,7 @@ next.addEventListener('click', () => {
         if (typeof categoria === 'string') {
             return window.location.replace(`/movies/search/${currentPage}?search=${categoria}`)
         } else if (categoria > 0) {
-            return window.location.replace(`/movies/category/${currentPage}?category=${categoria}`)
+            return window.location.replace(`/movies/category/${currentPage}?category=${categoria}/${categorySelect}`)
         } else {
             return window.location.replace(`/movies/paginate/${currentPage}`)
         }
@@ -93,4 +105,3 @@ next.addEventListener('click', () => {
     }
 
 })
-

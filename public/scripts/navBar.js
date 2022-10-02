@@ -1,23 +1,19 @@
 let categorySelected = document.querySelectorAll("#categorySelected")
+let selected = document.querySelectorAll("#select")
 user = JSON.parse(user)
 
 const params = new URLSearchParams(window.location.search)
-let banderita = 0
 if(params.get("category")){
-	banderita = 1
-	const paramPosition = params.get("category").split('/')[0]
 	const paramOptions = params.get("category").split('/')
 	const arrayCategories = JSON.parse(categories)
-	const primerId = arrayCategories[0].id
 	const categoryOption = document.getElementById("categoryOption")
-	if(Number(paramOptions[0]) > arrayCategories[arrayCategories.length - 1].id) categoryOption.innerHTML = paramOptions[1]
-	categorySelected.forEach(element => {
-		if(paramPosition){
-			if(categorySelected[paramPosition-primerId] == element){
-				element.classList.add("seleccionado")
-			}
-		}
-	})
+	if(Number(paramOptions[0]) > arrayCategories[arrayCategories.length - 1].id){
+		categoryOption.innerHTML = paramOptions[1]
+		select.style.color =  "#7B2ABF";
+	}
+	categorySelected = Array.from(categorySelected)
+	let categoria = categorySelected.find(element => element.innerText == paramOptions[1])
+	categoria.classList.add("seleccionado");
 }
 
 

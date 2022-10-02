@@ -81,11 +81,11 @@ const addToCart = async (movie) => {
 		renderMovieInCart(moviesInCart)
 		showCheckoutButton(moviesInCart.length)
 		try {
-			const clearCookie = await fetch("api/v1/shop/clear",{
+			const clearCookie = await fetch("/api/v1/shop/clear",{
 				method: 'DELETE'
 			})
 			if(clearCookie.ok){
-				const response = await fetch("api/v1/shop/add", {
+				const response = await fetch("/api/v1/shop/add", {
 					method: 'POST',
 					headers: {
 					'Content-Type': 'application/json'
@@ -124,7 +124,7 @@ const renderMovieInCart = async (moviesArray) => {
 			if(!movie.genres || movie.genres.length === 0) {
 				category = "Dont have category"
 			}else{
-				category = movie.genres[0]
+				category = movie.genres
 			}
 			const cart = `
 				<div class="cart-item" id="${movie.id}">
