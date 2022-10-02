@@ -32,12 +32,10 @@ class LoginController implements IController<Request, Response> {
         res.redirect('/movies');
     }
 
-    async signUp(req: Request, res: Response): Promise<void> {
+    async signUp(req: Request, res: Response): Promise<void>  {
         const {id, name, email, password, passwordComfirm} = req.body
-        console.log(password, passwordComfirm)
         const data = await usersRepository.create({id, name, email, password})
-        res.redirect('/login')
-        console.log("se creo usuario");
+        res.json({code:200, data:data});
     }
 
     async logOut(req: Request, res: Response): Promise<void>{

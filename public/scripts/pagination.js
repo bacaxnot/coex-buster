@@ -1,25 +1,23 @@
 //html value
 const prev = document.getElementById('prev')
 const next = document.getElementById('next')
+const nameCategory = document.getElementById('nameCategory')
+
+let categorySelect = ''
+const categoriesNavbar = document.querySelectorAll("#categorySelected")
+
+categoriesNavbar.forEach(category =>{
+    if(category.classList.value == "seleccionado"){
+        categorySelect = category.innerText
+        nameCategory.innerHTML = category.innerText
+    }
+})
+
 
 //request value
 const current = document.getElementById('currentPagination').value
-let categoria = document.getElementById('category').value
-let categoriaId = categoria.split(',');
+let categoria = parseInt(document.getElementById('category').value)
 
-if(categoriaId.includes('false')){
-    categoriaId.pop();
-    categoriaId.forEach((id,index)=> {
-        if(categoriaId[index+1] = id){
-            categoria = parseInt(id);
-        }
-    });
-}else{
-    categoriaId.pop();
-    categoria = categoriaId[0];
-    console.log(categoria)
-}
-    
 //request value total de registros de la consulta
 const total = document.getElementById('total').value
 
@@ -47,7 +45,6 @@ if (totalPages > 11) {
 prev.classList.add('disabled');
 
 prev.addEventListener('click', () => {
-
     next.classList.remove('disabled');
     if (currentPage <= 1) {
         prev.classList.add('disabled');
@@ -61,29 +58,25 @@ prev.addEventListener('click', () => {
         if (typeof categoria === 'string') {
             return window.location.replace(`/movies/search/${currentPage}?search=${categoria}`)
         } else if (categoria > 0) {
-            return window.location.replace(`/movies/category/${currentPage}?category=${categoria}`)
+            return window.location.replace(`/movies/category/${currentPage}?category=${categoria}/${categorySelect}`)
         } else {
             return window.location.replace(`/movies/paginate/${currentPage}`)
         }
-        // 
     }
 
 })
 
 next.addEventListener('click', () => {
-
     prev.classList.remove('disabled');
 
     if (currentPage <= totalPages - 1) {
         nextPage++;
         currentPage++;
         prevPage++;
-        // current.innerHTML = currentPage;
-        // 
         if (typeof categoria === 'string') {
             return window.location.replace(`/movies/search/${currentPage}?search=${categoria}`)
         } else if (categoria > 0) {
-            return window.location.replace(`/movies/category/${currentPage}?category=${categoria}`)
+            return window.location.replace(`/movies/category/${currentPage}?category=${categoria}/${categorySelect}`)
         } else {
             return window.location.replace(`/movies/paginate/${currentPage}`)
         }
