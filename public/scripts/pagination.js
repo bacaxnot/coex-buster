@@ -17,7 +17,6 @@ if(categoriaId.includes('false')){
 }else{
     categoriaId.pop();
     categoria = categoriaId[0];
-    console.log(categoria)
 }
     
 //request value total de registros de la consulta

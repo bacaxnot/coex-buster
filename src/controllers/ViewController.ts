@@ -48,7 +48,8 @@ class ViewController implements IController<Request, Response>{
             const movies: any = await MoviesRepository.getAllByCategoryById(category, pag);
             const categories = await MoviesRepository.getAllCategoriesFirtsFive();
             const categoriesSelect = await MoviesRepository.getAllCategoriesSelect();
-            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id: movies[3], user: user, path: req.originalUrl});
+            const id: Array<any> = [movies[3], false];
+            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id, user: user, path: req.originalUrl});
         } catch (error) {
             res.render('layouts/error', { error: error })
         }
