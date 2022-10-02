@@ -16,10 +16,10 @@
                         
                     <% if (categoriesSelect != 0) { %>
                         <label for="otherMenu" class="list-item down-list" id="otherItems">
-                            <select class="other-categories" name="" id=""  onchange="location = this.value">
+                            <select class="other-categories" name="" id="select"  onchange="location = this.value">
                                 <option id="categoryOption" value=""> others </option>
                                 <% categoriesSelect.forEach( (cat) => { %>
-                                    <option id="category-selected" value="/movies/category/1?category=<%- cat.id %>/<%- cat.name %>"><%- cat.name %></option>
+                                    <option id="categorySelected" value="/movies/category/1?category=<%- cat.id %>/<%- cat.name %>"><%- cat.name %></option>
                                 <% }); %>
 
                             </select>
