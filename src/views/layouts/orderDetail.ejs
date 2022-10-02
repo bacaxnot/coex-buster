@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="/public/styles/starsComponent.css">
 <link rel="stylesheet" href="/public/styles/backButton.css">
 <link href="/public/styles/navbar.css" rel="stylesheet">
+<link href="/public/styles/shoppingCart.css" rel="stylesheet">
 
 <%- include('../partials/body') %>
 
@@ -12,6 +13,9 @@
 <%- include('../components/navbar.ejs') %>
 
 <main class="od-view">
+    <div class="shoppingCart">
+        <%- include('../components/shoppingCartComponent.ejs') %>
+    </div>
     <div class="od-container">
         <%- include('../components/backButton.ejs') %>
         <section class="od-order">
@@ -23,7 +27,7 @@
             <div class="od-order__list">
                 <% products.forEach(product => { %>
                     <a 
-                        href="<%= product.movies.id %>" 
+                        href="/movies/detail/<%= product.movies.id %>" 
                         class="od-list__link" 
                         title="Go to <%= typeof product.movies.title != 'undefined' ? product.movies.title : 'untitled' %>"
                     >
@@ -41,7 +45,8 @@
                                 </h4>
                                 <div class="od-item__genres">
                                     <p class="od-item__genre">
-                                        <%= typeof product.movies.genres != 'undefined' ? product.movies.genres : 'genres not found' %>
+                                        <%= product.movies.genres %> 
+                                        <%= typeof product.movies.genres != 'undefined' ? product.movies.genres : ' ' %>
                                     </p>
                                 </div>
                                 <%- include('../components/starsComponent.ejs', {vote_average: product.movies.vote_average}) %>
@@ -54,6 +59,8 @@
     </div>
 </main>
 
+<script src="/public/scripts/shoppingCart.js"></script>
+<script src="/public/scripts/checkButton.js"></script>
 <script src="/public/scripts/backButton.js"></script>
 
 <%- include('../partials/foot') %>

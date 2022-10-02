@@ -1,23 +1,17 @@
-button{
-    background-color: transparent;
-    color: white;
-    border-color: transparent;
-}
-
-header{
-    width: 100%;
-    color: white;
-    background-color: #02021C;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 54px
-}
-
 .nav ul{
     display: flex;
     flex-direction: row;
     gap: 28px;
+}
+
+.seleccionado {
+    border: 1px solid #7B2ABF;
+    border-radius: 10px;
+    /* padding: 5px; */
+    padding-left: 5px;
+    color: #7B2ABF;
+    padding-right: 5px;
+    font-size: 15px;
 }
 
 li, a{
@@ -26,32 +20,36 @@ li, a{
 }
 
 .email__sigin{
+    position: relative;
+    background: transparent;
+    border: none;
     color: var(--purple);
     font-size: 1rem;
 }
-.email__sigin:hover{
-    color: var(--purple-input);
+.email__sigin>option {
+    color: var(--purple);
+    background-color: var(--purple-input);
 }
-.email__sigin:hover .sigin__arrow{
-    filter: var(--purple-gray-fil);
-}
-.logo{
+.email-menu {
+    padding: 10px;
+    border: .2px solid white;
+    border-radius: 10px;
+    position: absolute;
     cursor: pointer;
-    width: 168px;
-    height: 30px;
+    display: none;
+    background-color: var(--purple-input);
+}
+.user-correo:hover{
+    background: white;
+}
+
+.show-hidden {
+    display: block;
 }
 
 .logo img{
     height: 100%;
     width: 100%;
-}
-
-.derHeader{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    width:20%;
 }
 
 .sesion{
@@ -62,20 +60,6 @@ li, a{
     filter: var(--purple-fil);
     block-size: auto;
     inline-size: 12px;
-}
-
-.btn-singup-nav{
-    border: 2px solid white;
-    border-radius: 5px;
-    padding: 5px;
-    cursor: pointer;
-}
-
-.btn-login-nav{
-    border: 2px solid white;
-    border-radius: 5px;
-    padding: 5px;
-    cursor: pointer;
 }
 
 .displayNone{
@@ -92,6 +76,7 @@ button{
 }
 
 header{
+    padding: 0 3rem;
     width: 100%;
     color: white;
     background-color: #02021C;
@@ -103,12 +88,6 @@ header{
 .email__sigin{
     color: var(--purple);
     font-size: 1rem;
-}
-.email__sigin:hover{
-    color: var(--purple-input);
-}
-.email__sigin:hover .sigin__arrow{
-    filter: var(--purple-gray-fil);
 }
 .logo{
     width: 168px;

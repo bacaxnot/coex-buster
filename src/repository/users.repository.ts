@@ -25,14 +25,14 @@ class UsersRepository implements IUserRepository<users> {
     }
 
     async getEmail(email: string): Promise<users> {
-        const user = await prisma.users.findUnique({
+        const user : any = await prisma.users.findUnique({
             where: {
                 email:email
             }
         })
-        if(!user){
-            throw new Error('usuario no encontrado')
-        }
+        // if(!user){
+        //     throw new Error('usuario no encontrado')
+        // }
         return user
     }
 

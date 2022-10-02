@@ -4,10 +4,17 @@
 <link rel="stylesheet" href="/public/styles/orderComponent.css">
 <link rel="stylesheet" href="/public/styles/backButton.css">
 <link href="/public/styles/navbar.css" rel="stylesheet">
+<link href="/public/styles/shoppingCart.css" rel="stylesheet">
 
 <%- include('../partials/body') %>
 
 <%- include('../components/navbar.ejs') %>
+<main>
+    <div class="shoppingCart">
+        <%- include('../components/shoppingCartComponent.ejs') %>
+    </div>
+</main>
+
 
 <div class="contenedor__history">
     <section class="history__section">
@@ -24,5 +31,7 @@
 
 <script src="/public/scripts/orderComponent.js"></script>
 <script src="/public/scripts/backButton.js"></script>
+<script src="/public/scripts/shoppingCart.js"></script>
+<script src="/public/scripts/checkButton.js"></script>
 
 <%- include('../partials/foot') %>

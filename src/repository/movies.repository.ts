@@ -7,7 +7,7 @@ class MoviesRepository implements IMovieRepository<movies> {
         const count = await prisma.movies.count();
         const data: any = await prisma.movies.findMany({
             skip: 0,
-            take: 11,
+            take: 12,
             include: {
                 movies_categories: {
                     select: {
@@ -20,7 +20,6 @@ class MoviesRepository implements IMovieRepository<movies> {
                 }
             }
         })
-
         return [count, data];
     }
 
@@ -36,7 +35,7 @@ class MoviesRepository implements IMovieRepository<movies> {
         const count = await prisma.movies.count();
         const data: any = await prisma.movies.findMany({
             skip: skip,
-            take: 11,
+            take: 12,
             include: {
                 movies_categories: {
                     select: {
@@ -133,7 +132,7 @@ class MoviesRepository implements IMovieRepository<movies> {
         }
         const movies: any = await prisma.movies_categories.findMany({
             skip: skip,
-            take: 11,
+            take: 12,
             where: {
                 category_id: id
             },
@@ -152,8 +151,17 @@ class MoviesRepository implements IMovieRepository<movies> {
         return [count, movies, page, id];
     }
 
-    async getAllCategories(): Promise<void> {
-        const movies: any = await prisma.categories.findMany();
+    async getAllCategoriesFirtsFive(): Promise<void> {
+        const movies: any = await prisma.categories.findMany({
+            take: 5
+        });
+        return movies
+    }
+
+    async getAllCategoriesSelect(): Promise<void> {
+        const movies: any = await prisma.categories.findMany({
+            skip: 5
+        });
         return movies
     }
 
@@ -175,7 +183,7 @@ class MoviesRepository implements IMovieRepository<movies> {
         });
         const movies: any = await prisma.movies.findMany({
             skip: skip,
-            take: 11,
+            take: 12,
             where: {
                 title: {
                     contains: name
