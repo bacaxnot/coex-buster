@@ -9,7 +9,7 @@ const categoriesNavbar = document.querySelectorAll("#categorySelected")
 categoriesNavbar.forEach(category =>{
     if(category.classList.value == "seleccionado"){
         categorySelect = category.innerText
-        nameCategory.innerHTML = category.innerText
+        nameCategory.innerHTML = (category.innerText).toUpperCase()
     }
 })
 
