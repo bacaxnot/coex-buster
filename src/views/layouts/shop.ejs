@@ -7,7 +7,7 @@
 <div class="s-container">
 
     <%- include('../components/navBar.ejs') %>
-
+    
     <main class="s-content">
         <div class="shoppingCart">
             <%- include('../components/shoppingCartComponent.ejs') %>
@@ -23,8 +23,11 @@
 </div>
 
 <script src="/public/scripts/checkButton.js"></script>
-<script src="/public/scripts/redirectLogin.js"></script>
-<script src="/public/scripts/redirectRegister.js"></script>
+
+<% if (user.id == 0) { %>
+    <script src="/public/scripts/redirectLogin.js"></script>
+    <script src="/public/scripts/redirectRegister.js"></script>
+<% } %>
 <script src="/public/scripts/pagination.js"></script>
 <script src="/public/scripts/shoppingCart.js"></script>
 <script src="/public/scripts/movieCardComponent.js"></script>
