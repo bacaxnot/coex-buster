@@ -3,8 +3,9 @@
 <div class="main-card">
     <section class="img-section">
         <figure class="main-figure">
+            
             <img
-                src="<%= imageUrl + detalle.poster_path %>"
+            src="<%= (detalle.poster_path).includes('.com') ? detalle.poster_path : (imageUrl + detalle.poster_path) %>"
                 alt="poster"
             />
             <div class="gradient"></div>

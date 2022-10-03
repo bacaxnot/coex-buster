@@ -6,7 +6,7 @@
                     <%  moviesRecommended.forEach((result) =>{%>
                         <button class="mcc-go-to-detail" id="<%= result.id %>">
                             <div class="carousel__elemento2" >
-                                <img src="<%= imageUrl + result.poster_path %>" alt="<%= result.title %>">
+                                <img src="<%- result.poster_path != null ? ((result.poster_path).includes('.com') ? result.poster_path : (imageUrl + result.poster_path )) : result.poster_path  %>" alt="<%= result.title %>">
                                 <div class="titulo2">
                                     <p class="carousel__titulo2"> <%= result.title %></p>
                                 </div>
