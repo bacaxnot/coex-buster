@@ -1,16 +1,13 @@
 <%- include('../partials/head', {title : 'Order'}) %>
 
-<link rel="stylesheet" href="/public/styles/orderDetail.css">
-<link rel="stylesheet" href="/public/styles/starsComponent.css">
-<link rel="stylesheet" href="/public/styles/backButton.css">
-<link href="/public/styles/navbar.css" rel="stylesheet">
-<link href="/public/styles/shoppingCart.css" rel="stylesheet">
+<link rel="stylesheet" href="/public/styles/orderDetail.css" />
+<link rel="stylesheet" href="/public/styles/starsComponent.css" />
+<link rel="stylesheet" href="/public/styles/backButton.css" />
+<link href="/public/styles/navbar.css" rel="stylesheet" />
+<link href="/public/styles/shoppingCart.css" rel="stylesheet" />
 
-<%- include('../partials/body') %>
-
-<% const imageUrl = 'https://image.tmdb.org/t/p/w500/' %>
-
-<%- include('../components/navbar.ejs') %>
+<%- include('../partials/body') %> <% const imageUrl =
+'https://image.tmdb.org/t/p/w500/' %> <%- include('../components/navbar.ejs') %>
 
 <main class="od-view">
     <div class="shoppingCart">
@@ -21,37 +18,49 @@
         <section class="od-order">
             <h1 class="od-order__title">My order</h1>
             <div class="od-order__info">
-                <h2 class="od-info__date"><%= typeof products[0].transactions.create_date != 'undefined' ? products[0].transactions.create_date : 'date not found' %></h2>
-                <h3 class="od-info__articles"><%= products.length %> articles</h3>
+                <h2 class="od-info__date">
+                    <%= typeof products[0].transactions.create_date !=
+                    'undefined' ? products[0].transactions.create_date : 'date
+                    not found' %>
+                </h2>
+                <h3 class="od-info__articles">
+                    <%= products.length %> articles
+                </h3>
             </div>
             <div class="od-order__list">
                 <% products.forEach(product => { %>
-                    <a 
-                        href="/movies/detail/<%= product.movies.id %>" 
-                        class="od-list__link" 
-                        title="Go to <%= typeof product.movies.title != 'undefined' ? product.movies.title : 'untitled' %>"
-                    >
-                        <div class="od-list__item">
-                            <figure class="od-item__cover">
-                                <img 
-                                    src="<%= (product.movies.poster_path).includes('.com') ? product.movies.poster_path : (imageUrl + product.movies.poster_path) %>"
-                                    alt="<%= typeof product.movies.title != 'undefined' ? product.movies.title : 'untitled' %>"
-                                    class="od-item__img"
-                                >
-                            </figure>
-                            <div class="od-item__info">
-                                <h4 class="od-item__title">
-                                    <%= typeof product.movies.title != 'undefined' ? product.movies.title : 'untitled' %>
-                                </h4>
-                                <div class="od-item__genres">
-                                    <p class="od-item__genre">
-                                        <%= (product.movies.movies_categories).length > 0 ? product.movies.movies_categories[0].categories.name : 'Dont have category' %>
-                                    </p>
-                                </div>
-                                <%- include('../components/starsComponent.ejs', {vote_average: product.movies.vote_average}) %>
+                <a
+                    href="/movies/detail/<%= product.movies.id %>"
+                    class="od-list__link"
+                    title="Go to <%= typeof product.movies.title != 'undefined' ? product.movies.title : 'untitled' %>"
+                >
+                    <div class="od-list__item">
+                        <figure class="od-item__cover">
+                            <img
+                                src="<%= (product.movies.poster_path).includes('.com') ? product.movies.poster_path : (imageUrl + product.movies.poster_path) %>"
+                                alt="<%= typeof product.movies.title != 'undefined' ? product.movies.title : 'untitled' %>"
+                                class="od-item__img"
+                            />
+                        </figure>
+                        <div class="od-item__info">
+                            <h4 class="od-item__title">
+                                <%= typeof product.movies.title != 'undefined' ?
+                                product.movies.title : 'untitled' %>
+                            </h4>
+                            <div class="od-item__genres">
+                                <p class="od-item__genre">
+                                    <%=
+                                    (product.movies.movies_categories).length >
+                                    0 ?
+                                    product.movies.movies_categories[0].categories.name
+                                    : 'Dont have category' %>
+                                </p>
                             </div>
+                            <%- include('../components/starsComponent.ejs',
+                            {vote_average: product.movies.vote_average}) %>
                         </div>
-                    </a>
+                    </div>
+                </a>
                 <% }) %>
             </div>
         </section>
