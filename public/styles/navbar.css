@@ -161,24 +161,28 @@ li {
     display: block;
 }
 .btn-singup-nav{
-    border: 2px solid white;
+    border: 2px solid var(--purple);
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
+    background-color: var(--purple);
 }
 
 .btn-login-nav{
-    border: 2px solid white;
+    border: 2px solid var(--purple);
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
+    background-color: var(--purple);
 }
 
 .btn-login-nav:hover{
-    background-color: var(--purple);
+    background-color: var(--purple-dark);
+    color: var(--purple);
 }
 .btn-singup-nav:hover{
-    background-color: var(--purple);
+    background-color: var(--purple-dark);
+    color: var(--purple);
 }
 
 .displayNone{
