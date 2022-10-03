@@ -23,7 +23,19 @@ class TransactionDetailRespository implements ITransactionDetailRepository<trans
                 transaction_id:id
             },
             include:{
-                movies:true,
+                movies:{
+                    include: {
+                        movies_categories: {
+                            include: {
+                                categories: {
+                                    select: {
+                                        name: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 transactions:true
             },
         });

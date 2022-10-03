@@ -45,8 +45,7 @@
                                 </h4>
                                 <div class="od-item__genres">
                                     <p class="od-item__genre">
-                                        <%= product.movies.genres %> 
-                                        <%= typeof product.movies.genres != 'undefined' ? product.movies.genres : ' ' %>
+                                        <%= (product.movies.movies_categories).length > 0 ? product.movies.movies_categories[0].categories.name : 'Dont have category' %>
                                     </p>
                                 </div>
                                 <%- include('../components/starsComponent.ejs', {vote_average: product.movies.vote_average}) %>
