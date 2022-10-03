@@ -1,6 +1,6 @@
 import prisma from "../helpers/db/db";
 import { IMovieRepository } from "../helpers/interfaces/movie.interface";
-import { movies } from "@prisma/client"
+import { movies, Prisma } from "@prisma/client"
 class MoviesRepository implements IMovieRepository<movies> {
 
     async getAll(): Promise<movies[]> {
@@ -152,11 +152,24 @@ class MoviesRepository implements IMovieRepository<movies> {
         return [count, movies, page, id];
     }
 
-    async getMoviesRecommended(): Promise<any> {
-        const movies: any = await prisma.movies.findMany({
-            take:5
-        });
-        return movies;
+    async getMoviesRecommended(id: number, genre : string, word: string): Promise<any> {
+        const title = `%${word}%`
+        
+        let sql = Prisma.sql`SELECT * FROM movies WHERE id != ${id} AND title LIKE ${title} LIMIT 8`
+        let movies : any =  await prisma.$queryRaw`${sql}`
+
+        if (Array.isArray(movies) && movies.length == 0){
+            sql = Prisma.sql`
+            SELECT m.*, c.name AS category FROM movies AS m
+            JOIN movies_categories AS mc
+            ON mc.movie_id = m.id
+            JOIN categories AS c
+            ON c.id = mc.category_id
+            WHERE m.id != ${id} AND c.name = ${genre}
+            LIMIT 8`
+        }
+        movies = await prisma.$queryRaw`${sql}`
+        return movies
     }
 
     async getAllCategoriesFirtsFive(): Promise<any> {
