@@ -2,11 +2,12 @@ import { credits, movies , users} from "@prisma/client"
 import prisma from "../helpers/db/db"
 class ActorsRepository
 {
+
  async getAll(id:number)
  {
     const actors = await prisma.movies.findMany({
         where:{
-            id:id
+            id: id
         },
        include:{
         credits:{

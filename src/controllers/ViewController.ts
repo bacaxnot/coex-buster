@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 import UserRepository from "../repository/users.repository";
 import transactionRepository from "../repository/transaction.repository";
 import transactions_detailRepository from "../repository/transactions_detail.repository";
-import actorsRepository from "../repository/actors.repository";
+import ActorsRepository from "../repository/actors.repository";
 import { objectEnumValues } from "@prisma/client/runtime";
 
 class ViewController implements IController<Request, Response>{
@@ -96,10 +96,10 @@ class ViewController implements IController<Request, Response>{
             const user = req.user
             const id = parseInt(req.params.id)
             const movie = await MoviesRepository.get(id)
-            const actors = await actorsRepository.getAll(id)
+            const actors = await ActorsRepository.getAll(id)
+            const moviesRecommended = await MoviesRepository.getMoviesRecommended()
 
-
-            res.render('layouts/movie-detail.ejs', { detalle: movie, actors: actors, path: req.originalUrl, user });
+            res.render('layouts/movie-detail.ejs', { detalle: movie, actors: actors, moviesRecommended: moviesRecommended, id: id, path: req.originalUrl, user });
         } catch (error) {
             res.render('layouts/error', { error: error })
         }
