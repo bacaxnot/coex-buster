@@ -50,6 +50,7 @@
     display: grid;
     width: 100%;
     grid-template-columns: 1fr auto;
+    padding: 1rem;
     column-gap: 15px;
 }
 .main-info-section{
@@ -83,7 +84,7 @@
     justify-content: space-between;
     min-width: max-content;
     border: solid 0.5px #C7C7C7;
-    border-radius: 8px;
+    border-radius:8px;
     padding: 8px 10px;
 }
 .sec-info{
@@ -118,6 +119,10 @@
     color: white;
     width: 100px;
     margin-right: 40px;
+}
+
+.main-card .main-info-section .main-info-slot .container-info .button{
+    padding: 1rem;
 }
 .mcc-table__btn--add:hover{
     background-color: var(--purple-dark);
