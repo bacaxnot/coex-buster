@@ -13,7 +13,9 @@
     padding-right: 5px;
     font-size: 15px;
 }
-
+.other-categories>option {
+    text-align: start;
+}
 .other-categories {
     color: white;
     padding: 5px 10px;
@@ -29,9 +31,7 @@
     background: var(--purple-dark);
     color: var(--purple)
 }
-.other-categories>option{
-    text-align: start;
-}
+
 .seleccionado li{
     color: var(--purple);
 }
@@ -209,4 +209,16 @@ li {
 
 .displayBlock{
     display:block !important;
+}
+
+.list-categories{
+    border-style: none;
+    background-color: #02021C;
+    margin-left: 10px;
+    color: #D8D8D8;
+}
+
+
+#categorySelected{
+    font-size: 16px;
 }
