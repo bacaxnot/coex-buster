@@ -4,7 +4,7 @@ BACK.addEventListener('click', () => {
     if(url.includes('/history/order/')){
         window.location.href = "/history";
     }else if (url.includes('/detail')){
-        history.back();
+        window.location.href = document.referrer
     }else{
         window.location.href = "/movies";
     }
