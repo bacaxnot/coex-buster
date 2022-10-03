@@ -51,18 +51,15 @@
 	overflow: hidden;
 	margin: auto;
 	box-sizing: content-box;
-	padding: 20px;
 
 }
 .carousel__elemento2 .titulo2 p{
 	margin: auto;
 	text-align: center;
-	max-width: 100%;
+	max-width:171.25px;
 	color:#fff;
-	font-size: 14pt;
+	font-size: 12pt;
 	width: 100%;
-	
-	
 }
 
 .carousel__indicadores2 .glider-dot {

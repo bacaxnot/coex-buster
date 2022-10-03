@@ -118,11 +118,11 @@ model movies_categories {
 model releases {
   id               Int            @id @default(autoincrement())
   movie_id         Int
-  country_id       Int
+  country_id       Int?
   certification_id Int?
   release_date     DateTime?      @db.Date
   movies           movies         @relation(fields: [movie_id], references: [id], onDelete: Cascade, map: "releases_ibfk_1")
-  countries        countries      @relation(fields: [country_id], references: [id], onDelete: Cascade, map: "releases_ibfk_2")
+  countries        countries?      @relation(fields: [country_id], references: [id], onDelete: Cascade, map: "releases_ibfk_2")
   certification    certification? @relation(fields: [certification_id], references: [id], onDelete: Cascade, map: "releases_ibfk_3")
 
   @@index([certification_id], map: "certification_id")
