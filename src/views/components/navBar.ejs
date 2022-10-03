@@ -17,7 +17,7 @@
                     <% if (categoriesSelect != 0) { %>
                         <label for="otherMenu" class="list-item down-list" id="otherItems">
                             <select class="other-categories" name="" id="select"  onchange="location = this.value">
-                                <option id="categoryOption" value=""> others </option>
+                                <option id="categoryOption" value=""> Others </option>
                                 <% categoriesSelect.forEach( (cat) => { %>
                                     <option id="categorySelected" value="/movies/category/1?category=<%- cat.id %>/<%- cat.name %>"><%- cat.name %></option>
                                 <% }); %>
@@ -44,13 +44,13 @@
                         <div class="email__sigin" type="button" id='sigin_arrow' >
                             <div class="user-correo"><%= user.email%></div>
                             <div class="email-menu">
-                                <div class="user-correo">
-                                    <a href="/history">
-                                        <span>History Orders</span>
+                                <div>
+                                    <a href="/history" class="user-correo">
+                                        <span class="menu-text">History Orders</span>
                                     </a>
                                 </div>
                                 <div class="user-correo" id="logOutBtn">
-                                    <span>Log Out</span>
+                                    <span class="menu-text">Log Out</span>
                                 </div>
                             </div>
                         </div>

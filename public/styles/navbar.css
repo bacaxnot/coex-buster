@@ -5,16 +5,39 @@
 }
 
 .seleccionado {
-    border: 1px solid #7B2ABF;
+    border: 1px solid var(--purple);
     border-radius: 10px;
-    /* padding: 5px; */
+    padding: 5px;
     padding-left: 5px;
-    color: #7B2ABF;
+    color: var(--purple);
     padding-right: 5px;
     font-size: 15px;
 }
+.other-categories>option {
+    text-align: start;
+}
+.other-categories {
+    color: white;
+    padding: 5px 10px;
+    background: var(--purple);
+    border-radius: 10px;
+    border: 2px solid var(--purple);
+    margin: 0 5px;
+    outline: none;
+    text-align: center;
+}
+
+.other-categories:hover, .other-categories:focus {
+    background: var(--purple-dark);
+    color: var(--purple)
+}
+
+.seleccionado li{
+    color: var(--purple);
+}
 
 li, a{
+    color: var(--white);
     list-style: none;
     text-decoration: none;
 }
@@ -25,6 +48,7 @@ li, a{
     border: none;
     color: var(--purple);
     font-size: 1rem;
+    width: 200px;
 }
 .email__sigin>option {
     color: var(--purple);
@@ -32,20 +56,22 @@ li, a{
 }
 .email-menu {
     padding: 10px;
-    border: .2px solid white;
     border-radius: 10px;
     position: absolute;
     cursor: pointer;
     display: none;
-    background-color: var(--purple-input);
+    background-color: var(--purple-dark);
     z-index: 1000;
+    font-size: 0.85rem;;
 }
 .user-correo:hover{
-    background: white;
+    color: var(--purple-light);
+    cursor: pointer;
 }
 
 .show-hidden {
-    display: block;
+    display: grid;
+    row-gap: 1rem;
 }
 
 .logo img{
@@ -87,7 +113,7 @@ header{
     height: 54px
 }
 .email__sigin{
-    color: var(--purple);
+    /* color: var(--purple); */
     font-size: 1rem;
 }
 .logo{
@@ -133,7 +159,7 @@ li {
     display: none !important;
 }
 .btn-drop-menu:hover{
-    color:white;
+    cursor: pointer;
 }
 
 .btn-sesion-login{
@@ -156,24 +182,28 @@ li {
     display: block;
 }
 .btn-singup-nav{
-    border: 2px solid white;
+    border: 2px solid var(--purple);
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
+    background-color: var(--purple);
 }
 
 .btn-login-nav{
-    border: 2px solid white;
+    border: 2px solid var(--purple);
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
+    background-color: var(--purple);
 }
 
 .btn-login-nav:hover{
-    background-color: var(--purple);
+    background-color: var(--purple-dark);
+    color: var(--purple);
 }
 .btn-singup-nav:hover{
-    background-color: var(--purple);
+    background-color: var(--purple-dark);
+    color: var(--purple);
 }
 
 .displayNone{
@@ -182,4 +212,23 @@ li {
 
 .displayBlock{
     display:block !important;
+}
+
+.list-categories{
+    border-style: none;
+    background-color: #02021C;
+    margin-left: 10px;
+    color: #D8D8D8;
+}
+
+
+#categorySelected{
+    font-size: 16px;
+}
+.menu-text{
+    color: var(--gray);
+    display: flex;
+}
+.menu-text:hover{
+    color: var(--white);
 }
