@@ -108,7 +108,6 @@ class ViewController implements IController<Request, Response>{
             const word : string = title[0]
             const category = movie.movies_categories[0].categories.name
             const moviesRecommended = await MoviesRepository.getMoviesRecommended(id, category, word)
-            console.log("🚀 ~ file: ViewController.ts ~ line 111 ~ ViewController ~ movieDetail ~ moviesRecommended", moviesRecommended)
 
             res.render('layouts/movie-detail.ejs', { detalle: movie, actors: actors, moviesRecommended: moviesRecommended, id: id, path: req.originalUrl, user });
         } catch (error) {
