@@ -1,8 +1,3 @@
-.od-icon-arrow {
+.od-icon-arrow:hover {
     cursor: pointer;
-    position: absolute;
-    right: calc(100% - 50% + 250px);
-    top: 35px;
-    background-color: transparent;
-    border: none;
 }

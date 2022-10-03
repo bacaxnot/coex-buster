@@ -48,6 +48,7 @@ li, a{
     border: none;
     color: var(--purple);
     font-size: 1rem;
+    width: 200px;
 }
 .email__sigin>option {
     color: var(--purple);
@@ -55,20 +56,22 @@ li, a{
 }
 .email-menu {
     padding: 10px;
-    border: .2px solid white;
     border-radius: 10px;
     position: absolute;
     cursor: pointer;
     display: none;
-    background-color: var(--purple-input);
+    background-color: var(--purple-dark);
     z-index: 1000;
+    font-size: 0.85rem;;
 }
 .user-correo:hover{
-    background: white;
+    color: var(--purple-light);
+    cursor: pointer;
 }
 
 .show-hidden {
-    display: block;
+    display: grid;
+    row-gap: 1rem;
 }
 
 .logo img{
@@ -110,7 +113,7 @@ header{
     height: 54px
 }
 .email__sigin{
-    color: var(--purple);
+    /* color: var(--purple); */
     font-size: 1rem;
 }
 .logo{
@@ -156,7 +159,7 @@ li {
     display: none !important;
 }
 .btn-drop-menu:hover{
-    color:white;
+    cursor: pointer;
 }
 
 .btn-sesion-login{
@@ -221,4 +224,11 @@ li {
 
 #categorySelected{
     font-size: 16px;
+}
+.menu-text{
+    color: var(--gray);
+    display: flex;
+}
+.menu-text:hover{
+    color: var(--white);
 }
