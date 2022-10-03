@@ -1,10 +1,10 @@
-<% imageUrl = 'https://image.tmdb.org/t/p/w500/' %>
+<% const imageUrl = 'https://image.tmdb.org/t/p/w500/' %>
 
 <div class="mcc-grid__card">
     <figure class="mcc-card__cover">
         <button class="mcc-go-to-detail" id="<%= id %>">
             <img
-                src="<%= path %>"
+                src="<%= path.includes('.com') ? path : (imageUrl + path) %>"
                 alt="<%= typeof title != 'undefined' ? title : 'untitled' %>"
                 class="mcc-card__poster">
             <span class="mcc-card__title">
@@ -21,13 +21,16 @@
         <div class="mcc-table__header">
             <% if (typeof genres == 'object' || typeof genres == 'array') { %>
                 <p class="mcc-table__genre" title="<%=  genres.join(', ') %>">
+                    <% if (genres.length == 0 ){%>
+                        <%= "Dont have category" %>
+                    <%}else{ %>
                     <% for( let index = 0; index < 2; index++ ) { %>
-                        <% if (genres.length <= 1) { %>
+                            <% if (genres.length <= 1) { %>
                             <%= genres[index] %>
                         <% } else { %>
                             <%= (index < 1) ? genres[index] + ', ' : genres[index] %>
                         <% } %>
-                    <% } %>
+                    <% }} %>
                 </p>
             <% } else { %>
                 <p class="mcc-table__genre" title="<%=  genres %>">

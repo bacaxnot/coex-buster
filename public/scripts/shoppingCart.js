@@ -81,11 +81,11 @@ const addToCart = async (movie) => {
 		renderMovieInCart(moviesInCart)
 		showCheckoutButton(moviesInCart.length)
 		try {
-			const clearCookie = await fetch("http://localhost:3000/api/v1/shop/clear",{
+			const clearCookie = await fetch("/api/v1/shop/clear",{
 				method: 'DELETE'
 			})
 			if(clearCookie.ok){
-				const response = await fetch("http://localhost:3000/api/v1/shop/add", {
+				const response = await fetch("/api/v1/shop/add", {
 					method: 'POST',
 					headers: {
 					'Content-Type': 'application/json'
@@ -124,17 +124,18 @@ const renderMovieInCart = async (moviesArray) => {
 			if(!movie.genres || movie.genres.length === 0) {
 				category = "Dont have category"
 			}else{
-				category = movie.genres[0]
+				category = movie.genres[0].length == 1 ? movie.genres : movie.genres[0];
 			}
+			const imageUrl = 'https://image.tmdb.org/t/p/w500/' 
 			const cart = `
 				<div class="cart-item" id="${movie.id}">
 					<div class="cart-item-img">
 						<img
-						src="${movie.path}" alt="movie-img">
+						src="${(movie.path).includes('.com') ? movie.path : (imageUrl + movie.path)}" alt="movie-img">
 					<div class="cart-info-container">
-						<h2>${movie.title}</h2>
-						<span>${category}</span>
-						<star-rating rating="${movie.vote_average}"></star-rating>
+						<span><b>Titulo: </b>${movie.title}</span>
+						<span><b>Genero: </b>${category}</span>
+						<span><b>Calificación: </b>${movie.vote_average}</span>
 					</div>
 				</div>
 				<div class="delete-button" onclick="deleteMovieInCart(${movie.id})">X</div>

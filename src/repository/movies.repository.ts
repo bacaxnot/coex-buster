@@ -52,6 +52,7 @@ class MoviesRepository implements IMovieRepository<movies> {
     }
 
     async get(id: number): Promise<movies | null> {
+        
         const data = await prisma.movies.findUnique({
             where: {
                 id: id
@@ -151,7 +152,14 @@ class MoviesRepository implements IMovieRepository<movies> {
         return [count, movies, page, id];
     }
 
-    async getAllCategoriesFirtsFive(): Promise<void> {
+    async getMoviesRecommended(): Promise<any> {
+        const movies: any = await prisma.movies.findMany({
+            take:5
+        });
+        return movies;
+    }
+
+    async getAllCategoriesFirtsFive(): Promise<any> {
         const movies: any = await prisma.categories.findMany({
             take: 5
         });
@@ -181,16 +189,28 @@ class MoviesRepository implements IMovieRepository<movies> {
                 }
             }
         });
+        
         const movies: any = await prisma.movies.findMany({
             skip: skip,
             take: 12,
+            include: {
+                movies_categories: {
+                    select: {
+                        categories: {
+                            select: {
+                                name: true
+                            }
+                        }
+                    }
+                }
+            },
             where: {
                 title: {
                     contains: name
                 }
-            }
+            },
         });
-        return [count, movies,page];
+        return [count, movies, page];
     }
 }
 

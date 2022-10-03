@@ -10,18 +10,25 @@ import cookieParser from "cookie-parser";
 class LoginController implements IController<Request, Response> {
     
     
-    async signIn(req: Request, res: Response): Promise<void> {
+    async validateSignIn(req: Request, res: Response): Promise<void> {
         const {email, password} = req.body
         const user = await usersRepository.getEmail(email);
         if(!user) {
-            res.redirect('login')
+            res.json({email: 'Invalid email'})
+            // res.redirect('login')
             return
         }
         const result = await bcrypt.compare(password, user.password);
         if(!result){
-            res.redirect('login')
+            res.json({password: 'Invalid password'})
+            // res.redirect('login')
             return 
         }
+        res.json({user: user})
+    }
+
+    signIn(req: Request, res: Response){
+        const {user} = req.body;
         const tokenJwt = jwt.sign({user:user}, config.SECRET as Secret, {
             expiresIn: 60*60*24
         });
@@ -29,15 +36,13 @@ class LoginController implements IController<Request, Response> {
             httpOnly: true,
             expires: new Date(Date.now() + 60*60*24)
         });
-        res.redirect('/movies');
+        res.json({msg: 'success'});
     }
 
-    async signUp(req: Request, res: Response): Promise<void> {
-        const {id, name, email, password, passwordComfirm} = req.body
-        console.log(password, passwordComfirm)
+    async signUp(req: Request, res: Response): Promise<void>  {
+        const {id, name, email, password} = req.body
         const data = await usersRepository.create({id, name, email, password})
-        res.redirect('/login')
-        console.log("se creo usuario");
+        res.json({code:200, data:data});
     }
 
     async logOut(req: Request, res: Response): Promise<void>{

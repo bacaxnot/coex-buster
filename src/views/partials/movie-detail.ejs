@@ -1,9 +1,23 @@
+<% const imageUrl = 'https://image.tmdb.org/t/p/w500/' %>
 
+<main class="main">
+    <div>
+        <%- include('../components/backButton.ejs') %>
+    </div>
+    <div>
+        <% const id = detalle.id %> 
+        <% const title = detalle.title %> 
+        <% const path = detalle.poster_path %> 
+        <% const vote_average = detalle.vote_average %> 
+        <% const genres = detalle.movies_categories.length > 0 ? detalle.movies_categories[0].categories.name : "Dont have category"%> 
+        <div class="mcc-table__btn--add" id="<%= JSON.stringify({id, title, path, vote_average,  genres}) %>">Add To Cart</div>
+    </div>
+</main>
 <div class="main-card">
     <section class="img-section">
         <figure class="main-figure">
             <img
-                src="<%= detalle.poster_path %>"
+            src="<%= (detalle.poster_path).includes('.com') ? detalle.poster_path : (imageUrl + detalle.poster_path) %>"
                 alt="poster"
             />
             <div class="gradient"></div>

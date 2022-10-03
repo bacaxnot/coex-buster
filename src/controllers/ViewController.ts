@@ -4,37 +4,38 @@ import { Request, Response } from "express";
 import UserRepository from "../repository/users.repository";
 import transactionRepository from "../repository/transaction.repository";
 import transactions_detailRepository from "../repository/transactions_detail.repository";
-import actorsRepository from "../repository/actors.repository";
+import ActorsRepository from "../repository/actors.repository";
+import { objectEnumValues } from "@prisma/client/runtime";
 
 class ViewController implements IController<Request, Response>{
 
-    renderLogin(req: Request, res: Response){
+    renderLogin(req: Request, res: Response) {
         const user = req.user
         res.render('layouts/login', {path:req.originalUrl, user:user})
     }
 
-    renderRegister(req:Request, res:Response){
+    renderRegister(req: Request, res: Response) {
         const user = req.user
         res.render('layouts/register', {path:req.originalUrl, user:user})
     }
 
     async getAll(req: Request, res: Response): Promise<void> {
         try {
-            const user = req.user       
+            const user = req.user
             const id = 0;
-            const movies : any = await MoviesRepository.getAll();
+            const movies: any = await MoviesRepository.getAll();
             const categories = await MoviesRepository.getAllCategoriesFirtsFive();
             const categoriesSelect = await MoviesRepository.getAllCategoriesSelect();
-            movies[1].forEach((element : any, index: any) => {
-                const genres : any = []
-                element.movies_categories.forEach((genre : any) => {
+            movies[1].forEach((element: any, index: any) => {
+                const genres: any = []
+                element.movies_categories.forEach((genre: any) => {
                     genres.push(genre.categories.name)
                 })
                 element.movies_categories = genres
             })
-            res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], id:id , categories: categories, categoriesSelect: categoriesSelect, user:user, path: req.originalUrl});
+            res.render('layouts/shop', { paginate: 1, result: movies[1], count: movies[0], id: id, categories: categories, categoriesSelect: categoriesSelect, user: user, path: req.originalUrl });
         } catch (error) {
-            res.render('layouts/error', {error: error})
+            res.render('layouts/error', { error: error })
         }
     }
 
@@ -43,33 +44,34 @@ class ViewController implements IController<Request, Response>{
             let category: any = req.query.category
             const pag = req.params.pag;
             category = parseInt(category)
-            const user = req.user 
-            const movies : any = await MoviesRepository.getAllByCategoryById(category, pag);
+            const user = req.user
+            const movies: any = await MoviesRepository.getAllByCategoryById(category, pag);
             const categories = await MoviesRepository.getAllCategoriesFirtsFive();
             const categoriesSelect = await MoviesRepository.getAllCategoriesSelect();
-            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id: movies[3], user: user, path: req.originalUrl});
+            const id: Array<any> = [movies[3], false];
+            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id, user: user, path: req.originalUrl});
         } catch (error) {
-            res.render('layouts/error', {error: error})
+            res.render('layouts/error', { error: error })
         }
     }
 
-    async getPaginate(req: Request, res: Response): Promise<void> { 
+    async getPaginate(req: Request, res: Response): Promise<void> {
         try {
             const pag = req.params.pag;
-            const user = req.user;         
+            const user = req.user;
             const movies = await MoviesRepository.getPaginated(pag);
             const categories = await MoviesRepository.getAllCategoriesFirtsFive();
             const categoriesSelect = await MoviesRepository.getAllCategoriesSelect();
-            movies[1].forEach((element : any, index: any) => {
-                const genres : any = []
-                element.movies_categories.forEach((genre : any) => {
+            movies[1].forEach((element: any, index: any) => {
+                const genres: any = []
+                element.movies_categories.forEach((genre: any) => {
                     genres.push(genre.categories.name)
                 })
                 element.movies_categories = genres
             })
-            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id: 0, user:user, path: req.originalUrl});
+            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id: 0, user: user, path: req.originalUrl });
         } catch (error) {
-            res.render('layouts/error', {error: error}) 
+            res.render('layouts/error', { error: error })
         }
     }
 
@@ -78,51 +80,59 @@ class ViewController implements IController<Request, Response>{
             const search = req.query.search
             const pag = req.params.pag;
             const user = req.user;
-            const movies: any = await MoviesRepository.getAllBySearch(search,pag);
+            const movies: any = await MoviesRepository.getAllBySearch(search, pag);
             const categories = await MoviesRepository.getAllCategoriesFirtsFive();
             const categoriesSelect = await MoviesRepository.getAllCategoriesSelect();
-            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id: search, user: user, path: req.originalUrl });
+            const id: Array<any> = [search, true];
+            movies[1].forEach((element: any, index: any) => {
+                const genres: any = []
+                element.movies_categories.forEach((genre: any) => {
+                    genres.push(genre.categories.name)
+                })
+                element.movies_categories = genres
+            })
+            res.render('layouts/shop', { paginate: movies[2], result: movies[1], count: movies[0], categories: categories, categoriesSelect: categoriesSelect, id, user: user, path: req.originalUrl, });
         } catch (error) {
-            res.render('layouts/error', {error: error}) 
+            res.render('layouts/error', { error: error })
         }
 
     }
 
-    async movieDetail (req: Request, res:Response): Promise<void>{
+    async movieDetail(req: Request, res: Response): Promise<void> {
         try {
             const user = req.user
             const id = parseInt(req.params.id)
             const movie = await MoviesRepository.get(id)
-            const actors = await actorsRepository.getAll(id)
-           
-           
-            res.render('layouts/movie-detail.ejs', {detalle:movie, actors: actors, path: req.originalUrl, user});  
+            const actors = await ActorsRepository.getAll(id)
+            const moviesRecommended = await MoviesRepository.getMoviesRecommended()
+
+            res.render('layouts/movie-detail.ejs', { detalle: movie, actors: actors, moviesRecommended: moviesRecommended, id: id, path: req.originalUrl, user });
         } catch (error) {
-            res.render('layouts/error', {error: error}) 
+            res.render('layouts/error', { error: error })
         }
 
     }
 
-    async createTransaction(req: Request, res:Response): Promise<void> {
-        const {ides} : any = req.query;
-        const arrId : [] = ides.split(',')
+    async createTransaction(req: Request, res: Response): Promise<void> {
+        const { ides }: any = req.query;
+        const arrId: [] = ides.split(',')
         try {
-            if (req.user.id){
+            if (req.user.id) {
                 const id = req.user.id;
                 const user = await UserRepository.get(id);
                 const current_date = new Date();
-                const data : any = {
+                const data: any = {
                     user_id: id,
                     create_date: current_date,
-                    expiration_date: new Date(current_date.getTime()+(10*24*60*60*1000)),
+                    expiration_date: new Date(current_date.getTime() + (10 * 24 * 60 * 60 * 1000)),
                     status: true
                 }
                 await transactionRepository.create(data);
-                const transactions : any = await transactionRepository.get(id);
-                const transLength : number = transactions.length;
-                const transId : number = transactions[transLength - 1].id;
-                arrId.forEach(async (id : any) => {
-                    const data : any = {
+                const transactions: any = await transactionRepository.get(id);
+                const transLength: number = transactions.length;
+                const transId: number = transactions[transLength - 1].id;
+                arrId.forEach(async (id: any) => {
+                    const data: any = {
                         movie_id: parseInt(id),
                         transaction_id: transId,
                         quantity: 1
@@ -134,37 +144,37 @@ class ViewController implements IController<Request, Response>{
                 return
             }
             res.redirect('/login')
-        } catch (error : any) {
-            res.render('layouts/error', {error: error})
+        } catch (error: any) {
+            res.render('layouts/error', { error: error })
         }
     }
 
-    async createTransactionDetail(req: Request, res:Response, id : any, ): Promise<void> {
-        try{
+    async createTransactionDetail(req: Request, res: Response, id: any,): Promise<void> {
+        try {
             const data = req.body;
             const query = await transactions_detailRepository.create(data);
-            res.json({code:400});
+            res.json({ code: 400 });
         }
-        catch(error:any){
-            res.json({code:200, error:error});
+        catch (error: any) {
+            res.json({ code: 200, error: error });
         }
     }
 
-    async getHistory(req: Request, res:Response): Promise<void> {
+    async getHistory(req: Request, res: Response): Promise<void> {
         try {
             const user = req.user
-            const {id} = req.user;
-            const result : any = await transactionRepository.get(id);
-            result.forEach((element : any) => {
+            const { id } = req.user;
+            const result: any = await transactionRepository.get(id);
+            result.forEach((element: any) => {
                 element.create_date = new Date(element.create_date).toLocaleString();
             })
             res.render('layouts/history_order.ejs', {
-                result : result,
+                result: result,
                 path: req.originalUrl,
                 user
-            }) 
+            })
         } catch (error) {
-            res.render('layouts/error', {error: error})
+            res.render('layouts/error', { error: error })
         }
     }
 
@@ -172,17 +182,17 @@ class ViewController implements IController<Request, Response>{
         try {
             const id = parseInt(req.params.id);
             const user = req.user
-            const result : any = await transactions_detailRepository.get(id);
-            result.forEach((element : any) => {
+            const result: any = await transactions_detailRepository.get(id);
+            result.forEach((element: any) => {
                 element.transactions.create_date = new Date(element.transactions.create_date).toLocaleString();
             })
             res.render('layouts/orderDetail', {
-                products : result,
+                products: result,
                 path: req.originalUrl,
                 user
-            }) 
+            })
         } catch (error) {
-            res.render('layouts/error', {error: error})
+            res.render('layouts/error', { error: error })
         }
     }
 }

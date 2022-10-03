@@ -95,3 +95,29 @@ main{
     font-weight: bold;
     font-size: small;
 }
+
+.main{
+    margin-bottom: -580px;
+    margin-left: 40px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mcc-table__btn--add{
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-color: var(--purple);
+    font-size: 14px;
+    /* FLEX */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 150ms ease;
+    color: white;
+    width: 100px;
+    margin-right: 40px;
+}

@@ -4,6 +4,10 @@ import LoginController from "../controllers/login.controller";
 const router:Router = Router();
 
 router
+    .route('/validate')
+    .post(LoginController.validateSignIn)
+
+router
     .route('/login')
     .post(LoginController.signIn)
 

@@ -38,6 +38,7 @@ li, a{
     cursor: pointer;
     display: none;
     background-color: var(--purple-input);
+    z-index: 1000;
 }
 .user-correo:hover{
     background: white;
