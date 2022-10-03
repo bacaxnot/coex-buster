@@ -126,11 +126,12 @@ const renderMovieInCart = async (moviesArray) => {
 			}else{
 				category = movie.genres
 			}
+			const imageUrl = 'https://image.tmdb.org/t/p/w500/' 
 			const cart = `
 				<div class="cart-item" id="${movie.id}">
 					<div class="cart-item-img">
 						<img
-						src="${movie.path}" alt="movie-img">
+						src="${imageUrl + movie.path}" alt="movie-img">
 					<div class="cart-info-container">
 						<h2>${movie.title}</h2>
 						<span>${category}</span>

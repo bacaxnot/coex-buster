@@ -1,10 +1,10 @@
-<% imageUrl = 'https://image.tmdb.org/t/p/w500/' %>
+<% const imageUrl = 'https://image.tmdb.org/t/p/w500/' %>
 
 <div class="mcc-grid__card">
     <figure class="mcc-card__cover">
         <button class="mcc-go-to-detail" id="<%= id %>">
             <img
-                src="<%= path %>"
+                src="<%= imageUrl + path %>"
                 alt="<%= typeof title != 'undefined' ? title : 'untitled' %>"
                 class="mcc-card__poster">
             <span class="mcc-card__title">

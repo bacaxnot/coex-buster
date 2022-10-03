@@ -34,7 +34,7 @@
                         <div class="od-list__item">
                             <figure class="od-item__cover">
                                 <img 
-                                    src="<%= typeof product.movies.poster_path != 'undefined' ? product.movies.poster_path : '' %>"
+                                    src="<%= typeof product.movies.poster_path != 'undefined' ? imageUrl + product.movies.poster_path : '' %>"
                                     alt="<%= typeof product.movies.title != 'undefined' ? product.movies.title : 'untitled' %>"
                                     class="od-item__img"
                                 >
