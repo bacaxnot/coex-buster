@@ -29,12 +29,10 @@ class LoginController implements IController<Request, Response> {
 
     signIn(req: Request, res: Response){
         const {user} = req.body;
-        const tokenJwt = jwt.sign({user:user}, config.SECRET as Secret, {
-            expiresIn: 60*60*24
-        });
+        const tokenJwt = jwt.sign({user:user}, config.SECRET as Secret);
         res.cookie('auth', tokenJwt, {
             httpOnly: true,
-            expires: new Date(Date.now() + 60*60*24)
+            expires: new Date(Date.now()+999999999999)
         });
         res.json({msg: 'success'});
     }
