@@ -45,7 +45,11 @@
                                 </h4>
                                 <div class="od-item__genres">
                                     <p class="od-item__genre">
-                                        <%= (product.movies.movies_categories).length > 0 ? product.movies.movies_categories[0].categories.name : 'Dont have category' %>
+                                        <% if (typeof product.movies.movies_categories != 'undefined') { %>
+                                            <%= (product.movies.movies_categories).length > 0 ? product.movies.movies_categories[0].categories.name : "Don't have category" %>
+                                        <% } else { %>
+                                            Don't have category
+                                        <%}%>
                                     </p>
                                 </div>
                                 <%- include('../components/starsComponent.ejs', {vote_average: product.movies.vote_average}) %>
