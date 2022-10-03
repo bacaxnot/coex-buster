@@ -189,16 +189,28 @@ class MoviesRepository implements IMovieRepository<movies> {
                 }
             }
         });
+        
         const movies: any = await prisma.movies.findMany({
             skip: skip,
             take: 12,
+            include: {
+                movies_categories: {
+                    select: {
+                        categories: {
+                            select: {
+                                name: true
+                            }
+                        }
+                    }
+                }
+            },
             where: {
                 title: {
                     contains: name
                 }
-            }
+            },
         });
-        return [count, movies,page];
+        return [count, movies, page];
     }
 }
 
