@@ -126,7 +126,6 @@ const renderMovieInCart = async (moviesArray) => {
 			}else{
 				category = movie.genres[0].length == 1 ? movie.genres : movie.genres[0];
 			}
-			console.log(category)
 			const imageUrl = 'https://image.tmdb.org/t/p/w500/' 
 			const cart = `
 				<div class="cart-item" id="${movie.id}">
