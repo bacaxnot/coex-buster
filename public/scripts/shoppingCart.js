@@ -124,14 +124,15 @@ const renderMovieInCart = async (moviesArray) => {
 			if(!movie.genres || movie.genres.length === 0) {
 				category = "Dont have category"
 			}else{
-				category = movie.genres
+				category = movie.genres[0].length == 1 ? movie.genres : movie.genres[0];
 			}
+			console.log(category)
 			const imageUrl = 'https://image.tmdb.org/t/p/w500/' 
 			const cart = `
 				<div class="cart-item" id="${movie.id}">
 					<div class="cart-item-img">
 						<img
-						src="${imageUrl + movie.path}" alt="movie-img">
+						src="${(movie.path).includes('.com') ? movie.path : (imageUrl + movie.path)}" alt="movie-img">
 					<div class="cart-info-container">
 						<h2>${movie.title}</h2>
 						<span>${category}</span>
