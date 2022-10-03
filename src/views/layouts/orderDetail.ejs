@@ -1,31 +1,30 @@
 <%- include('../partials/head', {title : 'Order'}) %>
 
-<link rel="stylesheet" href="/public/styles/orderDetail.css" />
-<link rel="stylesheet" href="/public/styles/starsComponent.css" />
-<link rel="stylesheet" href="/public/styles/backButton.css" />
-<link href="/public/styles/navbar.css" rel="stylesheet" />
-<link href="/public/styles/shoppingCart.css" rel="stylesheet" />
+<link rel="stylesheet" href="/public/styles/orderDetail.css">
+<link rel="stylesheet" href="/public/styles/starsComponent.css">
+<link rel="stylesheet" href="/public/styles/backButton.css">
+<link href="/public/styles/navbar.css" rel="stylesheet">
+<link href="/public/styles/shoppingCart.css" rel="stylesheet">
 
-<%- include('../partials/body') %> <% const imageUrl =
-'https://image.tmdb.org/t/p/w500/' %> <%- include('../components/navbar.ejs') %>
+<%- include('../partials/body') %>
+
+<% const imageUrl = 'https://image.tmdb.org/t/p/w500/' %>
+
+<%- include('../components/navbar.ejs') %>
 
 <main class="od-view">
     <div class="shoppingCart">
         <%- include('../components/shoppingCartComponent.ejs') %>
     </div>
     <div class="od-container">
-        <%- include('../components/backButton.ejs') %>
+        <div class="od-arrow">
+            <%- include('../components/backButton.ejs') %>
+        </div>
         <section class="od-order">
             <h1 class="od-order__title">My order</h1>
             <div class="od-order__info">
-                <h2 class="od-info__date">
-                    <%= typeof products[0].transactions.create_date !=
-                    'undefined' ? products[0].transactions.create_date : 'date
-                    not found' %>
-                </h2>
-                <h3 class="od-info__articles">
-                    <%= products.length %> articles
-                </h3>
+                <h2 class="od-info__date"><%= typeof products[0].transactions.create_date != 'undefined' ? products[0].transactions.create_date : 'date not found' %></h2>
+                <h3 class="od-info__articles"><%= products.length %> articles</h3>
             </div>
             <div class="od-order__list">
                 <% products.forEach(product => { %>
@@ -49,7 +48,7 @@
                                 <div class="od-item__genres">
                                     <p class="od-item__genre">
                                         <% if (typeof product.movies.movies_categories != 'undefined') { %>
-                                            <%= (product.movies.movies_categories).length > 0 ? product.movies.movies_categories[0].categories.name : "Don't have category" %>
+                                            <%= (product.movies.movies_categories).length > 0 ? product.movies.movies_categories[0].categories.name : 'Dont have category' %>
                                         <% } else { %>
                                             Don't have category
                                         <%}%>
@@ -57,11 +56,8 @@
                                 </div>
                                 <%- include('../components/starsComponent.ejs', {vote_average: product.movies.vote_average}) %>
                             </div>
-                            <%- include('../components/starsComponent.ejs',
-                            {vote_average: product.movies.vote_average}) %>
                         </div>
-                    </div>
-                </a>
+                    </a>
                 <% }) %>
             </div>
         </section>
