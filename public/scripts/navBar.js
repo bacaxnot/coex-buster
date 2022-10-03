@@ -9,7 +9,7 @@ if(params.get("category")){
 	const categoryOption = document.getElementById("categoryOption")
 	if(Number(paramOptions[0]) > arrayCategories[arrayCategories.length - 1].id){
 		categoryOption.innerHTML = paramOptions[1]
-		select.style.color =  "#7B2ABF";
+		select.style.color =  "withe";
 	}
 	categorySelected = Array.from(categorySelected)
 	let categoria = categorySelected.find(element => element.innerText == paramOptions[1])

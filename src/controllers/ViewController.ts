@@ -102,15 +102,17 @@ class ViewController implements IController<Request, Response>{
         try {
             const user = req.user
             const id = parseInt(req.params.id)
-            const movie = await MoviesRepository.get(id)
+            const movie : any = await MoviesRepository.get(id)
             const actors = await ActorsRepository.getAll(id)
-            const moviesRecommended = await MoviesRepository.getMoviesRecommended()
+            const title : string = movie.title.split(" ");
+            const word : string = title[0]
+            const category = movie.movies_categories[0].categories.name
+            const moviesRecommended = await MoviesRepository.getMoviesRecommended(id, category, word)
 
             res.render('layouts/movie-detail.ejs', { detalle: movie, actors: actors, moviesRecommended: moviesRecommended, id: id, path: req.originalUrl, user });
         } catch (error) {
             res.render('layouts/error', { error: error })
         }
-
     }
 
     async createTransaction(req: Request, res: Response): Promise<void> {
