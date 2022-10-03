@@ -9,7 +9,9 @@ export interface IController<TRequest, TResponse> {
     
     delete?(req: TRequest, res: TResponse): Promise<void>
 
-    signIn?(req: TRequest, res: TResponse): Promise<void>
+    validateSignIn?(req: TRequest, res: TResponse): Promise<void>
+    
+    signIn?(req: TRequest, res: TResponse): void
 
     signUp?(req: TRequest, res: TResponse): Promise<void>
 }

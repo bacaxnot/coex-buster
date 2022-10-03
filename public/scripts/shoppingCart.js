@@ -134,9 +134,9 @@ const renderMovieInCart = async (moviesArray) => {
 						<img
 						src="${(movie.path).includes('.com') ? movie.path : (imageUrl + movie.path)}" alt="movie-img">
 					<div class="cart-info-container">
-						<h2>${movie.title}</h2>
-						<span>${category}</span>
-						<star-rating rating="${movie.vote_average}"></star-rating>
+						<span><b>Titulo: </b>${movie.title}</span>
+						<span><b>Genero: </b>${category}</span>
+						<span><b>Calificación: </b>${movie.vote_average}</span>
 					</div>
 				</div>
 				<div class="delete-button" onclick="deleteMovieInCart(${movie.id})">X</div>
