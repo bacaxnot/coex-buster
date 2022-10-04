@@ -6,6 +6,6 @@ BACK.addEventListener('click', () => {
     } else if (url.includes('/detail')) {
         window.location.href = document.referrer
     } else {
-        window.location.href = document.referrer
+        window.location.href = '/movies'
     }
 })
